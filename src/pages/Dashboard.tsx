@@ -26,6 +26,7 @@ import TemperatureChart from "../components/TemperatureChart";
 import ForecastSummary from "../components/ForecastSummary";
 import RiskInsight from "../components/RiskInsight";
 import EarlyWarningPanel from "../components/EarlyWarningPanel";
+import DataFreshness from "../components/DataFreshness";
 export default function Dashboard() {
   const { snap, loading, refresh, mode } = useApp(),
     navigate = useNavigate();
@@ -107,6 +108,7 @@ export default function Dashboard() {
             </section>
             <ForecastSummary snapshot={snap} />
           </div>
+          <DataFreshness snapshot={snap} />
           <div className="insight-grid">
             <RiskInsight
               kind="observed"

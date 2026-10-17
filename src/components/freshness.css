@@ -1,0 +1,78 @@
+.data-freshness {
+  margin: 24px 0;
+}
+.data-freshness .panel-head {
+  align-items: start;
+}
+.data-freshness .eyebrow {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+.data-freshness .freshness-timeline {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 22px;
+  margin: 24px 0 0;
+}
+.data-freshness .freshness-timeline > div {
+  display: block;
+  padding: 0 0 4px 16px;
+  border-left: 2px solid var(--border);
+  min-width: 0;
+}
+.freshness-timeline dt {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  color: var(--text-muted);
+  font-size: 12px;
+  margin-bottom: 10px;
+}
+.data-freshness .freshness-timeline dd {
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.7;
+  color: var(--text);
+  text-align: left;
+}
+.freshness-timeline time {
+  display: block;
+  font-variant-numeric: tabular-nums;
+}
+.freshness-timeline small {
+  display: block;
+  color: var(--text-muted);
+  margin-top: 8px;
+  font-size: 12px;
+  line-height: 1.7;
+}
+.data-freshness details {
+  border-top: 1px solid var(--border);
+  margin-top: 22px;
+  padding-top: 10px;
+}
+.data-freshness summary {
+  cursor: pointer;
+  padding: 12px 0;
+  min-height: 44px;
+  font-size: 14px;
+  color: var(--text);
+}
+.data-freshness details p {
+  margin: 10px 0;
+}
+@media (max-width: 1200px) {
+  .data-freshness .freshness-timeline {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+@media (max-width: 640px) {
+  .data-freshness .freshness-timeline {
+    grid-template-columns: 1fr;
+  }
+  .data-freshness .panel-head {
+    flex-direction: column;
+    gap: 12px;
+  }
+}
