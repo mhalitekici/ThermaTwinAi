@@ -1,0 +1,15 @@
+# Candidate vNext — declared before fitting
+
+This protocol is committed **before** any candidate fit or final test is run. `protocol.json` fixes both candidate variants, their common parameters, blend grid, validation objective and promotion gates. Its SHA-256 is recorded in the resulting report. There is one run of this declared experiment; unfavorable results will be reported rather than prompting a test-driven search.
+
+Only existing daily Copernicus ROI observations through 16 October 2026 are read. No download, weather/exogenous predictor, provider account, email transport, source overwrite or Production promotion is involved. Features extend the existing 14 with causal first/second differences, acceleration, trend/mean contrasts, scaled trend and seasonal trend interactions. They depend only on the feature row already available at inference. A sklearn pipeline preserves the existing `predict(original_features)` contract.
+
+Annual rolling folds reuse the original training→validation→calibration→test years and purged targets. The frozen-model comparison reuses the champion's original chronological split. Per horizon and fold, two specified XGBoost residual estimators × five persistence weights are selected **only on validation MAE**. Calibration and warning selection reuse the existing methods on their separate allowed blocks. Test predictions are computed only after all choices are fixed.
+
+All comparisons use exactly the same target/origin dates, actual observations, training reference and P90 labels as the stored champion traces. Both candidate variants' validation results and the chosen variant/weight are recorded. Test outputs include MAE/RMSE, ≥0.5 °C rapid warming, daily warning confusion scores, interval coverage/width, year/season regressions, exact combined-engine event counts, false notices and rigorously matched early lead times. Observed-condition decisions are unchanged; only forecast-dependent signals can differ.
+
+All gates in `protocol.json` must pass for **both** rolling pooled and frozen chronological tests. Any failure retains the champion. Passing is only evidence for a proposal, never authorization to promote. There is no claim of a pristine independent test, statistical significance, improved field delivery or proprietary foundation model. Archived data availability/revision assumptions remain unresolved.
+
+Separate model/policy artifacts, a three-member hash-validated runtime ZIP, input/code/protocol fingerprints and the result report will be preserved under this experiment. Original runtime manifest/bundle, model weights and policy stay untouched. CI will install the candidate package into a temporary root, test unpickling/inference with monitoring dependencies and reject a corrupt package. The lightweight Render API receives no ML dependencies.
+
+XGBoost's [official objective documentation](https://xgboost.readthedocs.io/en/stable/parameter.html#learning-task-parameters) describes squared and absolute error objectives. The installed and locked dependency versions, rather than current web documentation, are recorded with the run for reproducibility.
