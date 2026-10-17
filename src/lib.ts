@@ -30,7 +30,9 @@ export const supabase =
         },
       })
     : null;
-export const api = import.meta.env.VITE_API_URL || "http://localhost:8000";
+export const api =
+  import.meta.env.VITE_API_URL ||
+  (import.meta.env.DEV ? "http://127.0.0.1:8000" : "/api");
 export type Mode = "live" | "replay";
 export type Risk = "normal" | "watch" | "high" | "unknown";
 export interface WarningSignal {

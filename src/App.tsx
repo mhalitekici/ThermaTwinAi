@@ -1,5 +1,5 @@
-import { useEffect, useState } from "react";
-import { Route, Routes, useSearchParams } from "react-router-dom";
+import { lazy, Suspense, useEffect, useState } from "react";
+import { Route, Routes, useLocation, useSearchParams } from "react-router-dom";
 import { X } from "lucide-react";
 import type { Session } from "@supabase/supabase-js";
 import type { Mode, Snapshot } from "./lib";
@@ -7,9 +7,11 @@ import { readSnapshot, supabase } from "./lib";
 import { Context } from "./context";
 import Landing from "./pages/Landing";
 import Login from "./pages/Login";
-import Shell from "./components/Shell";
+import { DashboardSkeleton } from "./components/common";
+const Shell = lazy(() => import("./components/Shell"));
 
 export default function App() {
+  const needsSnapshot = !["/", "/login"].includes(useLocation().pathname);
   const [params, setParams] = useSearchParams();
   const mode: Mode = params.get("mode") === "replay" ? "replay" : "live";
   const eventId = params.get("event") || undefined;
@@ -47,6 +49,11 @@ export default function App() {
   const [toast, notify] = useState("");
   useEffect(() => {
     let alive = true;
+    if (!needsSnapshot) {
+      setSnap(null);
+      setLoading(false);
+      return;
+    }
     setLoading(true);
     setError("");
     setSnap(null);
@@ -63,7 +70,7 @@ export default function App() {
     return () => {
       alive = false;
     };
-  }, [mode, eventId, revision]);
+  }, [mode, eventId, revision, needsSnapshot]);
   useEffect(() => {
     document.documentElement.dataset.theme = theme;
   }, [theme]);
@@ -134,7 +141,14 @@ export default function App() {
       <Routes>
         <Route path="/" element={<Landing />} />
         <Route path="/login" element={<Login />} />
-        <Route path="/*" element={<Shell />} />
+        <Route
+          path="/*"
+          element={
+            <Suspense fallback={<DashboardSkeleton />}>
+              <Shell />
+            </Suspense>
+          }
+        />
       </Routes>
       {toast && (
         <div className="toast" role="status">

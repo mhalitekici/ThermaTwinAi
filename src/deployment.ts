@@ -1,0 +1,85 @@
+import { isPublicSupabaseKey } from "./auth";
+
+type Environment = Record<string, string | undefined>;
+const publicNames = new Set([
+  "VITE_APP_MODE",
+  "VITE_ENABLE_LIVE_INTEGRATIONS",
+  "VITE_SUPABASE_URL",
+  "VITE_SUPABASE_ANON_KEY",
+  "VITE_API_URL",
+]);
+
+function httpsAddress(value: string | undefined, originOnly = false): boolean {
+  try {
+    const url = new URL(value || "");
+    return (
+      url.protocol === "https:" &&
+      !url.username &&
+      !url.password &&
+      !url.search &&
+      !url.hash &&
+      (!originOnly || url.pathname === "/") &&
+      !["localhost", "127.0.0.1", "[::1]"].includes(url.hostname) &&
+      !url.hostname.endsWith(".localhost")
+    );
+  } catch {
+    return false;
+  }
+}
+
+export function publicDeployment(env: Environment, target = "development") {
+  if (!["development", "preview", "production"].includes(target))
+    throw new Error("Deployment ortamı geçersiz; build durduruldu.");
+  if (
+    Object.values(env).some(
+      (value) =>
+        value &&
+        /sb_secret_|\bre_[A-Za-z0-9_-]{20,}|AIza[A-Za-z0-9_-]{30,}/.test(value),
+    )
+  )
+    throw new Error("Public alanda sunucu sırrı saptandı; build durduruldu.");
+  // Never expose arbitrary VITE_* fields, including secrets hidden under a generic name.
+  if (
+    Object.entries(env).some(([name, value]) => value && !publicNames.has(name))
+  )
+    throw new Error("Bilinmeyen veya gizli VITE_ alanı; build durduruldu.");
+  if (
+    env.VITE_SUPABASE_ANON_KEY &&
+    !isPublicSupabaseKey(env.VITE_SUPABASE_ANON_KEY)
+  )
+    throw new Error(
+      "Supabase anahtarı public/publishable olmalı; build durduruldu.",
+    );
+  const appMode =
+    env.VITE_APP_MODE ||
+    (env.VITE_ENABLE_LIVE_INTEGRATIONS === "true" ? "production" : "demo");
+  if (!["demo", "production"].includes(appMode))
+    throw new Error("VITE_APP_MODE geçersiz; build durduruldu.");
+  if (target === "preview")
+    return {
+      VITE_APP_MODE: "demo",
+      VITE_ENABLE_LIVE_INTEGRATIONS: "false",
+      VITE_SUPABASE_URL: "",
+      VITE_SUPABASE_ANON_KEY: "",
+      VITE_API_URL: "",
+      VITE_DEPLOYMENT_ENV: "preview",
+    };
+  if (
+    target === "production" &&
+    (appMode !== "production" ||
+      !env.VITE_SUPABASE_ANON_KEY ||
+      !httpsAddress(env.VITE_SUPABASE_URL, true) ||
+      !httpsAddress(env.VITE_API_URL))
+  )
+    throw new Error(
+      "Production için public Supabase ve HTTPS API adresi gerekli; build durduruldu.",
+    );
+  return {
+    VITE_APP_MODE: appMode,
+    VITE_ENABLE_LIVE_INTEGRATIONS: env.VITE_ENABLE_LIVE_INTEGRATIONS || "false",
+    VITE_SUPABASE_URL: env.VITE_SUPABASE_URL || "",
+    VITE_SUPABASE_ANON_KEY: env.VITE_SUPABASE_ANON_KEY || "",
+    VITE_API_URL: (env.VITE_API_URL || "").replace(/\/+$/, ""),
+    VITE_DEPLOYMENT_ENV: target,
+  };
+}

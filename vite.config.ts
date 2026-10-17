@@ -1,7 +1,7 @@
 import { defineConfig, loadEnv } from "vite";
 import react from "@vitejs/plugin-react";
 import tailwindcss from "@tailwindcss/vite";
-import { isPublicSupabaseKey } from "./src/auth";
+import { publicDeployment } from "./src/deployment";
 
 export default defineConfig(({ mode }) => {
   const env = {
@@ -10,22 +10,19 @@ export default defineConfig(({ mode }) => {
       Object.entries(process.env).filter(([key]) => key.startsWith("VITE_")),
     ),
   };
-  if (
-    env.VITE_SUPABASE_ANON_KEY &&
-    !isPublicSupabaseKey(env.VITE_SUPABASE_ANON_KEY)
-  )
-    throw new Error(
-      "VITE_SUPABASE_ANON_KEY yalnız publishable/anon anahtarını kabul eder; build durduruldu.",
-    );
-  if (
-    Object.entries(env).some(
-      ([name, value]) =>
-        value && /VITE_.*(SERVICE_ROLE|RESEND|SECRET|PASSWORD)/.test(name),
-    )
-  )
-    throw new Error("Sunucu sırrı VITE_ alanına konamaz; build durduruldu.");
+  const publicEnv = publicDeployment(
+    env,
+    process.env.VERCEL_ENV || "development",
+  );
   return {
     plugins: [react(), tailwindcss()],
+    envPrefix: [],
+    define: Object.fromEntries(
+      Object.entries(publicEnv).map(([name, value]) => [
+        `import.meta.env.${name}`,
+        JSON.stringify(value),
+      ]),
+    ),
     build: { chunkSizeWarningLimit: 800 },
   };
 });

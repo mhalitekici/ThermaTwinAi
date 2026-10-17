@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { lazy, Suspense, useEffect, useRef, useState } from "react";
 import {
   Link,
   NavLink,
@@ -25,16 +25,16 @@ import {
   X,
 } from "lucide-react";
 import { useApp } from "../context";
-import { Logo, ThemeToggle } from "./common";
+import { DashboardSkeleton, Logo, ThemeToggle } from "./common";
 import { integrationsEnabled } from "../lib";
-import Dashboard from "../pages/Dashboard";
-import Regions from "../pages/Regions";
-import Forecasts from "../pages/Forecasts";
-import HistoryPage from "../pages/History";
-import Settings from "../pages/Settings";
-import Performance from "../pages/Performance";
-import Subscriptions from "../pages/Subscriptions";
-import Alerts from "../pages/Alerts";
+const Dashboard = lazy(() => import("../pages/Dashboard"));
+const Regions = lazy(() => import("../pages/Regions"));
+const Forecasts = lazy(() => import("../pages/Forecasts"));
+const HistoryPage = lazy(() => import("../pages/History"));
+const Settings = lazy(() => import("../pages/Settings"));
+const Performance = lazy(() => import("../pages/Performance"));
+const Subscriptions = lazy(() => import("../pages/Subscriptions"));
+const Alerts = lazy(() => import("../pages/Alerts"));
 const items = [
   { path: "/dashboard", icon: LayoutDashboard, label: "Genel bakış" },
   { path: "/regions", icon: Globe2, label: "Deniz izleme" },
@@ -258,27 +258,29 @@ export default function Shell() {
           </div>
         </header>
         <main id="main-content" className="workspace">
-          <Routes>
-            <Route path="dashboard" element={<Dashboard />} />
-            <Route path="regions" element={<Regions />} />
-            <Route path="forecasts" element={<Forecasts />} />
-            <Route path="history" element={<HistoryPage />} />
-            <Route path="performance" element={<Performance />} />
-            <Route path="settings" element={<Settings />} />
-            <Route path="subscriptions" element={<Subscriptions />} />
-            <Route path="alerts" element={<Alerts />} />
-            <Route
-              path="*"
-              element={
-                <div className="empty-state">
-                  <h1>Sayfa bulunamadı</h1>
-                  <Link className="btn btn-primary" to="/dashboard">
-                    Genel bakışa dön
-                  </Link>
-                </div>
-              }
-            />
-          </Routes>
+          <Suspense fallback={<DashboardSkeleton />}>
+            <Routes>
+              <Route path="dashboard" element={<Dashboard />} />
+              <Route path="regions" element={<Regions />} />
+              <Route path="forecasts" element={<Forecasts />} />
+              <Route path="history" element={<HistoryPage />} />
+              <Route path="performance" element={<Performance />} />
+              <Route path="settings" element={<Settings />} />
+              <Route path="subscriptions" element={<Subscriptions />} />
+              <Route path="alerts" element={<Alerts />} />
+              <Route
+                path="*"
+                element={
+                  <div className="empty-state">
+                    <h1>Sayfa bulunamadı</h1>
+                    <Link className="btn btn-primary" to="/dashboard">
+                      Genel bakışa dön
+                    </Link>
+                  </div>
+                }
+              />
+            </Routes>
+          </Suspense>
           <footer className="workspace-footer">
             <span>
               <WavesMark /> ThermaTwin AI <i /> Deniz verisinden anlaşılır

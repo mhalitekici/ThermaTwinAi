@@ -1,0 +1,34 @@
+services:
+  - type: web
+    name: thermatwin-api
+    runtime: docker
+    plan: free
+    region: frankfurt
+    branch: main
+    autoDeployTrigger: off
+    dockerfilePath: ./deploy/api/Dockerfile
+    dockerContext: .
+    healthCheckPath: /health
+    envVars:
+      - key: APP_ENV
+        value: production
+      - key: NOTIFICATION_MODE
+        value: shadow
+      - key: AUTOMATIC_EMAILS_APPROVED
+        value: "false"
+      - key: ENABLE_FORECAST_EMAILS
+        value: "false"
+      - key: TEST_EMAIL_ENABLED
+        value: "false"
+      - key: SUPABASE_URL
+        sync: false
+      - key: SUPABASE_SERVICE_ROLE_KEY
+        sync: false
+      - key: RESEND_API_KEY
+        sync: false
+      - key: EMAIL_FROM
+        sync: false
+      - key: APP_URL
+        sync: false
+      - key: ALLOWED_ORIGINS
+        sync: false

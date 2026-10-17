@@ -1,30 +1,68 @@
 import json
+import logging
 import os
 import threading
+from contextlib import asynccontextmanager
 from datetime import UTC, date, datetime
 from uuid import UUID
 
 import httpx
-from fastapi import FastAPI, Header, HTTPException
+from fastapi import FastAPI, Header, HTTPException, Request
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.responses import JSONResponse
 from pydantic import BaseModel, ConfigDict
 
 from .config import ROOT
+from .deployment import cors_origins, environment, validate_runtime
+from .events import event_candidates, replay_path
 from .mail import deliver
 from .notification_policy import notification_config
-from .pipeline import event_candidates, replay_path
 from .reports import generate_report
 from .store import Store
-from .warning import decide
+from .warning_decision import decide
 
-app = FastAPI(title="ThermaTwin AI", version="0.1.0")
+
+@asynccontextmanager
+async def lifespan(_app):
+    validate_runtime()
+    yield
+
+
+app = FastAPI(
+    title="ThermaTwin AI",
+    version="0.1.0",
+    lifespan=lifespan,
+    docs_url=None if environment() == "production" else "/docs",
+    redoc_url=None,
+    openapi_url=None if environment() == "production" else "/openapi.json",
+)
+allowed_origins = cors_origins()
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=os.getenv("ALLOWED_ORIGINS", "http://localhost:5173,http://127.0.0.1:5173").split(","),
+    allow_origins=allowed_origins,
     allow_methods=["GET", "POST"],
     allow_headers=["Authorization", "Content-Type"],
 )
 replay_lock = threading.Lock()
+
+
+@app.middleware("http")
+async def request_boundaries(request: Request, call_next):
+    # CORS alone does not stop a request's server-side effects.
+    origin = request.headers.get("origin")
+    if request.method == "POST" and origin and origin not in allowed_origins:
+        return JSONResponse({"detail": "Bu uygulama origin'i yetkili değil."}, status_code=403)
+    try:
+        response = await call_next(request)
+    except Exception as error:  # noqa: BLE001 -- HTTP boundary must redact every unexpected provider error.
+        logging.getLogger("thermatwin.api").error("API request failed (%s)", type(error).__name__)
+        response = JSONResponse(
+            {"detail": "İşlem tamamlanamadı. Daha sonra yeniden deneyin."}, status_code=500
+        )
+    response.headers["X-Content-Type-Options"] = "nosniff"
+    response.headers["Referrer-Policy"] = "no-referrer"
+    response.headers["Cache-Control"] = "no-store"
+    return response
 
 
 def authenticated_user(authorization: str | None) -> dict:
@@ -42,7 +80,12 @@ def authenticated_user(authorization: str | None) -> dict:
         raise HTTPException(503, "Oturum doğrulama servisine erişilemiyor.") from None
     if response.status_code != 200:
         raise HTTPException(401, "Geçersiz oturum. Yeniden giriş yapın.")
-    user = response.json()
+    try:
+        user = response.json()
+        if not isinstance(user, dict):
+            raise TypeError()
+    except (ValueError, TypeError):
+        raise HTTPException(503, "Oturum doğrulama servisi geçerli yanıt vermedi.") from None
     if not user.get("id") or not user.get("email_confirmed_at") or not user.get("email", "").strip():
         raise HTTPException(403, "TEST e-postası için giriş yaptığınız hesabın e-postasını doğrulayın.")
     return user
@@ -60,9 +103,10 @@ def health():
             and notification_config()["automatic_approved"],
             "forecast_enabled": notification_config()["forecast_enabled"],
             "test_enabled": notification_config()["test_enabled"],
-            "test_configured": all(os.getenv(k) for k in (
-                "SUPABASE_URL", "SUPABASE_SERVICE_ROLE_KEY", "RESEND_API_KEY", "EMAIL_FROM"
-            )),
+            "test_configured": all(
+                os.getenv(k)
+                for k in ("SUPABASE_URL", "SUPABASE_SERVICE_ROLE_KEY", "RESEND_API_KEY", "EMAIL_FROM")
+            ),
             "test_recipient_policy": "authenticated_user",
         },
     }
@@ -73,10 +117,16 @@ def delivery_status(delivery_id: UUID, authorization: str | None = Header(defaul
     user = authenticated_user(authorization)
     try:
         with Store() as store:
-            rows = store.request("GET", "/rest/v1/deliveries", params={
-                "id": f"eq.{delivery_id}", "user_id": f"eq.{user['id']}",
-                "select": "status,provider_id", "limit": "1",
-            })
+            rows = store.request(
+                "GET",
+                "/rest/v1/deliveries",
+                params={
+                    "id": f"eq.{delivery_id}",
+                    "user_id": f"eq.{user['id']}",
+                    "select": "status,provider_id",
+                    "limit": "1",
+                },
+            )
     except (RuntimeError, httpx.HTTPError):
         raise HTTPException(503, "Bildirim kaydı okunamadı. Yeniden deneyin.") from None
     if not rows:
@@ -97,8 +147,22 @@ def delivery_status(delivery_id: UUID, authorization: str | None = Header(defaul
             response.raise_for_status()
             event = response.json().get("last_event")
     except (httpx.HTTPError, ValueError):
-        raise HTTPException(503, "Teslim durumu alınamadı. Sağlayıcı okuma yetkisini kontrol edin veya yeniden deneyin.") from None
-    known = {"sent", "delivered", "delivery_delayed", "bounced", "complained", "opened", "clicked", "failed", "suppressed", "scheduled", "queued"}
+        raise HTTPException(
+            503, "Teslim durumu alınamadı. Sağlayıcı okuma yetkisini kontrol edin veya yeniden deneyin."
+        ) from None
+    known = {
+        "sent",
+        "delivered",
+        "delivery_delayed",
+        "bounced",
+        "complained",
+        "opened",
+        "clicked",
+        "failed",
+        "suppressed",
+        "scheduled",
+        "queued",
+    }
     result["provider_status"] = event if event in known else None
     return result
 
@@ -107,10 +171,31 @@ def delivery_status(delivery_id: UUID, authorization: str | None = Header(defaul
 def get_snapshot(mode: str = "live", origin_date: str | None = None):
     if mode not in ("live", "replay"):
         raise HTTPException(400, "Geçersiz mod")
-    path = replay_path() if mode == "replay" else ROOT / "artifacts/live.json"
-    if not path.exists():
-        return {"status": "unavailable", "mode": mode, "message": "Henüz doğrulanmış veri yok."}
-    snap = json.loads(path.read_text(encoding="utf-8"))
+    if mode == "live" and environment() == "production":
+        try:
+            with Store() as store:
+                rows = store.request(
+                    "GET",
+                    "/rest/v1/snapshots",
+                    params={
+                        "region_id": "eq.akkuyu",
+                        "mode": "eq.live",
+                        "select": "payload",
+                        "limit": "1",
+                    },
+                )
+            snap = rows[0]["payload"] if rows else None
+        except (RuntimeError, httpx.HTTPError, ValueError, KeyError, TypeError):
+            raise HTTPException(503, "Güncel gözleme erişilemiyor. Daha sonra yeniden deneyin.") from None
+        if not snap:
+            return {"status": "unavailable", "mode": mode, "message": "Henüz doğrulanmış veri yok."}
+    else:
+        path = replay_path() if mode == "replay" else ROOT / "artifacts/live.json"
+        if not path.exists() and mode == "live":
+            path = ROOT / "public/live.json"
+        if not path.exists():
+            return {"status": "unavailable", "mode": mode, "message": "Henüz doğrulanmış veri yok."}
+        snap = json.loads(path.read_text(encoding="utf-8"))
     if origin_date:
         if mode != "replay":
             raise HTTPException(400, "Tarih seçimi yalnız geçmiş tekrarında kullanılabilir.")
@@ -205,12 +290,16 @@ def run_replay(body: ReplayRequest, authorization: str | None = Header(default=N
                 # One observed historical event is sufficient for the jury test mail.
                 if kind != "observed":
                     continue
-                event["report"] = generate_report(event)
+                event["report"] = generate_report(event, allow_llm=False)
                 results.append(deliver(store, store.register(event), user["id"], manual_test=True))
             if not results:
-                raise HTTPException(409, "Bu tarihte TEST için gözlemlenmiş eşik aşımı yok. 7 Haziran 2024 olayını seçin.")
+                raise HTTPException(
+                    409, "Bu tarihte TEST için gözlemlenmiş eşik aşımı yok. 7 Haziran 2024 olayını seçin."
+                )
             return {"delivery": results}
     except (RuntimeError, httpx.HTTPError):
-        raise HTTPException(503, "Gönderim kaydı işlenemedi. Bağlantıyı ve bildirim geçmişini kontrol edip yeniden deneyin.") from None
+        raise HTTPException(
+            503, "Gönderim kaydı işlenemedi. Bağlantıyı ve bildirim geçmişini kontrol edip yeniden deneyin."
+        ) from None
     finally:
         replay_lock.release()

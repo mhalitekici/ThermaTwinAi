@@ -8,7 +8,7 @@ export default defineConfig({
   use: { baseURL: "http://127.0.0.1:5175", trace: "retain-on-failure" },
   webServer: {
     command:
-      "npm run preview -- --outDir dist-demo-test --port 5175 --strictPort",
+      "node scripts/preview-vercel.mjs --directory dist-demo-test --port 5175",
     url: "http://127.0.0.1:5175",
     reuseExistingServer: false,
   },

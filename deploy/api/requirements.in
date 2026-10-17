@@ -1,0 +1,5 @@
+# HTTP serving only. Scientific dependencies stay in pyproject.toml / uv.lock.
+fastapi==0.143.2
+uvicorn==0.54.0
+httpx==0.28.1
+python-dotenv==1.2.4

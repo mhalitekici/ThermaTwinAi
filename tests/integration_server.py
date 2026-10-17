@@ -21,6 +21,7 @@ from fastapi.responses import JSONResponse
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "backend"))
 os.environ.update(
     {
+        "APP_ENV": "test",
         "SUPABASE_URL": "http://127.0.0.1:5177",
         "SUPABASE_SERVICE_ROLE_KEY": "sb_secret_test_service_only",
         "RESEND_API_KEY": "test-resend-only",
