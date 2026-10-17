@@ -20,6 +20,13 @@ export default function HeldOutChart({ rows }: { rows: Trace[] }) {
           `${i && Date.parse(r[1]) - Date.parse(points[i - 1][1]) === 86400000 ? "L" : "M"}${x(r)},${y(r[col])}`,
       )
       .join(" ");
+  const isolated = points.filter(
+    (r, i) =>
+      (i === 0 ||
+        Date.parse(r[1]) - Date.parse(points[i - 1][1]) !== 86400000) &&
+      (i === points.length - 1 ||
+        Date.parse(points[i + 1][1]) - Date.parse(r[1]) !== 86400000),
+  );
   return (
     <figure className="lab-figure">
       <figcaption>
@@ -34,6 +41,7 @@ export default function HeldOutChart({ rows }: { rows: Trace[] }) {
         <span>┄ Model</span>
         <span>··· Persistence</span>
         <span>Soluk dikey aralık: nominal %80</span>
+        <span>Tekil kayıt: ● gözlem / ■ model</span>
       </div>
       <div className="lab-chart-bound">{temp(high, 1)} °C</div>
       <svg
@@ -91,6 +99,26 @@ export default function HeldOutChart({ rows }: { rows: Trace[] }) {
           strokeWidth="2"
           vectorEffect="non-scaling-stroke"
         />
+        {isolated.map((r) => (
+          <g key={`point-${r[1]}`}>
+            <circle cx={x(r)} cy={y(r[2])} r="4" fill="var(--text)">
+              <title>
+                {date(r[1])} · Gözlem {temp(r[2], 3)} °C
+              </title>
+            </circle>
+            <rect
+              x={x(r) - 4}
+              y={y(r[3]) - 4}
+              width="8"
+              height="8"
+              fill="var(--cyan)"
+            >
+              <title>
+                {date(r[1])} · Model {temp(r[3], 3)} °C
+              </title>
+            </rect>
+          </g>
+        ))}
       </svg>
       <div className="lab-chart-bound">{temp(low, 1)} °C</div>
       <div className="lab-chart-dates">

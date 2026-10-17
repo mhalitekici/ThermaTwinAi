@@ -13,6 +13,10 @@ The dashboard now presents a dated chronology instead of treating “checked” 
 
 The public snapshot does not contain an authenticated successful-run record or historical first-publication timestamp. The UI says so explicitly and makes no new privileged request. No fabricated operational status is substituted.
 
+Final visualization review also adds distinct observation/model point markers when filters leave an isolated test date. Such points have no adjacent date to form a line; they remain visible without connecting missing dates or changing any metric.
+
+[Actual filtered example](product-review/performance-isolated-records.png): +72h, summer 2025, ≥0.5 °C warming; 30 real selected records, seven isolated dates. Eight focused browser cases and TypeScript passed after this rendering fix.
+
 ## Classification and behavior
 
 The shared pure helper uses UTC calendar days. An eligible dated observation at most three days old is “Güncellik penceresinde”, with a daily/non-sensor explanation. Age >3 or source stale is “Gecikmiş gözlem”; missing/invalid observations in the last 15 calendar days are “Yakın geçmiş eksik”; invalid/future observations are “Veri doğrulanamadı”. Replay remains “Geçmiş kayıt”. Timestamp text requires an actual timezone-qualified timestamp; a bare day is not silently given a measured midnight.
