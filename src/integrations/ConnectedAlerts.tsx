@@ -182,8 +182,8 @@ export default function ConnectedAlerts() {
     const sender = session.user.id;
     setSending(true);
     setFeedback(null);
-    let message = "";
-    let failed = false;
+    let message: string;
+    let failed: boolean;
     try {
       const r = await fetch(api + "/replay", {
         method: "POST",
