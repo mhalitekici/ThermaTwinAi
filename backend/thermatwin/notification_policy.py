@@ -3,11 +3,14 @@
 import math
 import os
 from datetime import UTC, date, datetime
+from .deployment import environment
 
 CONSENT_VERSION = "observed-info-v1"
 
 
 def notification_config() -> dict:
+    if environment() == "preview":
+        return {"mode": "shadow", "automatic_approved": False, "forecast_enabled": False, "test_enabled": False}
     mode = os.getenv("NOTIFICATION_MODE", "shadow").strip().lower()
     if mode not in ("shadow", "test", "live"):
         raise ValueError("NOTIFICATION_MODE shadow, test veya live olmalı.")

@@ -3,6 +3,7 @@ node_modules/
 dist/
 dist-integration-test/
 dist-demo-test/
+dist-deployment-test/
 .env
 .env.*
 !.env.example
@@ -18,3 +19,4 @@ test-results/
 *.egg-info/
 *.log
 *.tsbuildinfo
+.vercel/

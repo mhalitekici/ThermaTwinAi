@@ -2,6 +2,22 @@
 
 Son güncelleme: **17 Ekim 2026**. Teslim hedefi: **21 Ekim 2026**.
 
+## Vercel production hazırlığı 0.6
+
+- [x] Vercel Vite manifesti, dokuz doğrudan sayfa rewrite'ı; API/eksik statik dosyaya HTML fallback yok. Node 24, build/output sabit.
+- [x] Production public ayar/HTTPS kontrolü; açık public değişken izin listesi. Preview canlı Supabase/API değerlerini çıkarır; bilinmeyen/secret public alan build'i durdurur.
+- [x] Ayrı Render Free HTTPS API mimarisi; non-root Dockerfile, dar build context, hash ile kilitlenmiş 18 HTTP paketi, manuel deploy Blueprint ve env örnekleri. Mevcut `.env` değiştirilmedi.
+- [x] API'den ağır bilimsel import zinciri ayrıldı. Ortak saf event/uyarı kararları pipeline tarafından yeniden dışa aktarılır. Eğitim/indirme/LLM HTTP isteğinde yok; production son veriyi Supabase'den okur, DB hatasında statik fallback yapmaz.
+- [x] Hosted kesin HTTPS CORS, izin dışı Origin POST engeli, no-store/sanitized hata yanıtları, production API dokümantasyon uçları kapalı. Preview backend bütün gönderimleri zorunlu kapatır. Otomatik bayraklar shadow/false/false kaldı; manuel TEST auth/onay/idempotency/geçmişi korundu.
+- [x] UI/CSS tasarımını değiştirmeden route bazında lazy loading ve landing/login'de gereksiz snapshot isteğinin kaldırılması. Yerel production giriş JS'i yaklaşık 980 KB'den 515 KB'ye (gzip 287 KB'den 153 KB'ye) indi. Bu bir bundle ölçümüdür; gerçek Vercel mobil saha metriği değildir.
+- [x] `docs/VERCEL_DEPLOYMENT.md`: hesap adımları, production/preview ayrımı, Supabase URL/SMTP, Render cold start, yayın sonrası 12 kabul alanı ve GitHub'ın gerçek artifact eksikliğinden atladığı 7 test ayrı listelendi.
+- [x] Yerelde **83 Python**, **30 frontend birim**, **36 dashboard/routing E2E**, **10 bağlı E2E**, PostgreSQL/RLS, ESLint, TypeScript ve production build geçti. Hafif API ayrı dependency ortamında hem preview hem production modunda, dış ağ kapalı olarak çalıştı. Production/preview bundle izolasyonu doğrulandı.
+- [x] Korunan **25 dosya** için SHA-256 kontrolü ve gerçek yerel sunucu anahtarlarına karşı kaynak/bundle taraması eklendi ve çalıştırıldı. Gerçek Supabase salt okunur entegrasyon kontrolü geçti; mesaj gönderilmedi.
+- [x] CI'ye production/preview derlemeleri, Node 24 ve Linux Docker image/runtime smoke kontrolleri eklendi. Hazırlık PR'sinin `Verify MVP` sonucu son commit için izlenir. Temiz CI checkout'unda **7 gerçek-artifact testi** ayrı gerekçelerle atlanır; bu dosyalar yerelde mevcut olduğu için yerel 83 testin tamamı çalıştı.
+- [ ] Kullanıcı onayıyla merge, hesap bağlantısı ve gerçek Vercel/Render yayını; gerçek HTTPS/OTP/iki hesap RLS/TEST gelen kutusu kabulü.
+
+Mevcut model/data/report/PDF dosyaları ve servis migration'ları korunur. Yeni gerçek e-posta veya monitoring turu gönderilmedi. Render Free uyku/kota sınırları ve 21 Ekim öncesi gerçek snapshot güncellemesi ayrıca planlanmalıdır.
+
 ## Arayüz ve TEST teslim görünürlüğü 0.5
 
 - [x] İlk incelemede çalışmayan yerel API başlatıldı. `npm.cmd run dev` için Vite ve API'yi aynı terminalden yöneten `scripts/dev.mjs`; servislerden biri hata verirse diğer çocuk süreç kapanır. Ayrı frontend komutu `dev:frontend`.

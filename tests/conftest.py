@@ -16,6 +16,7 @@ def isolated_provider_environment(monkeypatch):
     ):
         monkeypatch.delenv(name, raising=False)
     for name, value in {
+        "APP_ENV": "test",
         "NOTIFICATION_MODE": "shadow",
         "AUTOMATIC_EMAILS_APPROVED": "false",
         "ENABLE_FORECAST_EMAILS": "false",
@@ -23,6 +24,7 @@ def isolated_provider_environment(monkeypatch):
         "APP_URL": "https://thermatwin.example",
     }.items():
         monkeypatch.setenv(name, value)
+    monkeypatch.delenv("VERCEL_ENV", raising=False)
 
     def block_network(*_args, **_kwargs):
         raise RuntimeError("External provider network disabled in unit tests; use a mock transport")

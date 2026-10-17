@@ -6,6 +6,7 @@ const result = spawnSync(
     stdio: "inherit",
     env: {
       ...process.env,
+      VERCEL_ENV: "",
       VITE_APP_MODE: "demo",
       VITE_ENABLE_LIVE_INTEGRATIONS: "false",
       VITE_SUPABASE_URL: "",

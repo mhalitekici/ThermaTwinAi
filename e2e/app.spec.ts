@@ -98,6 +98,7 @@ test("navigation, honest local subscriptions and model details", async ({
       outgoing.push(r.url());
   });
   await page.goto("/dashboard");
+  await expect(page.locator(".topbar")).toBeVisible();
   if (await page.getByRole("button", { name: "Menüyü aç" }).isVisible()) {
     const menu = page.getByRole("button", { name: "Menüyü aç" });
     await menu.click();

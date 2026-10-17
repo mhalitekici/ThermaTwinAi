@@ -1,0 +1,12 @@
+**
+!backend/
+!backend/thermatwin/
+!backend/thermatwin/*.py
+!public/
+!public/*.json
+!deploy/
+!deploy/api/
+!deploy/api/Dockerfile
+!deploy/api/requirements.txt
+!scripts/
+!scripts/smoke_api_runtime.py

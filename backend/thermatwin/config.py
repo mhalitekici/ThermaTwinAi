@@ -5,7 +5,8 @@ import os
 from dotenv import load_dotenv
 
 ROOT = Path(__file__).resolve().parents[2]
-load_dotenv(ROOT / ".env")
+if os.getenv("APP_ENV", "development") in {"development", "test"} and os.getenv("VERCEL_ENV") != "preview":
+    load_dotenv(ROOT / ".env")
 
 
 @dataclass(frozen=True)

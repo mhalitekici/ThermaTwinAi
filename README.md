@@ -4,6 +4,14 @@ Akkuyu açıkları için günlük deniz yüzeyi sıcaklığı (SST), +1/+2/+3 g�
 
 Kök klasördeki iki özgün PDF korundu. İnceleme ve kapsam kararları: [docs/REVIEW.md](docs/REVIEW.md). Tamamlanan ve dış hesap bekleyen işler: [PROGRESS.md](PROGRESS.md).
 
+## Vercel production hazırlığı 0.6
+
+Dağıtım mimarisi **Vercel (Vite frontend) + ayrı Render HTTPS FastAPI** olarak hazırlandı. Vercel: repository root, `npm run build`, output `dist`, Node 24. Bilinen React Router sayfaları doğrudan URL/F5 ile açılır; API ve statik dosyalar HTML'e çevrilmez. Production build public Supabase ve gerçek HTTPS API adresi ister. Preview zorunlu demo'dur; canlı Supabase/API bağlantıları derlemeye girmez.
+
+API için `deploy/api/Dockerfile`, hash ile kilitlenmiş hafif bağımlılıklar ve isteğe bağlı `render.yaml` vardır. HTTP runtime ML kütüphanelerini yüklemez; gerçek model/monitoring mevcut GitHub Actions akışında kalır. Production snapshot Supabase'den okunur. CORS kesin HTTPS origin'lerle sınırlıdır; preview backend gönderim bayraklarını zorunlu kapatır. UI/UX tasarımı, mevcut `.env`, modeller/veriler, raporlar ve PDF'ler korunur.
+
+**Vercel veya Render hesabı bağlanmadı, canlı deploy yapılmadı.** Ayrı hazırlık PR'si açık onay olmadan `main` ile birleştirilmez. Windows 11 adımları, bütün environment alanları, ücretsiz katman sınırları, atlanan 7 gerçek-artifact testi ve yayın sonrası kabul listesi: **[docs/VERCEL_DEPLOYMENT.md](docs/VERCEL_DEPLOYMENT.md)**. Demo öncesi 16 Ekim snapshot'ının güncelliği shadow monitoring ile ayrıca sağlanmalıdır.
+
 ## Arayüz ve TEST e-postası 0.5 — 17 Ekim 2026
 
 `npm.cmd run dev` artık hem Vite'ı (5173) hem e-posta API'sini (8000) başlatır; iki servis aynı terminalden kapanır. Ayrı başlatmak gerekirse `npm.cmd run dev:frontend` ve mevcut uvicorn komutu kullanılabilir. Çalışan servisler varsa yeniden başlatmadan önce kendi terminallerinden kapatın.
