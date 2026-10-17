@@ -2,6 +2,14 @@
 
 Son güncelleme: **17 Ekim 2026**. Teslim hedefi: **21 Ekim 2026**.
 
+## Profesyonel e-posta deneyimi — PR C
+
+- [x] Üç ayrı HTML/düz metin deneyimi: geçmiş TEST, gözlenen anomali, deneysel tahmin. Ocean marka, inline/table düzeni, mobil/koyu görünüm, gerçek sayısal facts, kaynak/tarih/fark/P90, açıklama/sınırlar ve güvenli uygulama/abonelik bağlantıları.
+- [x] Dinamik metin escaping, origin/ISO tarih/sonlu sayı kontrolleri; dış görsel veya takipçi yok. Yerel önizlemeler gerçek 7 Haziran 2024 replay raporlarından ve açık gönderilmedi etiketiyle üretilir. CI HTML/text ve 24 ekranı saklar.
+- [x] **101 Python**, **10 bağlı hesap E2E** geçti. Üç şablon × dört genişlik × iki temada **24 öncesi / 24 sonrası** ekran alındı; yeni ekranlarda sıfır taşma, sıfır WCAG A/AA ihlali ve sıfır dış istek. Python lint geçti. Yerel testlerde gerçek mail gönderilmedi.
+- [x] `mail.py`, consent/recipient/dedupe/frozen retry ve `notification_policy.py` değişmedi. Shadow/false/false korunur. Yeni renderer mevcut dondurulmuş giden-kutusu gövdelerini değiştirmez.
+- [ ] Kullanıcı incelemesi/merge; gerçek e-posta istemcisi/gelen kutusu kabulü ayrı. Sonraki aşama yalnız ayrı offline challenger deneyi, champion terfisi yok.
+
 ## Performance Lab — PR B
 
 - [x] Mevcut performans rotası tek laboratuvar görünümüne dönüştürüldü. 8.490 orijinal test tahmini, üç ufuk, yıl/mevsim/olay filtreleri; ortak hedef tarihlerinde dört yöntem, yuvarlanmamış tolerans oranları ve günlük FP/FN/Precision/Recall/F1. Grafik son 90 gerçek kaydı gösterir; tüm kapsam rapora girer.
