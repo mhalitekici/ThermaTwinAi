@@ -2,6 +2,15 @@
 
 Son güncelleme: **17 Ekim 2026**. Teslim hedefi: **21 Ekim 2026**.
 
+## Ocean ürün deneyimi — PR A
+
+- [x] Bağımsız ThermaTwin AI kimliği, yerel Sora/Inter tipografisi, ortak ocean renk/focus/durum sistemi ve iki tema. Landing gerçek kayıtlı gözlemi, kaynak tarihini, rolling-origin sonuçlarını ve başarılı/başarısız geçmiş örnekleri yükler; veri yoksa değer uydurmaz.
+- [x] Mevcut dokuz ürün rotasının ortak görsel dili, görünür Model Performansı navigasyonu, mobil giriş ve menü, harita zemini hata/yeniden deneme durumu. OTP/abonelik/TEST ve model/dispatch sözleşmeleri korunur.
+- [x] **48 E2E**, **10 bağlı hesap E2E**, **56 frontend birim**, **83 Python** testi geçti. ESLint, TypeScript/production build, PostgreSQL/RLS ve deployment/environment kontrolleri geçti. Bağlı testin bulduğu iki açık-tema kontrast hatası renk token'ında düzeltildi; 10 testin tekrarının tamamı geçti. Gerçek sağlayıcılara e-posta gönderilmedi.
+- [x] Önce ve sonra ayrı ayrı **80 rota/tema/ekran** kontrolü: 390/768/1366/1920 px, sıfır yatay taşma ve sıfır tarayıcı sayfa hatası. Mobil menü ekranları da kaydedildi. Yerel karşılaştırma: `artifacts/product-upgrade/review.html`; üretim komutları README'de. CI landing görsellerini artifact olarak saklar. Harita zemini gerçek üçüncü taraf tile servisine bağlıdır.
+- [x] Başlangıçtaki **50 korunan dosyanın SHA-256** kontrolü eşleşti. Mevcut JSON ölçümleri, veri, modeller, PDF'ler ve `.env` değişmedi. Yeni JS bağımlılığı eklenmedi; route lazy loading korunur. Production giriş JS'i yaklaşık 526 KB / gzip 156 KB; önceki 515 KB / gzip 153 KB. Bunlar bundle boyutlarıdır, saha hız ölçümü değildir.
+- [ ] Ayrı PR incelemesi ve kullanıcı onayı. Merge/Production deploy yapılmadı. Sonraki aşamalar: Performance Lab, e-posta şablonları, ayrı challenger deneyi ve gerekli monitoring iyileştirmeleri.
+
 ## Vercel production hazırlığı 0.6
 
 - [x] Vercel Vite manifesti, dokuz doğrudan sayfa rewrite'ı; API/eksik statik dosyaya HTML fallback yok. Node 24, build/output sabit.

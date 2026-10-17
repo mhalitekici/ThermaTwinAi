@@ -1,5 +1,19 @@
 # ThermaTwin AI tasarım sistemi
 
+## Ocean Intelligence ürün kimliği — PR A
+
+Koyu okyanus `#071826`, derin yüzey `#102737`, aqua eylem `#12C6C8`, seafoam `#68DDC6`, açık sis `#EEF5F5`. Açık temada metin/link teal'i `#086A77`: açık rozet zeminiyle AA kontrastı için ilk taslaktaki daha açık teal koyulaştırıldı. Amber ve coral yalnız açıklamalı bilimsel durumlar için kullanılır. Normal/uyarı durumları ikon ve açık metinle de belirtilir.
+
+Sora değişken fontu başlıklar ve önemli sayılar; Inter açıklamalar, kontroller ve tablolar içindir. Fontlar yerel sunulur; Sora dosyası ve OFL lisansı Google Fonts `ofl/sora` kaynağındandır. Yeni runtime bağımlılığı yoktur. Ortak ürün token'ları ve bileşen düzenleri `src/product.css` içindedir; mevcut davranış stilleri `src/styles.css` içinde korunur.
+
+Landing; asimetrik başlık, açıkça illüstrasyon olarak etiketlenmiş konturlar ve tarihli gerçek gözlem kartıyla açılır. Sayılar `/reliability-report.json` üzerinden; olumlu/olumsuz geçmiş örnekler `/reliability-replays.json` üzerinden gelir. Veri yoksa sayı uydurulmaz. Model Performansı ana menüde ve landing'de görünürdür. Giriş, tüm uygulama sayfaları, boş/hata durumları ve modal/tema/sekme etkileşimleri aynı token'ları kullanır.
+
+Bilimsel anlam korunur: gözlem ve model tahmini ayrı; eski gözlem güncel gösterilmez. Haritadaki bölgesel ortalamanın işareti sensör olarak adlandırılmaz; zemin haritası başarısız olduğunda gerçek analiz sınırı ve yeniden deneme kalır. OTP, oturum, onay, abonelik ve manuel TEST dispatch kodu değişmez.
+
+Önce/sonra galerisi: `node scripts/product-gallery.mjs` → `artifacts/product-upgrade/review.html`. `scripts/capture-product.mjs` 390/768/1366/1920 ve iki temada 80 kombinasyon, ayrıca mobil menüyü kaydeder. İlk kaynak ekranları detached `a805fb5` worktree'sinden alınmıştır. Galeri bilimsel haritaların yerine illüstrasyon veya uydurma ölçüm koymaz; dış harita tile servisinin erişilebilirliği ekranlar arasında değişebilir.
+
+Kabul matrisi ve aşamalar: [PRODUCT_UPGRADE_PLAN.md](PRODUCT_UPGRADE_PLAN.md). Aşağıdaki bölümler önceki tasarımın tarihsel kaydıdır.
+
 ## 17 Ekim 2026 etkileşim güncellemesi
 
 Mevcut renk/font kimliği korunarak ana butonlar, hesap/tema ikonları ve görünüm/sekme kontrolleri en az 44 px yapıldı. Mobilde görünüm seçimi üst çubuğun ikinci satırında; hesap ve navigasyon ilk satırda kalır. Uzun eylem metni sarılır, yan yana butonlar aynı yüksekliğe uzar. Ana açıklamalar 13 px, sıkışık tahmin tarihleri/etiketleri 11 px kullanır. Form girdileri 16 px; e-posta ve uzun hesap metinleri sarılır. Butonların disabled/hover/focus/loading halleri ayrıdır.

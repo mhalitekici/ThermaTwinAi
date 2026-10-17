@@ -27,7 +27,7 @@ function SelectPoint({ onSelect }: { onSelect: (value: string) => void }) {
       onSelect(
         lat >= 35.95 && lat <= 36.15 && lng >= 33.4 && lng <= 33.7
           ? "Akkuyu izleme alanı seçildi."
-          : "MVP yalnızca çerçeve içindeki Akkuyu bölgesini destekliyor.",
+          : "Veri ve model kapsamı yalnızca çerçeve içindeki Akkuyu bölgesidir.",
       );
     },
   });
@@ -55,6 +55,7 @@ export default function SeaMap({
   const { theme } = useApp();
   const [layer, setLayer] = useState<"map" | "satellite">("map");
   const [tileError, setTileError] = useState(false);
+  const [tileRevision, setTileRevision] = useState(0);
   const [selection, setSelection] = useState(
     "Çerçeve içindeki deniz alanına tıklayarak bölgeyi seç.",
   );
@@ -77,12 +78,14 @@ export default function SeaMap({
       >
         {layer === "map" ? (
           <TileLayer
+            key={`map-${tileRevision}`}
             attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
             url="https://tile.openstreetmap.org/{z}/{x}/{y}.png"
             eventHandlers={{ tileerror: () => setTileError(true) }}
           />
         ) : (
           <TileLayer
+            key={`satellite-${tileRevision}`}
             attribution="Tiles &copy; Esri, Maxar, Earthstar Geographics"
             url="https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}"
             eventHandlers={{ tileerror: () => setTileError(true) }}
@@ -98,7 +101,7 @@ export default function SeaMap({
           }}
         >
           <Popup>
-            Akkuyu MVP izleme bölgesi
+            Akkuyu izleme bölgesi
             <br />
             Bölgesel SST alanı; termal plume katmanı değildir.
           </Popup>
@@ -154,12 +157,26 @@ export default function SeaMap({
       </button>
       <div className="map-legend">
         <Crosshair size={14} /> Kesikli alan: izleme bölgesi <span />
-        <MapPin size={14} /> Nokta: veri konumu
+        <MapPin size={14} />{" "}
+        {snapshot?.source.latitude != null
+          ? "Nokta: referans hücresi"
+          : "Nokta: bölge merkezi"}
       </div>
       {tileError && (
         <div className="map-error" role="status">
-          Temel harita yüklenemedi. İnternet bağlantısını kontrol edin; analiz
-          bölgesi ve gerçek veri özeti korunur.
+          <span>
+            Harita zemini yüklenemedi. Analiz bölgesi ve gerçek veri özeti
+            korunur.
+          </span>
+          <button
+            className="text-link"
+            onClick={() => {
+              setTileError(false);
+              setTileRevision((v) => v + 1);
+            }}
+          >
+            Haritayı yeniden yükle
+          </button>
         </div>
       )}
       {large && (

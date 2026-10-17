@@ -19,7 +19,7 @@ export default function Regions() {
           <MapPanel large />
         </section>
         <section className="panel region-detail">
-          <Badge>MVP PİLOT BÖLGESİ</Badge>
+          <Badge>İzleme alanı</Badge>
           <h2>Akkuyu açıkları</h2>
           <p className="muted">Mersin · Doğu Akdeniz</p>
           <div className="region-coordinate">
@@ -27,8 +27,8 @@ export default function Regions() {
             36.05° N / 33.55° E
           </div>
           <p>
-            Kesikli çerçeve, günlük SST için tanımlanan izleme alanıdır. MVP’de
-            yalnızca bu bölgenin veri ve tahmin altyapısı desteklenir.
+            Kesikli çerçeve, günlük SST için tanımlanan izleme alanıdır. Veri ve
+            tahmin altyapısı şu anda yalnızca bu bölgeyi destekler.
           </p>
           <dl>
             <div>
