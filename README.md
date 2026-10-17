@@ -2,11 +2,11 @@
 
 ## Ocean Intelligence ürün yükseltmesi
 
-Ürün tasarımı çalışması; bağımsız ThermaTwin AI markası, gerçek tarihli gözlem ve sürümlü bilimsel sonuçları gösteren landing, ortak açık/koyu ocean teması ve görünür Model Performansı gezinmesini kapsar. [Aşamalı uygulama planı](docs/PRODUCT_UPGRADE_PLAN.md), [tasarım sistemi](docs/DESIGN_SYSTEM.md). Üretim modeli ve e-posta gönderim politikası bu görsel aşamada değiştirilmez; PR'lar açık onay olmadan merge edilmez veya Production'a yayınlanmaz.
+Beş ayrı PR; bağımsız ocean kimliği ve ürün deneyimi, gerçek test kayıtlı Performance Lab, profesyonel e-posta şablonları, ayrı challenger araştırması ve veri güncelliği görünürlüğünü kapsar. [Teslim raporu ve PR bağlantıları](docs/PRODUCT_UPGRADE_DELIVERY.md), [uygulama planı](docs/PRODUCT_UPGRADE_PLAN.md), [tasarım sistemi](docs/DESIGN_SYSTEM.md). Aktif model ve gönderim politikası korunur; PR'lar açık onay olmadan merge edilmez veya Production'a yayınlanmaz.
 
 Yerel ekran incelemesi: izole demo build'i için `node scripts/build-demo-test.mjs`; ardından `node scripts/preview-vercel.mjs --directory dist-demo-test --port 5188` ve ayrı terminalde `node scripts/capture-product.mjs after`. `node scripts/product-gallery.mjs`, `artifacts/product-upgrade/review.html` galerisini oluşturur. CI'ın `product-review-screenshots` artifact'ı yeni landing'in dört genişlikteki açık/koyu görsellerini içerir. Gerçek OTP veya e-posta gönderilmez.
 
-Akkuyu açıkları için günlük deniz yüzeyi sıcaklığı (SST), +1/+2/+3 gün tahmini, mevsimsel anomali ve abonelik tabanlı erken uyarı MVP'si. Climathon teslim hedefi: **21 Ekim 2026**.
+Akkuyu açıkları için günlük uydu tabanlı deniz yüzeyi sıcaklığı (SST), +1/+2/+3 gün tahminleri, belirsizlik aralıkları, mevsimsel anomali analizi ve açık onaylı bilgilendirme platformu. **ThermaTwin AI — Ocean Intelligence & Predictive Thermal Analytics.** Erken olay tespitinin ölçülmüş sınırları ürünün içinde görünürdür.
 
 Kök klasördeki iki özgün PDF korundu. İnceleme ve kapsam kararları: [docs/REVIEW.md](docs/REVIEW.md). Tamamlanan ve dış hesap bekleyen işler: [PROGRESS.md](PROGRESS.md).
 
@@ -16,7 +16,7 @@ Dağıtım mimarisi **Vercel (Vite frontend) + ayrı Render HTTPS FastAPI** olar
 
 API için `deploy/api/Dockerfile`, hash ile kilitlenmiş hafif bağımlılıklar ve isteğe bağlı `render.yaml` vardır. HTTP runtime ML kütüphanelerini yüklemez; gerçek model/monitoring mevcut GitHub Actions akışında kalır. Production snapshot Supabase'den okunur. CORS kesin HTTPS origin'lerle sınırlıdır; preview backend gönderim bayraklarını zorunlu kapatır. UI/UX tasarımı, mevcut `.env`, modeller/veriler, raporlar ve PDF'ler korunur.
 
-**Vercel veya Render hesabı bağlanmadı, canlı deploy yapılmadı.** Ayrı hazırlık PR'si açık onay olmadan `main` ile birleştirilmez. Windows 11 adımları, bütün environment alanları, ücretsiz katman sınırları, atlanan 7 gerçek-artifact testi ve yayın sonrası kabul listesi: **[docs/VERCEL_DEPLOYMENT.md](docs/VERCEL_DEPLOYMENT.md)**. Demo öncesi 16 Ekim snapshot'ının güncelliği shadow monitoring ile ayrıca sağlanmalıdır.
+**Mevcut yayının durumu (kullanıcı bildirimi):** [Vercel frontend](https://thermatwin-ai.vercel.app) ve [Render API](https://thermatwin-api.onrender.com) yayında; gerçek Supabase OTP, abonelik ve manuel TEST akışı çalışıyor. Bu yükseltme çalışmasında yeni Production deploy, hesap değişikliği veya gerçek gönderim yapılmadı. Windows 11 adımları, environment alanları, ücretsiz katman sınırları, CI'ın atladığı 7 özgün artifact testi ve yayın sonrası kabul listesi: **[docs/VERCEL_DEPLOYMENT.md](docs/VERCEL_DEPLOYMENT.md)**. 16 Ekim snapshot'ı kendi gözlem tarihiyle gösterilir; yeni veri/monitoring turu bu çalışma tarafından üretilmedi.
 
 ## Arayüz ve TEST e-postası 0.5 — 17 Ekim 2026
 
@@ -70,7 +70,7 @@ Bu komut ağ veya e-posta kullanmaz. Yeni yıllık modeller ve günlük tahmin/u
 
 Yalnız mevcut politikadan UI kopyalarını yenilemek için `--refresh-snapshots` eklenebilir. Orijinal model yeniden eğitilirse hash uyuşmazlığında politika reddedilir; aynı veri ayrımlarıyla yeniden kalibre edilmelidir. Supabase, OTP, Resend ve gerçek bildirimler kapalı kalır.
 
-## UI/UX 0.2 — yerel prototip
+## UI/UX 0.2 — ilk arayüz sürümü
 
 Mevcut uygulama kapsamlı biçimde yeniden düzenlendi: Inter tipografi, kalıcı açık/koyu tema, daha büyük sıcaklık göstergeleri, sade navigasyon, gözlem/tahmin ayrımı olan grafik ve açıklamalı risk kartları. Başlangıç açık temadır. Tasarım: [DESIGN_SYSTEM.md](docs/DESIGN_SYSTEM.md), ekran karşılaştırması: [UI_COMPARISON.md](docs/UI_COMPARISON.md).
 
@@ -160,7 +160,7 @@ NOAA OISST yalnız **ayrı karşılaştırma** kaynağıdır; Copernicus ile bir
 .venv\Scripts\python.exe -X utf8 -m thermatwin.cli train --provider noaa
 ```
 
-NOAA replay komutu `public/replay.json` dosyasını NOAA olayıyla değiştirir. Jüri demosu için tekrar Copernicus replay komutunu çalıştırın. Kaynak: [NOAA CoastWatch OISST v2.1](https://coastwatch.pfeg.noaa.gov/erddap/info/ncdcOisst21Agg_LonPM180/index.html); tek açık-deniz hücresi 35.875° N, 33.625° E, 0.25°. NOAA verisi Copernicus sonucu olarak sunulmaz.
+NOAA replay komutu `public/replay.json` dosyasını NOAA olayıyla değiştirir. Copernicus görünümüne dönmek için Copernicus replay komutu kullanılır; özgün bilimsel dosyaları değiştirmeden önce ayrı kopyalarını koruyun. Kaynak: [NOAA CoastWatch OISST v2.1](https://coastwatch.pfeg.noaa.gov/erddap/info/ncdcOisst21Agg_LonPM180/index.html); tek açık-deniz hücresi 35.875° N, 33.625° E, 0.25°. NOAA verisi Copernicus sonucu olarak sunulmaz.
 
 ## Model ve gerçek sonuçlar
 
@@ -185,7 +185,7 @@ Klimatoloji yalnız eğitim döneminden hesaplanır; ±5 takvim günü havuzu ve
 1. Bir Supabase projesi oluşturun. [SQL migration](supabase/migrations/202610160001_initial.sql) dosyasını SQL Editor'de bir kez uygulayın.
 2. Authentication → Email provider açık olsun. Projede OTP uzunluğunu **6** olarak ayarlayın.
 3. Magic Link/e-posta giriş şablonunda link yerine `{{ .Token }}` kullanın. Örnek gövde: `ThermaTwin doğrulama kodunuz: {{ .Token }}`. [Resmî OTP kılavuzu](https://supabase.com/docs/guides/auth/auth-email-passwordless).
-4. Site URL/redirect allowlist'e yerel adresi, yayınlanınca gerçek uygulama adresini ekleyin. Gerçek kullanıcılar için SMTP göndericisini yapılandırın; prototip sağlayıcı kotaları geçerlidir.
+4. Site URL/redirect allowlist'e yerel adresi ve gerçek uygulama adresini ekleyin. Gerçek kullanıcılar için SMTP göndericisini yapılandırın; sağlayıcı kotaları geçerlidir.
 5. `.env`: `VITE_SUPABASE_URL`, `VITE_SUPABASE_ANON_KEY`, `SUPABASE_URL`, `SUPABASE_SERVICE_ROLE_KEY`. Vite'ı yeniden başlatın. **Service role asla `VITE_` değişkeni olamaz.**
 6. E-posta koduyla giriş yapın → Deniz bölgeleri → Akkuyu → Aboneliklerim → İzlemeyi etkinleştir.
 
@@ -257,7 +257,7 @@ Dashboard gözlem gününü, kaynak erişimini, analiz işlem zamanını ve tahm
 
 ## Yayına hazırlama
 
-`npm.cmd run build` sonucu `dist/` statik host'a verilebilir. SPA için `/dashboard`, `/regions`, `/subscriptions`, `/alerts`, `/login` istekleri `index.html` dosyasına yönlendirilmelidir. Üretim `VITE_` değerlerini build öncesinde tanımlayın. Gerçek snapshot'lar Supabase'ten okunur; hesap yokken tarihli statik dosya fallback'i kullanılır. Test e-postası API'si ayrıca HTTPS Python sunucusu gerektirir; CORS allowlist'i gerçek frontend adresiyle sınırlandırın. Bu oturumda dağıtım yapılmadı.
+`npm.cmd run build` sonucu `dist/` statik host'a verilebilir. SPA için tanımlı ürün rotaları `index.html` dosyasına yönlendirilir; bilinmeyen API/statik dosya yolları HTML'e çevrilmez. Üretim `VITE_` değerlerini build öncesinde tanımlayın. Production gerçek snapshot'ı Supabase'ten okur; bağlantı/okuma hatasında tarihli statik fallback göstermez. Tarihli statik dosyalar izole demo/Preview içindir. TEST API'si ayrı HTTPS Python sunucusu ve kesin CORS origin listesi kullanır. Bu yükseltme çalışmasında dağıtım yapılmadı.
 
 ## Kapsam sınırları
 
