@@ -2,6 +2,14 @@
 
 Son güncelleme: **17 Ekim 2026**. Teslim hedefi: **21 Ekim 2026**.
 
+## Veri güncelliği ve operasyon görünürlüğü — PR E
+
+- [x] Dashboard'da gerçek gözlem günü, erişim, işleme ve tahmin başlangıcı ayrı; UTC gün yaşı ve current/delayed/missing/unavailable/historical durumları. Yayın zamanı ve başarılı monitoring turu payload'da olmadığı için doğrulanmış gibi gösterilmez. Yeni erişim/işleme zamanı eski gözlemi güncel yapmaz.
+- [x] Beş yeni birim testi geçti; frontend toplam 71. Dört ekranlı regresyon 22 Ekim saatinde 16 Ekim gözlemini altı günlük eski veri olarak denetler. Tam rota/tema görsel galerisi final aşamasıyla yeniden üretilebilir; PR A öncesi/sonrası korunur.
+- [x] Son doğrulama: 60 E2E, 10 bağlı E2E, 71 birim; lint, TypeScript/build, RLS, secret/environment/deployment kontrolleri geçti. En son tam Python turu 107 başarılı. Final 80 ekran: sıfır taşma/hata. 50 korunan dosya ve orijinal runtime ZIP hash'i eşleşti; 331 ürün/istemci/artefakt dosyasında gerçek yerel sunucu sırrı eşleşmesi yok, değerler loglanmadı.
+- [x] Workflow/script/pinned model/policy/snapshot depolama akışı incelendi. 17 Ekim salt okunur repo kontrolünde monitoring değişkeni yok; en son listelenen scheduled run skipped. Hiçbir schedule, hesap, flag veya sunucu verisi değiştirilmedi; monitoring çalıştırılmadı. Bütçe/latency/prospective izleme önerileri operasyon dokümanında.
+- [ ] PR incelemesi/merge; otomatik Production deploy, gerçek gönderim ve model terfisi yok.
+
 ## Ayrı challenger araştırması — PR D
 
 - [x] `6c859ec` commit'inde eğitim öncesi sabitlenen iki aday, özellikler, validation seçimi ve terfi koşulları. Dokuz causal özellik; 8 yıllık rolling ve aynı sabit kronolojik test. Başka veri/indirme veya test sonucuna göre tuning yapılmadı.
