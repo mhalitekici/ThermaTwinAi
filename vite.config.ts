@@ -1,7 +1,7 @@
 import { defineConfig, loadEnv } from "vite";
 import react from "@vitejs/plugin-react";
 import tailwindcss from "@tailwindcss/vite";
-import { publicDeployment } from "./src/deployment";
+import { applicationEnvironment, publicDeployment } from "./src/deployment";
 
 export default defineConfig(({ mode }) => {
   const env = {
@@ -11,7 +11,7 @@ export default defineConfig(({ mode }) => {
     ),
   };
   const publicEnv = publicDeployment(
-    env,
+    applicationEnvironment(env, process.env),
     process.env.VERCEL_ENV || "development",
   );
   return {

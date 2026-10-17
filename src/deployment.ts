@@ -9,28 +9,21 @@ const publicNames = new Set([
   "VITE_API_URL",
 ]);
 
-// Vercel's documented Vite metadata is build-only, never part of publicEnv.
-// https://vercel.com/docs/environment-variables/framework-environment-variables
-// Keep exact names: a VITE_VERCEL_* wildcard would also accept user secrets.
-const vercelMetadataNames = new Set([
-  "VITE_VERCEL_ENV",
-  "VITE_VERCEL_TARGET_ENV",
-  "VITE_VERCEL_URL",
-  "VITE_VERCEL_BRANCH_URL",
-  "VITE_VERCEL_PROJECT_PRODUCTION_URL",
-  "VITE_VERCEL_HASH_SALT",
-  "VITE_VERCEL_GIT_PROVIDER",
-  "VITE_VERCEL_GIT_REPO_SLUG",
-  "VITE_VERCEL_GIT_REPO_OWNER",
-  "VITE_VERCEL_GIT_REPO_ID",
-  "VITE_VERCEL_GIT_COMMIT_REF",
-  "VITE_VERCEL_GIT_COMMIT_SHA",
-  "VITE_VERCEL_GIT_COMMIT_MESSAGE",
-  "VITE_VERCEL_GIT_COMMIT_AUTHOR_LOGIN",
-  "VITE_VERCEL_GIT_COMMIT_AUTHOR_NAME",
-  "VITE_VERCEL_GIT_PULL_REQUEST_ID",
-  "VITE_VERCEL_OBSERVABILITY_CLIENT_CONFIG",
-]);
+// Pass the actual process environment as hosting; never derive it from .env or VITE_*.
+export function applicationEnvironment(env: Environment, hosting: Environment) {
+  const target = hosting.VERCEL_ENV || "development";
+  const hosted =
+    hosting.VERCEL === "1" && ["preview", "production"].includes(target);
+  if (target !== "development" && !hosted)
+    throw new Error("Vercel hosting bağlamı doğrulanamadı; build durduruldu.");
+  // Discard provider inputs before application validation, even if they contain secrets.
+  // This is an exclusion, never a wildcard permission to expose these fields.
+  return Object.fromEntries(
+    Object.entries(env).filter(
+      ([name]) => !(hosted && name.startsWith("VITE_VERCEL_")),
+    ),
+  );
+}
 
 function httpsAddress(value: string | undefined, originOnly = false): boolean {
   try {
@@ -63,8 +56,7 @@ export function publicDeployment(env: Environment, target = "development") {
     throw new Error("Public alanda sunucu sırrı saptandı; build durduruldu.");
   // Never expose arbitrary VITE_* fields, including secrets hidden under a generic name.
   const unknownName = Object.entries(env).find(
-    ([name, value]) =>
-      value && !publicNames.has(name) && !vercelMetadataNames.has(name),
+    ([name, value]) => value && !publicNames.has(name),
   )?.[0];
   if (unknownName) {
     // Diagnose the field, never its value; prevent log injection via field names.

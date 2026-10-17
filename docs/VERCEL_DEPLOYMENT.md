@@ -1,6 +1,6 @@
 # ThermaTwin AI — Vercel ve HTTPS API dağıtımı
 
-17 Ekim 2026 güncellemesi: PR #2 kullanıcı onayıyla `main` dalına birleştirildi. Kullanıcının bildirdiği mevcut durumda Render API `https://thermatwin-api.onrender.com` adresinde, GitHub'a bağlı Vercel projesi `thermatwin-ai`; ilk Production build başarısız. Hosted Supabase/Resend bağlantıları henüz hazır değil. İlk hedef **Preview demo**. Yeni düzeltme dalı `fix/vercel-build-environment`, kullanıcı onayı olmadan `main` ile birleştirilmez. Bu düzeltme hesap ayarlarını/migration'ları değiştirmez ve gerçek e-posta göndermez.
+17 Ekim 2026 güncellemesi: PR #2–#4 kullanıcı onayıyla `main` dalına birleştirildi (`ad0b705`). Render API `https://thermatwin-api.onrender.com` adresinde, GitHub'a bağlı Vercel projesi `thermatwin-ai`. Preview commit `8cbefcf`, bu kez `VITE_VERCEL_PROJECT_ID` alanında durdu. Hosted Supabase/Resend bağlantıları henüz hazır değil; ilk hedef **Preview demo**. Kalıcı düzeltme dalı `fix/vercel-metadata-isolation`, kullanıcı onayı olmadan `main` ile birleştirilmez. Bu düzeltme hesap ayarlarını/migration'ları değiştirmez ve gerçek e-posta göndermez.
 
 ## Mimari ve neden
 
@@ -24,7 +24,7 @@ Render Free 15 dakika trafik almayan servisi uyutabilir; sonraki açılış yakl
 | Dosya | İşlev |
 |---|---|
 | `vercel.json` | Vite preset, build/output, yalnız bilinen uygulama sayfaları için rewrite |
-| `src/deployment.ts`, `vite.config.ts` | Production HTTPS kontrolü, public değişken izin listesi, preview bağlantı temizleme |
+| `src/deployment.ts`, `vite.config.ts` | Hosting bağlamı kontrolü, provider metadata ayrımı, beş public giriş alanı, Production HTTPS ve Preview demo izolasyonu |
 | `deploy/frontend-*.env.example` | Vercel Production ve Preview örnekleri |
 | `deploy/backend-production.env.example` | API ortam örneği; gerçek değer içermez |
 | `deploy/api/Dockerfile`, `requirements.in`, `requirements.txt` | Non-root HTTP runtime; hash ile kilitlenmiş hafif bağımlılıklar |
@@ -107,18 +107,20 @@ Production URL kesinleşince Render `APP_URL` ve `ALLOWED_ORIGINS` alanlarını 
 ### İlk Preview demo deployment
 
 1. Vercel → `thermatwin-ai` → **Settings → Environment Variables** bölümünde **Preview** kapsamına `VITE_APP_MODE=demo` ekleyin. Production'a eklenmiş değer Preview'a otomatik taşınmaz. Preview için `VITE_SUPABASE_URL`, `VITE_SUPABASE_ANON_KEY` ve `VITE_API_URL` gerekmez; canlı değer/secret eklemeyin. Örnek: `deploy/frontend-preview.env.example`.
-2. **Production branch `main` olarak kalsın**. `fix/vercel-build-environment` dalının push/PR olayı varsayılan Git bağlantısında Preview oluşturur. PR üzerindeki Vercel durumunu ve **Visit Preview** bağlantısını kontrol edin.
-3. Otomatik deployment oluşmadıysa veya Preview değişkenini sonradan eklediyseniz **Deployments → Create Deployment** üzerinden `https://github.com/mhalitekici/ThermaTwinAi/tree/fix/vercel-build-environment` dalını seçin. Hedefin **Preview** olduğunu doğrulayın. Başarısız eski `main` Production deployment'ını yeniden denemek bu düzeltmeyi kullanmaz. [Vercel Git ve branch deployment adımları](https://vercel.com/docs/git#creating-a-deployment-from-a-git-reference).
+2. **Production branch `main` olarak kalsın**. `fix/vercel-metadata-isolation` dalının push/PR olayı varsayılan Git bağlantısında Preview oluşturur. PR üzerindeki Vercel durumunu ve **Visit Preview** bağlantısını kontrol edin.
+3. Otomatik deployment oluşmadıysa veya Preview değişkenini sonradan eklediyseniz **Deployments → Create Deployment** üzerinden `https://github.com/mhalitekici/ThermaTwinAi/tree/fix/vercel-metadata-isolation` dalını ve bu PR'nin son commit'ini seçin. Hedefin **Preview** olduğunu doğrulayın. Eski `8cbefcf` veya `main` deployment'ını yeniden denemek bu düzeltmeyi kullanmaz. [Vercel Git ve branch deployment adımları](https://vercel.com/docs/git#creating-a-deployment-from-a-git-reference).
 4. Build Command `npm run build`, Output Directory `dist`, Node `24.x` kalsın. `VERCEL_ENV` veya `VITE_VERCEL_*` alanlarını elle eklemeyin; platform yönetir.
 5. Preview'da `/dashboard` adresini doğrudan açıp yenileyin. Network'te Supabase auth/abonelik veya Render API isteği olmamalı; OTP/abonelik/TEST canlı işlemleri kapalı kalmalı. Harita tile/font gibi dış statik istekler bu bağlantı kontrolünden ayrıdır. Bu demo, gerçek OTP veya gelen kutusu kabul testi değildir.
 
 ### Build hatasının nedeni ve güvenlik sınırı
 
-Vercel, Vite preset'i için `VITE_VERCEL_ENV`, `VITE_VERCEL_URL` ve Git metadata alanlarını otomatik ekler. `loadEnv(..., "VITE_")` zaten mevcut process değişkenlerini de okur; `vite.config.ts` ayrıca `process.env` içindeki aynı prefix'i toplar. Eski `publicDeployment()` yalnız uygulamanın beş giriş alanını tanıdığı için platform metadata'sını da bilinmeyen kullanıcı alanı sayıyordu. Resmî listede bulunan 16 alanın her biriyle aynı hata testte yeniden üretildi. [Vercel framework ortam alanları](https://vercel.com/docs/environment-variables/framework-environment-variables).
+Vercel, Vite preset'i için `VITE_VERCEL_*` metadata alanlarını otomatik ekler. `loadEnv(..., "VITE_")` mevcut process değişkenlerini de okur; `vite.config.ts` ayrıca `process.env` içindeki aynı prefix'i toplar. Kök hata, provider girdilerini uygulama ayarı gibi `publicDeployment()` içine taşımaktı. Önceki 17 alanlık liste, yeni `VITE_VERCEL_PROJECT_ID` geldiğinde yine kırıldı. Provider alanlarını tek tek tahmin etmek artık kullanılmıyor. [Vercel framework ortam alanları](https://vercel.com/docs/environment-variables/framework-environment-variables).
 
-Paylaşılan eski hata alan adı içermediğinden başarısız deployment'taki **ilk** reddedilen alanı bu logdan ayırmak mümkün değildir; Vercel hesap/log erişimi olmadan tek bir alan adı kesinmiş gibi raporlanmaz. Yeni bilinmeyen-alan hatası yalnız güvenli biçimde doğrulanmış **alan adını** gösterir; değerleri veya kontrol karakterlerini yazmaz.
+`applicationEnvironment()` hosting bağlamını yalnız gerçek process ortamındaki `VERCEL=1` ve `VERCEL_ENV=preview|production` ikilisiyle kontrol eder. `.env` içeriği veya `VITE_VERCEL_ENV` bu kararı veremez. Eksik/geçersiz hosted bağlam build'i durdurur. Vercel'in bu işaretleri [resmî sistem değişkenleridir](https://vercel.com/docs/environment-variables/system-environment-variables). Yerel Development'ta provider alanları için istisna yoktur.
 
-Düzeltme `src/deployment.ts` içinde belgelenmiş 16 **tam adı** yalnız build metadata'sı olarak kabul eder. `VITE_VERCEL_*` için wildcard izin yoktur; örneğin `VITE_VERCEL_SECRET` reddedilir. Bu alanlar dönüşteki public nesneye eklenmez; `vite.config.ts` içindeki `envPrefix: []` ve açık `define` eşlemesi korunur. Metadata dahil bütün VITE girişlerinde mevcut secret taraması önce çalışır. Production'ın production modu + public Supabase + HTTPS API koşulları aynen korunur.
+Doğrulanan hosted bağlamda `VITE_VERCEL_*` girdileri, değerleri uygulama yapılandırmasında kullanılmadan **çıkarılır**. Bu alanlara public izin verilmez: `publicDeployment()` artık provider alanı kabul etmez; istisnasız yalnız beş uygulama girişini tanır. Bilinmeyen normal `VITE_*` alanları filtrelenip gizlenmez, mevcut doğrulamaya ulaşır ve reddedilir. Metadata içindeki şüpheli/secret değerler de uygulama doğrulamasına, `publicEnv` veya `define` çıktısına ulaşmaz.
+
+`envPrefix: []`, açık `define` eşlemesi ve uygulama girdilerindeki mevcut secret taraması korunur. Public çıktı yalnız `VITE_APP_MODE`, `VITE_ENABLE_LIVE_INTEGRATIONS`, `VITE_SUPABASE_URL`, `VITE_SUPABASE_ANON_KEY`, `VITE_API_URL` ve bu build'in hesapladığı `VITE_DEPLOYMENT_ENV` alanından oluşur. Son alan bir kullanıcı girdisi değildir. Production'ın production modu + public Supabase + HTTPS API koşulları aynen korunur. Yeni bilinmeyen-alan hatası yalnız doğrulanmış alan adını gösterir; değerleri veya kontrol karakterlerini yazmaz.
 
 | Ortam | Frontend | Backend / hesap |
 |---|---|---|
@@ -127,7 +129,7 @@ Düzeltme `src/deployment.ts` içinde belgelenmiş 16 **tam adı** yalnız build
 | Ayrı staging gerekirse | Ayrı staging istemcisi/deploy'u planlanmalı | Ayrı Supabase projesi ve `APP_ENV=preview`; üretim kullanıcı anahtarları kopyalanmaz |
 | Production | Dört gerçek public değişken | Render `APP_ENV=production`, kesin origin, shadow/false/false |
 
-Preview'a yanlışlıkla production public değişkenleri verilse bile canlı bağlantılar temizlenir; secret veya bilinmeyen public alan varsa build yine durur. Backend `APP_ENV=preview` veya `VERCEL_ENV=preview` altında bütün gönderim bayraklarını zorunlu shadow/false yapar. Preview URL'lerini production CORS veya Auth izin listesine wildcard ile eklemeyin. Preview'da bağlı hesap akışı gerekiyorsa canlı kullanıcılarla test etmek yerine ayrı staging planı uygulanmalıdır.
+Preview'a yanlışlıkla production public değişkenleri verilse bile canlı bağlantılar temizlenir; uygulama girdilerinde secret veya bilinmeyen public alan varsa build yine durur. Provider metadata ise yukarıdaki sınırda tamamen atılır. Backend `APP_ENV=preview` veya `VERCEL_ENV=preview` altında bütün gönderim bayraklarını zorunlu shadow/false yapar. Preview URL'lerini production CORS veya Auth izin listesine wildcard ile eklemeyin. Preview'da bağlı hesap akışı gerekiyorsa canlı kullanıcılarla test etmek yerine ayrı staging planı uygulanmalıdır.
 
 ## 4. Supabase ve Resend
 
@@ -170,7 +172,9 @@ npm.cmd run build
 
 `npm test` public/secret kapıları, birim, PostgreSQL/RLS, 36 dashboard/routing, 10 bağlı browser senaryosu ve production/preview izolasyon derlemelerini çalıştırır. Bağlı testler gerçek frontend SDK'sı ve FastAPI ile kontrollü Supabase/Resend servislerini kullanır; gerçek e-posta göndermez. RLS testi PGlite PostgreSQL üzerinde çalışır; hosted iki-kullanıcı kabulünün yerine geçmez.
 
-`test:deployment`, Vercel'in 16 prefixed sistem alanını içeren üç gerçek Vite build'i çalıştırır: geçerli Production fixture, Production public ayarları yanlışlıkla kopyalanmış Preview ve Supabase'siz Preview demo. Ayrıca eksik Production Supabase/demo ayarı, bilinmeyen kullanıcı ve Vercel benzeri alanlar, public alana veya metadata'ya konmuş server secret için altı başarısız build bekler. Fixture sunucu anahtarları/metadata bundle'a, hassas test değerleri hata loguna giremez. Bunlar yalnız sahte fixture değerleridir; gerçek sağlayıcı çağrısı yapılmaz.
+`test:deployment`, proje kimliği, observability ve her çalışmada rastgele adlandırılmış yeni provider alanı ile üç gerçek Vite build'i çalıştırır: geçerli Production fixture, Production public ayarları yanlışlıkla kopyalanmış Preview ve Supabase'siz Preview demo. Metadata içinde sahte Supabase/Resend secret'ları da bulunur; bunlar çözümlenmiş Vite environment/define ve JS/HTML/CSS/map çıktılarında bulunamaz. Test plugin'i public `define` adlarını ve `envPrefix: []` ayarını ayrıca doğrular; uygulamanın o alanı tesadüfen kullanmamasına güvenilmez.
+
+Dokuz başarısız build senaryosu; eksik Production bağlantıları/demo modu, bilinmeyen normal kullanıcı alanı, eksik/geçersiz hosting bağlamı, metadata ile Preview seçme girişimi ve izinli uygulama alanlarına konan Supabase/Resend secret'larını kapsar. Hassas fixture değerleri hata loguna yazılamaz. Bunlar yalnız sahte fixture değerleridir; gerçek sağlayıcı çağrısı yapılmaz. Birim testleri aynı sınırı, doğrudan `publicDeployment()` çağrısının provider alanlarını reddini ve Preview bağlantı temizliğini de doğrular. Backend e-posta izolasyonu mevcut CI container smoke testlerinde korunur.
 
 `scripts/preview-vercel.mjs`, bu projenin **literal rewrite sözleşmesini** yerelde uygular. Vercel altyapısının emülatörü değildir. Bütün route'lar, refresh, gerçek JSON/JS asset yanıtları ve `/api/*`/eksik dosyaların HTML'e dönüşmediği bu sunucuya karşı test edilir. Gerçek Vercel CDN/TLS/hesap ayarları yayın sonrası ayrıca doğrulanır.
 
