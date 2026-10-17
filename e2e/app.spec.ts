@@ -130,8 +130,8 @@ test("navigation, honest local subscriptions and model details", async ({
     .getByRole("button", { name: "Yerel izleme tercihini kaldır" })
     .click();
   await page.goto("/performance");
-  await expect(page.locator(".performance-table tbody tr")).toHaveCount(3);
-  await expect(page.locator(".performance-table tbody")).toContainText("0,352");
+  await expect(page.locator(".lab-baselines tbody tr")).toHaveCount(4);
+  await expect(page.locator(".lab-baselines tbody")).toContainText("0,2484");
   await expect(page.locator(".audit-checks")).toContainText("Doğrulandı");
   await page.goto("/login");
   await expect(

@@ -239,6 +239,10 @@ UI 0.2 testleri 1920/1366/768/390 px Chromium, tema kalıcılığı, replay URL'
 
 `test:e2e` önce production build oluşturur, ardından 5175 portunda geçici Vite preview başlatır. Geliştirme sunucusunun 5173 portundan bağımsızdır. CI bu adım üzerinden production build'i de doğrular.
 
+## Performance Lab
+
+`/performance`, sürümlü rolling-origin raporunu 8.490 gerçek held-out tahminle birleştirir. Ufuk/yıl/mevsim/olay filtreleri, aynı hedef tarihlerde baseline karşılaştırması, açık tolerans oranları ve kapsamı kayıtlı indirilebilir/yazdırılabilir HTML raporu sunar. Veri kaynağı/hash uyuşmazlığında sonuç gösterilmez. Üretim: `.venv/Scripts/python.exe -X utf8 scripts/export_performance_traces.py`; yöntem ve sınırlar [PERFORMANCE_LAB.md](docs/PERFORMANCE_LAB.md). Bu komut mevcut CSV'leri okur; eğitim yapmaz ve eski artefaktları değiştirmez.
+
 ## Yayına hazırlama
 
 `npm.cmd run build` sonucu `dist/` statik host'a verilebilir. SPA için `/dashboard`, `/regions`, `/subscriptions`, `/alerts`, `/login` istekleri `index.html` dosyasına yönlendirilmelidir. Üretim `VITE_` değerlerini build öncesinde tanımlayın. Gerçek snapshot'lar Supabase'ten okunur; hesap yokken tarihli statik dosya fallback'i kullanılır. Test e-postası API'si ayrıca HTTPS Python sunucusu gerektirir; CORS allowlist'i gerçek frontend adresiyle sınırlandırın. Bu oturumda dağıtım yapılmadı.
