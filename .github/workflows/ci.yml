@@ -30,6 +30,10 @@ jobs:
       - run: npx playwright install --with-deps chromium
       - run: npm run test:e2e
       - run: npm run test:integration
+      - name: Render local historical email previews without transport
+        run: uv run python scripts/preview_emails.py
+      - name: Verify email layouts, themes, keyboard and no external requests
+        run: node scripts/capture-email-previews.mjs after
       - run: npm run test:deployment
       - run: npm run build
       - name: Build isolated API container
@@ -43,6 +47,13 @@ jobs:
         with:
           name: product-review-screenshots
           path: artifacts/product-upgrade/ci/
+          if-no-files-found: ignore
+          retention-days: 14
+      - uses: actions/upload-artifact@v7
+        if: always()
+        with:
+          name: email-review-previews
+          path: artifacts/product-upgrade/email-after/
           if-no-files-found: ignore
           retention-days: 14
       - uses: actions/upload-artifact@v7
