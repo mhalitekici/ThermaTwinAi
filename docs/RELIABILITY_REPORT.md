@@ -176,6 +176,10 @@ Eğitimden dondurulmuş referans ve yalnız eğitimdeki son 10 tamamlanmış yı
 
 İzleyen deney: politikayı dondurup yeni gelecek günlerde gölge izleme; gecikme ve veri revizyonlarını kaydetme; olay başlangıcına odaklı validation hedefi ve bağımsız meteoroloji/akıntı değişkenleri. Mevcut testte düşen F1’ı düzeltmek amacıyla bu test üzerinde yeniden ayar yapılmamalı.
 
+## Ayrı candidate vNext sonucu
+
+[17 Ekim 2026 offline deney raporu](../research/candidate-vnext/REPORT.md) ve eğitim öncesi protokol ayrı dizindedir. Bazı ufuklarda sıcaklık hatası azalsa da 24/48 saat iyileşme kapıları ve rolling erken olay koşulu geçilmedi. Champion/politika korunur; otomatik promotion veya gönderim yoktur. Bu dokümandaki v1 sonuçları ve orijinal JSON raporu değiştirilmedi.
+
 ## Yöntem kaynakları
 
 - [Hyndman & Athanasopoulos: zaman serisi çapraz doğrulama](https://otexts.com/fpp3/tscv.html).

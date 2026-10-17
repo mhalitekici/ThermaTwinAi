@@ -1,0 +1,33 @@
+{
+  "version": "candidate-vnext-2026-10-17-v1",
+  "name": "ThermaTwin Forecasting Engine — candidate vNext",
+  "status": "offline_only_no_automatic_promotion",
+  "data_sha256": "d3b2453cd22ad08090e8a17254f634c7d452030eac0a57ef49968ca3bb54e7e9",
+  "champion_sha256": "ac761b85e51221ed7a5dbd2f6b6edbf728eca29a234306be46c176b5d8090a7a",
+  "data_end": "2026-10-16",
+  "test_years": [2019, 2020, 2021, 2022, 2023, 2024, 2025, 2026],
+  "variants": [
+    {"name": "causal-square", "objective": "reg:squarederror", "n_estimators": 450},
+    {"name": "causal-absolute", "objective": "reg:absoluteerror", "n_estimators": 350}
+  ],
+  "shared_parameters": {"max_depth": 3, "learning_rate": 0.035, "min_child_weight": 5, "subsample": 0.85, "colsample_bytree": 0.9, "reg_lambda": 12, "random_state": 42, "n_jobs": 2},
+  "weights": [0, 0.25, 0.5, 0.75, 1],
+  "selection": "minimum validation MAE per horizon; ties prefer declared variant order, then smaller weight; no test-driven rerun or search expansion",
+  "features": ["original 14 causal features", "delta1", "delta2", "acceleration", "trend_change", "mean_gap", "scaled_trend", "positive_delta1", "delta1_sin", "delta1_cos"],
+  "warning_and_calibration": "unchanged validation-only P90/P95/source/margin selection; separate calibration-only seasonal envelope at nominal 80%",
+  "gates": {
+    "minimum_mae_gain_pct_each_horizon": 2,
+    "maximum_rmse_ratio": 1.01,
+    "minimum_warning_f1_delta": 0,
+    "maximum_warning_recall_drop": 0.02,
+    "maximum_rapid_warming_mae_ratio": 1.05,
+    "minimum_interval_coverage": 0.78,
+    "maximum_interval_width_ratio": 1.25,
+    "maximum_year_season_mae_ratio_n_ge_30": 1.10,
+    "minimum_early_events_delta": 0,
+    "maximum_false_event_notices_delta": 0
+  },
+  "gate_scope": "all gates must pass both pooled rolling-origin and frozen-model chronological test; annual/seasonal regression checked separately; no automatic activation even if passing",
+  "publication_latency": "archived revised SST, not historical point-in-time releases; no latency/exogenous forecast assumed available; observed-condition rule unchanged",
+  "test_limitation": "Retrospective series already inspected in prior audits; not a pristine prospective trial. No significance claim or tuning after seeing results."
+}

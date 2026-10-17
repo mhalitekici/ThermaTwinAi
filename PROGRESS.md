@@ -2,6 +2,14 @@
 
 Son güncelleme: **17 Ekim 2026**. Teslim hedefi: **21 Ekim 2026**.
 
+## Ayrı challenger araştırması — PR D
+
+- [x] `6c859ec` commit'inde eğitim öncesi sabitlenen iki aday, özellikler, validation seçimi ve terfi koşulları. Dokuz causal özellik; 8 yıllık rolling ve aynı sabit kronolojik test. Başka veri/indirme veya test sonucuna göre tuning yapılmadı.
+- [x] Rolling MAE: 24h 0,248394→0,248722 °C; 48h 0,333453→0,327295; 72h 0,362608→0,354128. Erken olay 3/34→2/34. Sabit testte erken olay 2/18 ve yanlış olay 38 olarak kaldı. **Kapılar başarısız; champion korunur, terfi önerilmez.** Tam FP/FN, recall/F1, aralık, hızlı ısınma, yıl/mevsim ve olay sonuçları ayrı raporda.
+- [x] 23.142 gerçek candidate/champion test kaydı sıkıştırılmış/sürümlü kanıt paketinde. Ayrı ~261 KB runtime ZIP + SHA-256 manifest; mevcut installer geçici kökte gerçek modeli yükler, bozulan paketi reddeder ve mevcut tahmin/kalibrasyon/snapshot yolu çalışır. Orijinal model/politika/runtime manifesti değişmedi. Render'a ML dependency eklenmedi.
+- [x] Toplam **107 Python** ve 6 challenger testi geçti: causal/future independence, validation seçimi, tüm terfi kapıları, gerçek paket/inference ve rapor metriklerini kanıttan yeniden hesaplama. İlk deneme lead-time raporundaki tarih tip dönüşümünde durdu; kısmi kayıtlar korundu, parametre/koşul değiştirmeden düzeltildi ve tamamlandı. Bilimsel sonuç gizlenmedi. Python lint ve 50 korunan dosyanın hash kontrolü geçti.
+- [ ] PR incelemesi ve bağımsız gelecek veri doğrulaması. Model/politika promotion veya otomatik gönderim yapılmaz.
+
 ## Profesyonel e-posta deneyimi — PR C
 
 - [x] Üç ayrı HTML/düz metin deneyimi: geçmiş TEST, gözlenen anomali, deneysel tahmin. Ocean marka, inline/table düzeni, mobil/koyu görünüm, gerçek sayısal facts, kaynak/tarih/fark/P90, açıklama/sınırlar ve güvenli uygulama/abonelik bağlantıları.
