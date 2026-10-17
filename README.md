@@ -1,5 +1,11 @@
 # ThermaTwin AI
 
+## Ocean Intelligence ürün yükseltmesi
+
+Ürün tasarımı çalışması; bağımsız ThermaTwin AI markası, gerçek tarihli gözlem ve sürümlü bilimsel sonuçları gösteren landing, ortak açık/koyu ocean teması ve görünür Model Performansı gezinmesini kapsar. [Aşamalı uygulama planı](docs/PRODUCT_UPGRADE_PLAN.md), [tasarım sistemi](docs/DESIGN_SYSTEM.md). Üretim modeli ve e-posta gönderim politikası bu görsel aşamada değiştirilmez; PR'lar açık onay olmadan merge edilmez veya Production'a yayınlanmaz.
+
+Yerel ekran incelemesi: izole demo build'i için `node scripts/build-demo-test.mjs`; ardından `node scripts/preview-vercel.mjs --directory dist-demo-test --port 5188` ve ayrı terminalde `node scripts/capture-product.mjs after`. `node scripts/product-gallery.mjs`, `artifacts/product-upgrade/review.html` galerisini oluşturur. CI'ın `product-review-screenshots` artifact'ı yeni landing'in dört genişlikteki açık/koyu görsellerini içerir. Gerçek OTP veya e-posta gönderilmez.
+
 Akkuyu açıkları için günlük deniz yüzeyi sıcaklığı (SST), +1/+2/+3 gün tahmini, mevsimsel anomali ve abonelik tabanlı erken uyarı MVP'si. Climathon teslim hedefi: **21 Ekim 2026**.
 
 Kök klasördeki iki özgün PDF korundu. İnceleme ve kapsam kararları: [docs/REVIEW.md](docs/REVIEW.md). Tamamlanan ve dış hesap bekleyen işler: [PROGRESS.md](PROGRESS.md).

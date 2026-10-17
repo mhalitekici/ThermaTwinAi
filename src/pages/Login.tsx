@@ -71,11 +71,11 @@ export default function Login() {
         <Logo />
         <div>
           <Badge>DENİZİ BİRLİKTE ANLAYALIM</Badge>
-          <h1>
+          <p className="login-story-title">
             Değişimi takip edin.
             <br />
-            <em>Bir adım önde olun.</em>
-          </h1>
+            <em>Kaynağını görün.</em>
+          </p>
           <p>
             Deniz sıcaklığı gözlemlerini, kısa vadeli tahminleri ve anlaşılır
             raporları tek bir yerde buluşturun.
@@ -84,7 +84,7 @@ export default function Login() {
             <Waves size={130} strokeWidth={0.65} />
           </div>
         </div>
-        <span className="fine-print">ThermaTwin AI · Climathon 2026</span>
+        <span className="fine-print">ThermaTwin AI · Ocean Intelligence</span>
       </div>
       <main className="login-form-area">
         <Link className="back-link" to="/dashboard">
@@ -94,11 +94,11 @@ export default function Login() {
           <div className="empty-icon">
             <Mail size={27} />
           </div>
-          <h2>
+          <h1>
             {step === "email"
-              ? "Gözlem ağınıza katılın"
+              ? "Hesabınıza giriş yapın"
               : "E-postanızı doğrulayın"}
-          </h2>
+          </h1>
           <p>
             {step === "email"
               ? "Şifresiz, güvenli giriş. E-postanıza bir doğrulama kodu göndereceğiz."
@@ -108,7 +108,8 @@ export default function Login() {
             <div className="notice">
               <div>
                 <strong>
-                  {integrationError || "Yerel prototip · giriş kapalı"}
+                  {integrationError ||
+                    "Demo görünümü · hesap bağlantısı kapalı"}
                 </strong>
                 <span>
                   Bu aşamada hesap açılmaz ve doğrulama e-postası gönderilmez.

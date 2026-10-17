@@ -11,7 +11,7 @@ export default function Settings() {
       <PageHead
         eyebrow="ÇALIŞMA ALANI AYARLARI"
         title="Size uygun bir görünüm."
-        description="Görünümü kişiselleştirin, veri kaynağını ve prototipin sınırlarını inceleyin."
+        description="Görünümü kişiselleştirin; veri kaynağını, hesap durumunu ve bilimsel sınırları inceleyin."
       />
       <div className="settings-grid">
         <section className="panel settings-card">
@@ -66,7 +66,7 @@ export default function Settings() {
             </div>
             <div>
               <dt>Veri güncellemesi</dt>
-              <dd>Yerel, tarihli snapshot</dd>
+              <dd>Tarihi belirtilmiş gözlem kaydı</dd>
             </div>
           </dl>
           {snap && (

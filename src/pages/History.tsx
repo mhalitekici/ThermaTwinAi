@@ -67,7 +67,7 @@ export default function HistoryPage() {
         <FlaskConical size={23} />
         <div>
           <strong>
-            Jüri demosu için hazır. Bilimsel sınırlarıyla birlikte.
+            Gerçek geçmiş. Başarıları ve kaçırılan sinyalleriyle birlikte.
           </strong>
           <p>
             Bu bölüm geçmişte gözlenmiş olayları tekrarlar. Güncel izleme veya

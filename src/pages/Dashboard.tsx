@@ -145,8 +145,8 @@ export default function Dashboard() {
               <div className="map-summary">
                 <strong>Tek bölge. Açık veri. İzlenebilir sonuç.</strong>
                 <p>
-                  Kesikli alan analiz bölgesini gösterir. MVP yalnız Akkuyu’yu
-                  destekler.
+                  Kesikli alan analiz bölgesini gösterir. Veri ve model kapsamı
+                  yalnız Akkuyu açıklarıdır.
                 </p>
                 <Link className="text-link" to="/regions">
                   Bölge ayrıntıları <ArrowRight size={14} />

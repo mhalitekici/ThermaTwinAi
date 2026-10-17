@@ -102,7 +102,7 @@ export default function Alerts() {
         <ConnectedAlerts />
       ) : (
         <div className="integration-note">
-          <strong>E-posta bildirimleri bu prototipte kapalı.</strong>
+          <strong>Demo görünümünde gerçek e-posta bağlantısı kapalı.</strong>
           <p>
             Burada gerçek analiz raporları gösterilir. Bildirim gönderilmez ve
             gerçek abonelik açılmaz.

@@ -39,6 +39,13 @@ jobs:
       - name: Verify production HTTP boundaries without real provider credentials
         run: docker run --rm -e APP_ENV=production -e APP_URL=https://frontend.example -e ALLOWED_ORIGINS=https://frontend.example -e SUPABASE_URL=https://project.example -e SUPABASE_SERVICE_ROLE_KEY=fixture-only -e RESEND_API_KEY=fixture-only -e EMAIL_FROM=test@example.test thermatwin-api:ci python /app/smoke_api_runtime.py
       - uses: actions/upload-artifact@v7
+        if: always()
+        with:
+          name: product-review-screenshots
+          path: artifacts/product-upgrade/ci/
+          if-no-files-found: ignore
+          retention-days: 14
+      - uses: actions/upload-artifact@v7
         if: failure()
         with:
           name: browser-failure-traces

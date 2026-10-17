@@ -41,6 +41,7 @@ const items = [
   { path: "/forecasts", icon: ChartNoAxesCombined, label: "AI tahminleri" },
   { path: "/alerts", icon: Bell, label: "Anomali uyarıları" },
   { path: "/history", icon: History, label: "Geçmiş analiz" },
+  { path: "/performance", icon: FlaskConical, label: "Model Performansı" },
   { path: "/subscriptions", icon: Radio, label: "Abonelikler" },
 ];
 export default function Shell() {
@@ -120,7 +121,7 @@ export default function Shell() {
         <div className="workspace-tag">
           <span className="workspace-initial">A</span>
           <span>
-            Akkuyu çalışma alanı<small>Climathon 2026 · Pilot</small>
+            Akkuyu çalışma alanı<small>Doğu Akdeniz · Günlük SST</small>
           </span>
           <span className="pilot-dot" />
         </div>
@@ -134,7 +135,7 @@ export default function Shell() {
             >
               <n.icon size={19} />
               {n.label}
-              {n.path === "/history" && <span className="nav-tag">DEMO</span>}
+              {n.path === "/history" && <span className="nav-tag">Geçmiş</span>}
             </NavLink>
           ))}
         </nav>
@@ -286,7 +287,7 @@ export default function Shell() {
               <WavesMark /> ThermaTwin AI <i /> Deniz verisinden anlaşılır
               içgörüye.
             </span>
-            <span>Çevresel inceleme prototipi · Climathon 2026</span>
+            <span>Günlük uydu analizi · Çevresel etki kanıtı değildir.</span>
           </footer>
         </main>
       </div>
