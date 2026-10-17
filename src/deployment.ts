@@ -9,6 +9,28 @@ const publicNames = new Set([
   "VITE_API_URL",
 ]);
 
+// Vercel's documented Vite metadata is build-only, never part of publicEnv.
+// https://vercel.com/docs/environment-variables/framework-environment-variables
+// Keep exact names: a VITE_VERCEL_* wildcard would also accept user secrets.
+const vercelMetadataNames = new Set([
+  "VITE_VERCEL_ENV",
+  "VITE_VERCEL_TARGET_ENV",
+  "VITE_VERCEL_URL",
+  "VITE_VERCEL_BRANCH_URL",
+  "VITE_VERCEL_PROJECT_PRODUCTION_URL",
+  "VITE_VERCEL_HASH_SALT",
+  "VITE_VERCEL_GIT_PROVIDER",
+  "VITE_VERCEL_GIT_REPO_SLUG",
+  "VITE_VERCEL_GIT_REPO_OWNER",
+  "VITE_VERCEL_GIT_REPO_ID",
+  "VITE_VERCEL_GIT_COMMIT_REF",
+  "VITE_VERCEL_GIT_COMMIT_SHA",
+  "VITE_VERCEL_GIT_COMMIT_MESSAGE",
+  "VITE_VERCEL_GIT_COMMIT_AUTHOR_LOGIN",
+  "VITE_VERCEL_GIT_COMMIT_AUTHOR_NAME",
+  "VITE_VERCEL_GIT_PULL_REQUEST_ID",
+]);
+
 function httpsAddress(value: string | undefined, originOnly = false): boolean {
   try {
     const url = new URL(value || "");
@@ -39,10 +61,19 @@ export function publicDeployment(env: Environment, target = "development") {
   )
     throw new Error("Public alanda sunucu sırrı saptandı; build durduruldu.");
   // Never expose arbitrary VITE_* fields, including secrets hidden under a generic name.
-  if (
-    Object.entries(env).some(([name, value]) => value && !publicNames.has(name))
-  )
-    throw new Error("Bilinmeyen veya gizli VITE_ alanı; build durduruldu.");
+  const unknownName = Object.entries(env).find(
+    ([name, value]) =>
+      value && !publicNames.has(name) && !vercelMetadataNames.has(name),
+  )?.[0];
+  if (unknownName) {
+    // Diagnose the field, never its value; prevent log injection via field names.
+    const label = /^VITE_[A-Z0-9_]{1,80}$/.test(unknownName)
+      ? unknownName
+      : "[geçersiz alan adı]";
+    throw new Error(
+      `Bilinmeyen veya gizli VITE_ alanı (${label}); build durduruldu.`,
+    );
+  }
   if (
     env.VITE_SUPABASE_ANON_KEY &&
     !isPublicSupabaseKey(env.VITE_SUPABASE_ANON_KEY)

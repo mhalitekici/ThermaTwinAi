@@ -8,6 +8,83 @@ const production = {
   VITE_API_URL: "https://thermatwin-api.onrender.com/",
 };
 describe("deployment isolation", () => {
+  // Exact framework metadata names documented by Vercel; no prefix wildcard.
+  it.each([
+    "VITE_VERCEL_ENV",
+    "VITE_VERCEL_TARGET_ENV",
+    "VITE_VERCEL_URL",
+    "VITE_VERCEL_BRANCH_URL",
+    "VITE_VERCEL_PROJECT_PRODUCTION_URL",
+    "VITE_VERCEL_HASH_SALT",
+    "VITE_VERCEL_GIT_PROVIDER",
+    "VITE_VERCEL_GIT_REPO_SLUG",
+    "VITE_VERCEL_GIT_REPO_OWNER",
+    "VITE_VERCEL_GIT_REPO_ID",
+    "VITE_VERCEL_GIT_COMMIT_REF",
+    "VITE_VERCEL_GIT_COMMIT_SHA",
+    "VITE_VERCEL_GIT_COMMIT_MESSAGE",
+    "VITE_VERCEL_GIT_COMMIT_AUTHOR_LOGIN",
+    "VITE_VERCEL_GIT_COMMIT_AUTHOR_NAME",
+    "VITE_VERCEL_GIT_PULL_REQUEST_ID",
+  ])("accepts %s as build metadata without exposing it", (name) => {
+    for (const target of ["preview", "production"]) {
+      expect(
+        publicDeployment(
+          { ...production, [name]: "VERCEL_METADATA_FIXTURE_ONLY" },
+          target,
+        ),
+      ).toEqual(publicDeployment(production, target));
+    }
+  });
+  it("reports only the unknown field name, including lookalike Vercel fields", () => {
+    for (const name of ["VITE_UNRELATED", "VITE_VERCEL_SECRET"]) {
+      expect(() =>
+        publicDeployment(
+          { ...production, [name]: "PRIVATE_DIAGNOSTIC_FIXTURE_ONLY" },
+          "preview",
+        ),
+      ).toThrow(
+        `Bilinmeyen veya gizli VITE_ alanı (${name}); build durduruldu.`,
+      );
+    }
+  });
+  it("does not log control characters or arbitrary text in an invalid field name", () => {
+    expect(() =>
+      publicDeployment({ "VITE_BAD\nPRIVATE_NAME_FIXTURE": "value" }),
+    ).toThrow(
+      "Bilinmeyen veya gizli VITE_ alanı ([geçersiz alan adı]); build durduruldu.",
+    );
+  });
+  it("still scans documented metadata for server secret values", () => {
+    expect(() =>
+      publicDeployment(
+        { ...production, VITE_VERCEL_GIT_COMMIT_MESSAGE: "sb_secret_fixture" },
+        "preview",
+      ),
+    ).toThrow(/Public alanda sunucu sırrı/);
+  });
+  it.each(["VITE_SUPABASE_URL", "VITE_SUPABASE_ANON_KEY", "VITE_API_URL"])(
+    "requires %s in production even with Vercel metadata present",
+    (name) => {
+      expect(() =>
+        publicDeployment(
+          { ...production, VITE_VERCEL_ENV: "production", [name]: "" },
+          "production",
+        ),
+      ).toThrow(/Production için public Supabase ve HTTPS API adresi gerekli/);
+    },
+  );
+  it("rejects a service-role JWT in every deployment environment", () => {
+    const serverJwt = `eyJhbGciOiJIUzI1NiJ9.${btoa(JSON.stringify({ role: "service_role" }))}.fixture`;
+    for (const target of ["development", "preview", "production"]) {
+      expect(() =>
+        publicDeployment(
+          { ...production, VITE_SUPABASE_ANON_KEY: serverJwt },
+          target,
+        ),
+      ).toThrow(/public\/publishable/);
+    }
+  });
   it("rejects a mistyped deployment target and server keys hidden in allowed URL fields", () => {
     expect(() => publicDeployment(production, "prod")).toThrow();
     expect(() =>
