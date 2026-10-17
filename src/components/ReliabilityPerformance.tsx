@@ -1,310 +1,125 @@
-import { useEffect, useState } from "react";
 import { temp } from "../lib";
-type Counts = {
-  precision: number;
-  recall: number;
-  f1: number;
-  fp: number;
-  fn: number;
-  n: number;
-};
-type EventMetric = {
-  events: number;
-  detected_events: number;
-  early_events: number;
-  notifications: number;
-  suppressed_repeats: number;
-  false_notifications: number;
-  precision: number;
-  recall: number;
-  f1: number;
-};
-type Evaluation = {
-  n: number;
-  model: { mae_c: number; rmse_c: number };
-  persistence: { mae_c: number };
-  seasonal: { mae_c: number };
-  seasonal_naive: { mae_c: number };
-  mae_improvement_pct: number;
-  daily: Record<string, Counts>;
-  events: Record<string, EventMetric>;
-  interval: { coverage: number; mean_width_c: number };
-  subgroups: Record<string, { n: number; coverage: number }>;
-};
-type Reliability = {
-  rolling_pooled: Record<string, Evaluation>;
-  deployed: {
-    combined_engine: {
-      events: number;
-      detected_events: number;
-      early_events: number;
-      notifications: number;
-      forecast_notifications: number;
-      observed_notifications: number;
-      suppressed_repeats: number;
-      false_event_notifications: number;
-    };
-    horizons: Record<
-      string,
-      {
-        evaluation: Evaluation;
-        old_interval_coverage: number;
-        warning_policy: {
-          source: string;
-          percentile: number;
-          margin_c: number;
-        };
-      }
-    >;
-  };
-  checks: { rolling_folds: number };
-  limitations: string[];
-};
-export default function ReliabilityPerformance() {
-  const [data, setData] = useState<Reliability | null>(null);
-  const [error, setError] = useState("");
-  useEffect(() => {
-    let alive = true;
-    fetch("/reliability-report.json")
-      .then((r) => {
-        if (!r.ok) throw new Error("Güvenilirlik raporu yüklenemedi.");
-        return r.json();
-      })
-      .then((r) => {
-        if (alive) setData(r);
-      })
-      .catch((e) => {
-        if (alive) setError(e.message);
-      });
-    return () => {
-      alive = false;
-    };
-  }, []);
-  if (error)
-    return (
-      <div className="notice error" role="alert">
-        {error}
-      </div>
-    );
-  if (!data) return <p role="status">Güvenilirlik ölçümleri yükleniyor…</p>;
+import type { Reliability } from "../performance";
+
+/** Frozen deployed strategy diagnostics: never mixed with explorer subsets. */
+export default function ReliabilityPerformance({
+  data,
+  horizon,
+}: {
+  data: Reliability;
+  horizon: number;
+}) {
+  const m = data.deployed.horizons[horizon].evaluation;
+  const engine = data.deployed.combined_engine;
   return (
-    <div className="reliability-results">
-      <section className="panel settings-card">
-        <h2>Rolling-origin · 2019–2026</h2>
-        <p>
-          {data.checks.rolling_folds} yıllık değerlendirme. Her yıl genişleyen
-          eğitim, ayrı validation ve kalibrasyon; her gün yeni tahmin
-          başlangıcı. Son yıl 16 Ekim 2026’da biter. Bunlar geçmişe dönük
-          ölçümlerdir.
-        </p>
-        <div className="table-wrap">
-          <table>
-            <caption className="sr-only">
-              Rolling-origin sıcaklık hataları
-            </caption>
-            <thead>
-              <tr>
-                <th scope="col">Ufuk</th>
-                <th scope="col">MAE / RMSE °C</th>
-                <th scope="col">Persistence MAE</th>
-                <th scope="col">Mevsimsel ortalama MAE</th>
-                <th scope="col">Önceki yıl MAE</th>
-                <th scope="col">MAE iyileşmesi</th>
-                <th scope="col">Aralık kapsaması</th>
-              </tr>
-            </thead>
-            <tbody>
-              {Object.entries(data.rolling_pooled).map(([h, m]) => (
-                <tr key={h}>
-                  <th scope="row">+{Number(h) * 24} saat</th>
-                  <td>
-                    {temp(m.model.mae_c, 3)} / {temp(m.model.rmse_c, 3)}
-                  </td>
-                  <td>{temp(m.persistence.mae_c, 3)}</td>
-                  <td>{temp(m.seasonal.mae_c, 3)}</td>
-                  <td>{temp(m.seasonal_naive.mae_c, 3)}</td>
-                  <td>%{temp(m.mae_improvement_pct)}</td>
-                  <td>%{temp(m.interval.coverage * 100)}</td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
+    <section className="panel settings-card lab-diagnostics">
+      <div className="panel-head">
+        <div>
+          <p className="eyebrow">AYRI PROTOKOL · SABİT DEPLOYED MODEL</p>
+          <h2>Uyarı başarısı sıcaklık hatasından farklıdır.</h2>
+          <p>
+            +{horizon * 24} saat · N={m.n} · 2023 sonu–16 Ekim 2026. Üstteki
+            rolling/filtreli ölçümler bu bölümü değiştirmez.
+          </p>
         </div>
-        <p>
-          Fold kuralları validation’da seçildi. Sonuç yüzdelerinin ortalaması
-          yerine günlük hatalar ve karışıklık sayıları birleştirildi.
-        </p>
-      </section>
-      <section className="panel settings-card">
-        <h2>Yeni uyarı politikası · mevcut modelin ayrı testi</h2>
-        <p>
-          23 Aralık 2023–16 Ekim 2026 başlangıçları; ufka göre 1.026–1.028
-          eşleşme. Gerçek etiket daima gözlenmiş P90 aşımıdır. P95 tetik
-          adayları bu etiketi değiştirmez. Aşağıdaki yanlış alarm sayısı günlük
-          sinyal sayısıdır.
-        </p>
-        <div className="table-wrap">
-          <table>
-            <caption className="sr-only">
-              Validation ile seçilen günlük uyarı başarısı
-            </caption>
-            <thead>
-              <tr>
-                <th scope="col">Ufuk</th>
-                <th scope="col">Precision</th>
-                <th scope="col">Recall</th>
-                <th scope="col">Yeni F1</th>
-                <th scope="col">Eski model F1</th>
-                <th scope="col">Persistence F1</th>
-                <th scope="col">Yanlış alarm (FP)</th>
-                <th scope="col">Kaçırılan gün (FN)</th>
+      </div>
+      <div className="notice warning">
+        <strong>Uyarı F1 skoru persistence'ı geçmiyor.</strong>
+        <span>
+          Erken uyarı ve hızlı ısınma kapsaması sınırlı; gerçek zamanlı koruma
+          garantisi verilmez.
+        </span>
+      </div>
+      <div
+        className="table-wrap"
+        tabIndex={0}
+        role="region"
+        aria-label="Uyari tani tablosu"
+      >
+        <table>
+          <caption>
+            P90 sıcak gün sınıflaması · testte validation seçimi değiştirilmez
+          </caption>
+          <thead>
+            <tr>
+              <th scope="col">Kural</th>
+              <th scope="col">Precision</th>
+              <th scope="col">Recall</th>
+              <th scope="col">F1</th>
+              <th scope="col">FP / FN</th>
+            </tr>
+          </thead>
+          <tbody>
+            {[
+              ["optimized", "Validation seçimi"],
+              ["old_model_p90", "Model > P90"],
+              ["persistence_p90", "Persistence > P90"],
+            ].map(([key, label]) => (
+              <tr key={key}>
+                <th scope="row">{label}</th>
+                <td>{temp(m.daily[key].precision, 3)}</td>
+                <td>{temp(m.daily[key].recall, 3)}</td>
+                <td>{temp(m.daily[key].f1, 3)}</td>
+                <td>
+                  {m.daily[key].fp} / {m.daily[key].fn}
+                </td>
               </tr>
-            </thead>
-            <tbody>
-              {Object.entries(data.deployed.horizons).map(([h, item]) => {
-                const d = item.evaluation.daily;
-                return (
-                  <tr key={h}>
-                    <th scope="row">+{Number(h) * 24} saat</th>
-                    <td>{temp(d.optimized.precision, 3)}</td>
-                    <td>{temp(d.optimized.recall, 3)}</td>
-                    <td>{temp(d.optimized.f1, 3)}</td>
-                    <td>{temp(d.old_model_p90.f1, 3)}</td>
-                    <td>{temp(d.persistence_p90.f1, 3)}</td>
-                    <td>{d.optimized.fp}</td>
-                    <td>{d.optimized.fn}</td>
-                  </tr>
-                );
-              })}
-            </tbody>
-          </table>
-        </div>
-        <p>
-          Yeni politika üç ufukta da persistence F1 skorunun altında. +72 saatte
-          önceki XGBoost kuralının da altında. Bu nedenle bağımsız otomatik
-          erken uyarı için hazır kabul edilmez.
-        </p>
-      </section>
-      <section className="panel settings-card">
-        <h2>Aralık kalibrasyonu · hedef %80</h2>
-        <p>
-          Ayrı kalibrasyon residual’ları; her ufuk ayrı. En az 60 örnek varsa
-          mevsimsel ve genel yarıçapın büyüğü kullanılır. Bu kural test
-          kapsamasına göre seçilmedi.
-        </p>
-        <div className="table-wrap">
-          <table>
-            <caption className="sr-only">
-              Tahmin aralığı kapsaması ve hızlı yükselişlerde sınırı
-            </caption>
-            <thead>
-              <tr>
-                <th scope="col">Ufuk</th>
-                <th scope="col">Eski kapsama</th>
-                <th scope="col">Yeni kapsama</th>
-                <th scope="col">Ortalama genişlik °C</th>
-                <th scope="col">En düşük mevsim kapsaması</th>
-                <th scope="col">Hızlı ısınma kapsaması</th>
-              </tr>
-            </thead>
-            <tbody>
-              {Object.entries(data.deployed.horizons).map(([h, item]) => {
-                const m = item.evaluation;
-                const minimum = Math.min(
-                  ...["DJF", "MAM", "JJA", "SON"].map(
-                    (s) => m.subgroups[s].coverage,
-                  ),
-                );
-                return (
-                  <tr key={h}>
-                    <th scope="row">+{Number(h) * 24} saat</th>
-                    <td>%{temp(item.old_interval_coverage * 100)}</td>
-                    <td>%{temp(m.interval.coverage * 100)}</td>
-                    <td>{temp(m.interval.mean_width_c, 2)}</td>
-                    <td>%{temp(minimum * 100)}</td>
-                    <td>%{temp(m.subgroups.rising.coverage * 100)}</td>
-                  </tr>
-                );
-              })}
-            </tbody>
-          </table>
-        </div>
-        <p>
-          Hızlı ısınma: hedef gözlemin başlangıca göre en az 0,5 °C yükseldiği
-          günler. Bu alt grupta kapsama çok daha zayıf; toplam kapsama olay
-          öncesi güvenilirlik anlamına gelmez.
-        </p>
-      </section>
-      <section className="panel settings-card">
-        <h2>Olaylar ve tekrar uyarıları</h2>
-        <p>
-          Dashboard’daki birleşik motorun tüm testteki provası:{" "}
-          {data.deployed.combined_engine.notifications} kayıt (
-          {data.deployed.combined_engine.forecast_notifications} öngörü,{" "}
-          {data.deployed.combined_engine.observed_notifications} gözlem),{" "}
-          {data.deployed.combined_engine.suppressed_repeats} bastırılan tekrar.{" "}
-          {data.deployed.combined_engine.events} olayın{" "}
-          {data.deployed.combined_engine.detected_events} tanesi saptandı;
-          yalnız {data.deployed.combined_engine.early_events} tanesi başlamadan
-          yakalandı. {data.deployed.combined_engine.false_event_notifications}{" "}
-          kayıt beş günlük bir olaya denk gelmedi.
-        </p>
-        <p>
-          En az beş ardışık gözlenmiş P90 günü bir olaydır. Test sınırına değen
-          seriler değerlendirme dışında tutulur. Aşağıdaki sayılar her ufuk için
-          ayrı sinyal provasıdır; kullanıcıya gönderilmiş e-posta değildir.
-        </p>
-        <div className="table-wrap">
-          <table>
-            <caption className="sr-only">
-              Olay bazlı uyarı ve tekrar azaltımı
-            </caption>
-            <thead>
-              <tr>
-                <th scope="col">Ufuk</th>
-                <th scope="col">Yakalanan / olay</th>
-                <th scope="col">Başlamadan yakalanan</th>
-                <th scope="col">Olay F1</th>
-                <th scope="col">Bildirim provası</th>
-                <th scope="col">Bastırılan tekrar</th>
-                <th scope="col">5 günlük olaya denk gelmeyen</th>
-              </tr>
-            </thead>
-            <tbody>
-              {Object.entries(data.deployed.horizons).map(([h, item]) => {
-                const m = item.evaluation.events.optimized;
-                return (
-                  <tr key={h}>
-                    <th scope="row">+{Number(h) * 24} saat</th>
-                    <td>
-                      {m.detected_events} / {m.events}
-                    </td>
-                    <td>{m.early_events}</td>
-                    <td>{temp(m.f1, 3)}</td>
-                    <td>{m.notifications}</td>
-                    <td>{m.suppressed_repeats}</td>
-                    <td>{m.false_notifications}</td>
-                  </tr>
-                );
-              })}
-            </tbody>
-          </table>
-        </div>
-        <p>
-          Başlangıçta bir kayıt; iki normal gün sonra yeniden kurulum. Dashboard
-          motoru, ayrıca öngörülen risk gözlemsel anomaliye geçtiğinde bir teyit
-          kaydı üretir. Kısa sıcak ataklar günlük doğru sinyal olup beş günlük
-          olay değerlendirmesinde yanlış sayılabilir.
-        </p>
-        <a className="text-link" href="/reliability-report.json" download>
-          Tüm yılları, mevsimleri ve P90/P95 karşılaştırmasını indir
-        </a>
-        <ul className="limitations">
-          {data.limitations.map((s) => (
-            <li key={s}>{s}</li>
-          ))}
-        </ul>
-      </section>
-    </div>
+            ))}
+          </tbody>
+        </table>
+      </div>
+      <div className="lab-summary-grid">
+        <article>
+          <span>
+            Birleşik motor · {engine.origins.toLocaleString("tr-TR")} başlangıç
+          </span>
+          <strong>
+            {engine.early_events} / {engine.events}
+          </strong>
+          <p>
+            Olay başlangıcından önce yakalanan / uygun olay. Toplam{" "}
+            {engine.detected_events} olay yakalandı.
+          </p>
+        </article>
+        <article>
+          <span>Geçmiş simülasyon</span>
+          <strong>{engine.notifications} kayıt</strong>
+          <p>
+            {engine.forecast_notifications} tahmin,{" "}
+            {engine.observed_notifications} gözlem; {engine.suppressed_repeats}{" "}
+            tekrar bastırıldı. Gerçek gönderim sayısı değildir.
+          </p>
+        </article>
+        <article>
+          <span>Yanlış olay bildirimi</span>
+          <strong>{engine.false_event_notifications}</strong>
+          <p>
+            {engine.censored_notifications} sınırda sansürlü kayıt. Günlük FP
+            ile aynı ölçüt değildir.
+          </p>
+        </article>
+      </div>
+      <h3>Belirsizlikte koşullu zayıflık</h3>
+      <p>
+        Nominal %{temp(m.interval.nominal * 100, 0)} aralığın toplam kapsaması %
+        {temp(m.interval.coverage * 100)}, tam genişliği{" "}
+        {temp(m.interval.mean_width_c, 3)} °C. Hızlı ≥0,5 °C ısınmada kapsama{" "}
+        <strong>%{temp(m.subgroups.rising.coverage * 100)}</strong> (N=
+        {m.subgroups.rising.n}), MAE {temp(m.subgroups.rising.model.mae_c, 3)}{" "}
+        °C.
+      </p>
+      <p>
+        Olay: en az beş ardışık P90 günü; sınır olayları dışlanır. Bir olayda
+        tekrar bastırma ve iki açık günle yeniden kurulma uygulanır. Lead time:
+        tahminin üretildiği gün ile olayın ilk günü arasındaki fark; bu rapor
+        yeni ortalama lead time üretmez.
+      </p>
+      <p className="table-note">
+        Eski aralık kalibrasyonunun +72 saat kapsaması %
+        {temp(data.deployed.horizons[3].old_interval_coverage * 100, 1)} idi;
+        yukarıdaki değerler ayrı kalibrasyon politikasına aittir. Kapsam ve
+        sürüm farkı korunur.
+      </p>
+    </section>
   );
 }

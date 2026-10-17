@@ -2,6 +2,14 @@
 
 Son güncelleme: **17 Ekim 2026**. Teslim hedefi: **21 Ekim 2026**.
 
+## Performance Lab — PR B
+
+- [x] Mevcut performans rotası tek laboratuvar görünümüne dönüştürüldü. 8.490 orijinal test tahmini, üç ufuk, yıl/mevsim/olay filtreleri; ortak hedef tarihlerinde dört yöntem, yuvarlanmamış tolerans oranları ve günlük FP/FN/Precision/Recall/F1. Grafik son 90 gerçek kaydı gösterir; tüm kapsam rapora girer.
+- [x] Sürüm/hash ve kronolojik sınır doğrulaması; CSV metrikleri orijinal raporu 1e-10 toleransında yeniden üretir. Linux/Windows için rapor hash'inde LF satır sonu kullanılır; korunan dosya değiştirilmez. Kaynak hatası, retry ve sıfır örnek durumu açık.
+- [x] Ayrı kapsamlı deployed-model uyarı/olay ve hızlı-ısınma belirsizlik sınırları korundu. Escaped, dış kaynaksız, yazdırılabilir HTML raporu: kapsam/dönem/N/sürüm/hash/ham seçili kayıtlar. Model kartı ve fold sınırları görünür.
+- [x] 66 frontend birim, 87 Python testi; lint, TypeScript/production build ve deployment izolasyon testleri geçti. Mobil tabloların klavye erişimi düzeltildi. Tema erişilebilirlik testi, geçiş animasyonunun ara rengini ölçmemek için reduced-motion kullanır; sabit açık/koyu renkler denetlenir. GitHub CI sonucu PR'de izlenir.
+- [ ] Kullanıcı incelemesi/merge. Champion, e-posta politikası, orijinal bilimsel raporlar ve gerçek hesaplar değiştirilmedi.
+
 ## Ocean ürün deneyimi — PR A
 
 - [x] Bağımsız ThermaTwin AI kimliği, yerel Sora/Inter tipografisi, ortak ocean renk/focus/durum sistemi ve iki tema. Landing gerçek kayıtlı gözlemi, kaynak tarihini, rolling-origin sonuçlarını ve başarılı/başarısız geçmiş örnekleri yükler; veri yoksa değer uydurmaz.
