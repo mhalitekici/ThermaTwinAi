@@ -34,6 +34,9 @@ const vercelMetadata = {
   VITE_VERCEL_GIT_COMMIT_AUTHOR_LOGIN: "SYSTEM_LOGIN_FIXTURE_ONLY",
   VITE_VERCEL_GIT_COMMIT_AUTHOR_NAME: "SYSTEM_AUTHOR_FIXTURE_ONLY",
   VITE_VERCEL_GIT_PULL_REQUEST_ID: "9876543210123456788",
+  VITE_VERCEL_OBSERVABILITY_CLIENT_CONFIG: JSON.stringify({
+    fixture: "SYSTEM_OBSERVABILITY_FIXTURE_ONLY",
+  }),
 };
 const serverOnly = {
   SUPABASE_SERVICE_ROLE_KEY: "sb_secret_SERVER_ONLY_DEPLOYMENT_FIXTURE",
@@ -94,6 +97,16 @@ for (const [name, target, patch, message] of [
     { VITE_VERCEL_GIT_COMMIT_MESSAGE: serverOnly.RESEND_API_KEY },
     /Public alanda sunucu sırrı/,
   ],
+  ...[serverOnly.SUPABASE_SERVICE_ROLE_KEY, serverOnly.RESEND_API_KEY].map(
+    (token) => [
+      "server key hidden in observability metadata",
+      "preview",
+      {
+        VITE_VERCEL_OBSERVABILITY_CLIENT_CONFIG: JSON.stringify({ token }),
+      },
+      /Public alanda sunucu sırrı/,
+    ],
+  ),
 ]) {
   const result = spawnSync(
     process.execPath,
@@ -149,6 +162,7 @@ for (const [name, target, patch] of [
   const content = scripts.map((path) => readFileSync(path, "utf8")).join("\n");
   for (const value of [
     ...Object.values(serverOnly),
+    "SYSTEM_OBSERVABILITY_FIXTURE_ONLY",
     ...Object.values(vercelMetadata).filter(
       (value) => !["preview", "github"].includes(value),
     ),

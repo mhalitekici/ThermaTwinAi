@@ -29,6 +29,7 @@ const vercelMetadataNames = new Set([
   "VITE_VERCEL_GIT_COMMIT_AUTHOR_LOGIN",
   "VITE_VERCEL_GIT_COMMIT_AUTHOR_NAME",
   "VITE_VERCEL_GIT_PULL_REQUEST_ID",
+  "VITE_VERCEL_OBSERVABILITY_CLIENT_CONFIG",
 ]);
 
 function httpsAddress(value: string | undefined, originOnly = false): boolean {

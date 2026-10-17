@@ -26,6 +26,7 @@ describe("deployment isolation", () => {
     "VITE_VERCEL_GIT_COMMIT_AUTHOR_LOGIN",
     "VITE_VERCEL_GIT_COMMIT_AUTHOR_NAME",
     "VITE_VERCEL_GIT_PULL_REQUEST_ID",
+    "VITE_VERCEL_OBSERVABILITY_CLIENT_CONFIG",
   ])("accepts %s as build metadata without exposing it", (name) => {
     for (const target of ["preview", "production"]) {
       expect(
@@ -63,6 +64,27 @@ describe("deployment isolation", () => {
       ),
     ).toThrow(/Public alanda sunucu sırrı/);
   });
+  it.each(["development", "preview", "production"])(
+    "rejects server secrets inside observability metadata in %s",
+    (target) => {
+      for (const secret of [
+        "sb_secret_OBSERVABILITY_FIXTURE_ONLY",
+        "re_OBSERVABILITY_FIXTURE_ONLY_1234567890",
+      ]) {
+        expect(() =>
+          publicDeployment(
+            {
+              ...production,
+              VITE_VERCEL_OBSERVABILITY_CLIENT_CONFIG: JSON.stringify({
+                token: secret,
+              }),
+            },
+            target,
+          ),
+        ).toThrow("Public alanda sunucu sırrı saptandı; build durduruldu.");
+      }
+    },
+  );
   it.each(["VITE_SUPABASE_URL", "VITE_SUPABASE_ANON_KEY", "VITE_API_URL"])(
     "requires %s in production even with Vercel metadata present",
     (name) => {
