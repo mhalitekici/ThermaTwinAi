@@ -1,0 +1,9 @@
+{
+  "version": "candidate-vnext-2026-10-17-v1",
+  "records": 23142,
+  "comparison_sha256": "4fbd57aa829290640d1f9f1fa0bfccf8c5f7525cef1671f72cc3867ce293765e",
+  "report_sha256_lf": "e165119b7d7f00f1ffa904b2457b48f4c24c17d871c08f4819847a4a867cdf95",
+  "processed_input_sha256": "712b68e4fcd6fc7a0d76218e3aab621f5bae2413c75f8d8c84f880bbb4b6abca",
+  "execution_note": "Initial attempt stopped on origin-date string/Timestamp conversion while building 2019 lead-time metrics. Partial predictions retained in artifacts/experiments/candidate-vnext-2026-10-17-v1-aborted-date-conversion. Date normalization repaired; declared model/search/gates unchanged. One completed run; no result-driven tuning.",
+  "no_automatic_promotion": true
+}

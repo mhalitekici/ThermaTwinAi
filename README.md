@@ -247,6 +247,10 @@ UI 0.2 testleri 1920/1366/768/390 px Chromium, tema kalıcılığı, replay URL'
 
 Manuel geçmiş TEST, gözlenen anomali ve deneysel tahmin şablonlarının yerel HTML/düz metin ve ekran kontrolleri [EMAIL_EXPERIENCE.md](docs/EMAIL_EXPERIENCE.md) içinde. `.venv/Scripts/python.exe -X utf8 scripts/preview_emails.py` yalnız gerçek geçmiş raporları render eder; mesaj göndermez. Otomatik tahmin ve gerçek otomatik e-posta izinleri değişmez.
 
+## Ayrı challenger araştırması
+
+Eğitimden önce ilan edilmiş koşullarla `ThermaTwin Forecasting Engine — candidate vNext` denendi. 72 saatte sıcaklık hatası azaldı; 24/48 saat ve erken olay kapıları geçilemedi. **Champion korunur; terfi önerilmez.** [Tam karşılaştırma, protokol ve ayrı hash doğrulamalı paket](research/candidate-vnext/REPORT.md). Deney üründeki tahminleri veya otomatik bildirimleri değiştirmez.
+
 ## Yayına hazırlama
 
 `npm.cmd run build` sonucu `dist/` statik host'a verilebilir. SPA için `/dashboard`, `/regions`, `/subscriptions`, `/alerts`, `/login` istekleri `index.html` dosyasına yönlendirilmelidir. Üretim `VITE_` değerlerini build öncesinde tanımlayın. Gerçek snapshot'lar Supabase'ten okunur; hesap yokken tarihli statik dosya fallback'i kullanılır. Test e-postası API'si ayrıca HTTPS Python sunucusu gerektirir; CORS allowlist'i gerçek frontend adresiyle sınırlandırın. Bu oturumda dağıtım yapılmadı.

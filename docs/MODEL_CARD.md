@@ -108,3 +108,7 @@ Bu denetimden sonra planlanan rolling-origin, ayrı validation üzerinde P90/P95
 `public/replay-events.json` üç gerçek olayı içerir: 25 Aralık 2023, 7 Haziran 2024 ve 5 Aralık 2025. ≥5 günlük koşulu sağlayan, ayrılmış dönemden en yüksek pozitif anomalili adaylar arasından, birbirinden en az 45 gün uzak tarihler seçildi. Genel performans bu üç seçili olaydan hesaplanmadı.
 
 Normal gün karşılaştırması, olaydan en az iki hafta önceki aynı takvim ayında bulunan normal gözlemler arasından, referansa mutlak farkı en küçük olan gerçek gündür. Bu seçilmiş bir görsel bağlamdır; nedensel kontrol grubu veya tüm normal dönemlerin temsili olduğu iddia edilmez. Orijinal 7 Haziran replay dosyası korundu.
+
+## Ayrı candidate vNext deneyi — 17 Ekim 2026
+
+ThermaTwin Forecasting Engine ürün adı, alttaki XGBoost/persistence algoritmasını değiştiren bir iddia değildir. [Ayrı deney raporu](../research/candidate-vnext/REPORT.md), eğitim öncesi commit edilmiş protokol, gerçek karşılaştırma kayıtları, validation seçimleri ve hash doğrulamalı aday paketini içerir. Dokuz causal özellik ve iki residual loss adayı test edildi. 72 saat hatası azaldı; 24/48 saat için gerekli iyileşme ve rolling erken olay koşulu geçilemedi. **Champion korundu; adayın terfisi önerilmiyor.** Yukarıdaki özgün sonuçlar ve deployed model/politika dosyaları değişmedi. İncelenmiş geçmiş test, bağımsız gelecek doğrulaması değildir.
