@@ -1,0 +1,7234 @@
+{
+  "events": [
+    {
+      "status": "ready",
+      "mode": "replay",
+      "region": {
+        "id": "akkuyu",
+        "name": "Akkuyu açıkları, Mersin",
+        "lat": 36.05,
+        "lon": 33.55,
+        "south": 35.95,
+        "north": 36.15,
+        "west": 33.4,
+        "east": 33.7
+      },
+      "source": {
+        "provider": "Copernicus Marine",
+        "dataset_id": "SST_MED_SST_L4_NRT_OBSERVATIONS_010_004_c_V2",
+        "dataset_version": "202311",
+        "variable": "analysed_sst",
+        "resolution": "~1 km (catalogue 0.01°)",
+        "access": "public catalogue ARCO Zarr",
+        "aggregation": "cos(latitude)-weighted open-sea ROI mean",
+        "region_id": "akkuyu",
+        "bounds": [
+          35.95,
+          33.4,
+          36.15,
+          33.7
+        ],
+        "url": "https://s3.waw3-1.cloudferro.com/mdl-arco-geo-046/arco/SST_MED_SST_L4_NRT_OBSERVATIONS_010_004/SST_MED_SST_L4_NRT_OBSERVATIONS_010_004_c_V2_202311/geoChunked.zarr",
+        "retrieved_at": "2026-10-16T12:57:56.544286+00:00",
+        "sha256": "d3b2453cd22ad08090e8a17254f634c7d452030eac0a57ef49968ca3bb54e7e9",
+        "catalogue_last_observation": "2026-10-16",
+        "catalog_url": "https://data.marine.copernicus.eu/product/SST_MED_SST_L4_NRT_OBSERVATIONS_010_004/services",
+        "first_observation": "2008-01-01",
+        "last_observation": "2026-10-16",
+        "valid_days": 6864,
+        "missing_days": 0
+      },
+      "checked_at": "2026-10-16T14:25:22.062036+00:00",
+      "origin_date": "2024-11-21",
+      "age_days": 694,
+      "stale": false,
+      "observation": {
+        "sst_c": 22.97494656293366,
+        "reference_c": 22.22933775345784,
+        "p90_c": 23.130740304689336,
+        "anomaly_c": 0.7456088094758186,
+        "risk": "normal",
+        "duration_days": 0,
+        "mhw": false
+      },
+      "forecasts": [
+        {
+          "horizon_days": 1,
+          "origin_date": "2024-11-21",
+          "target_date": "2024-11-22",
+          "sst_c": 22.836,
+          "lower_c": 22.406,
+          "upper_c": 23.266,
+          "reference_c": 22.133666234680696,
+          "p90_c": 23.03564519857713,
+          "method": "XGBoost + persistence",
+          "interval": {
+            "nominal_coverage": 0.8,
+            "method": "validation residual seasonal envelope",
+            "calibration_end": "2023-12-22",
+            "test_coverage": 0.8171206225680934
+          },
+          "risk": "normal",
+          "warning": {
+            "triggered": false,
+            "signal_c": 22.879275044156515,
+            "threshold_c": 23.03564519857713,
+            "percentile": 90,
+            "source": "seasonal_drift_c",
+            "margin_c": 0.0,
+            "reason": "+24 saat için son gözlem ve mevsimsel değişim 22.88 °C; validation ile seçilen P90 ve +0.00 °C marjlı 23.04 °C tetik eşiğini aşmıyor. Bu sinyal bir olayın gerçekleşme olasılığı değildir."
+          }
+        },
+        {
+          "horizon_days": 2,
+          "origin_date": "2024-11-21",
+          "target_date": "2024-11-23",
+          "sst_c": 22.739,
+          "lower_c": 22.199,
+          "upper_c": 23.279,
+          "reference_c": 22.03794632085229,
+          "p90_c": 22.93939274697278,
+          "method": "XGBoost + persistence",
+          "interval": {
+            "nominal_coverage": 0.8,
+            "method": "validation residual seasonal envelope",
+            "calibration_end": "2023-12-22",
+            "test_coverage": 0.8120740019474196
+          },
+          "risk": "normal",
+          "warning": {
+            "triggered": false,
+            "signal_c": 22.78355513032811,
+            "threshold_c": 22.93939274697278,
+            "percentile": 90,
+            "source": "seasonal_drift_c",
+            "margin_c": 0.0,
+            "reason": "+48 saat için son gözlem ve mevsimsel değişim 22.78 °C; validation ile seçilen P90 ve +0.00 °C marjlı 22.94 °C tetik eşiğini aşmıyor. Bu sinyal bir olayın gerçekleşme olasılığı değildir."
+          }
+        },
+        {
+          "horizon_days": 3,
+          "origin_date": "2024-11-21",
+          "target_date": "2024-11-24",
+          "sst_c": 22.651,
+          "lower_c": 22.089,
+          "upper_c": 23.213,
+          "reference_c": 21.942245903049315,
+          "p90_c": 22.845998182269064,
+          "method": "XGBoost + persistence",
+          "interval": {
+            "nominal_coverage": 0.8,
+            "method": "validation residual seasonal envelope",
+            "calibration_end": "2023-12-22",
+            "test_coverage": 0.8109161793372319
+          },
+          "risk": "normal",
+          "warning": {
+            "triggered": true,
+            "signal_c": 22.97494656293366,
+            "threshold_c": 22.8926007895494,
+            "percentile": 95,
+            "source": "persistence_c",
+            "margin_c": -0.2,
+            "reason": "+72 saat için son gözlemin devamı 22.97 °C; validation ile seçilen P95 ve -0.20 °C marjlı 22.89 °C tetik eşiğini aşıyor. Bu sinyal bir olayın gerçekleşme olasılığı değildir."
+          }
+        }
+      ],
+      "history": [
+        {
+          "date": "2023-11-23",
+          "sst_c": 23.701,
+          "reference_c": 22.038,
+          "p90_c": 22.939,
+          "anomaly_c": 1.663,
+          "duration_days": 34,
+          "mhw": true
+        },
+        {
+          "date": "2023-11-24",
+          "sst_c": 23.211,
+          "reference_c": 21.942,
+          "p90_c": 22.846,
+          "anomaly_c": 1.268,
+          "duration_days": 35,
+          "mhw": true
+        },
+        {
+          "date": "2023-11-25",
+          "sst_c": 23.381,
+          "reference_c": 21.847,
+          "p90_c": 22.753,
+          "anomaly_c": 1.534,
+          "duration_days": 36,
+          "mhw": true
+        },
+        {
+          "date": "2023-11-26",
+          "sst_c": 23.698,
+          "reference_c": 21.751,
+          "p90_c": 22.657,
+          "anomaly_c": 1.947,
+          "duration_days": 37,
+          "mhw": true
+        },
+        {
+          "date": "2023-11-27",
+          "sst_c": 23.3,
+          "reference_c": 21.655,
+          "p90_c": 22.559,
+          "anomaly_c": 1.644,
+          "duration_days": 38,
+          "mhw": true
+        },
+        {
+          "date": "2023-11-28",
+          "sst_c": 22.606,
+          "reference_c": 21.56,
+          "p90_c": 22.457,
+          "anomaly_c": 1.046,
+          "duration_days": 39,
+          "mhw": true
+        },
+        {
+          "date": "2023-11-29",
+          "sst_c": 22.539,
+          "reference_c": 21.464,
+          "p90_c": 22.354,
+          "anomaly_c": 1.075,
+          "duration_days": 40,
+          "mhw": true
+        },
+        {
+          "date": "2023-11-30",
+          "sst_c": 22.949,
+          "reference_c": 21.369,
+          "p90_c": 22.256,
+          "anomaly_c": 1.58,
+          "duration_days": 41,
+          "mhw": true
+        },
+        {
+          "date": "2023-12-01",
+          "sst_c": 22.638,
+          "reference_c": 21.274,
+          "p90_c": 22.159,
+          "anomaly_c": 1.364,
+          "duration_days": 42,
+          "mhw": true
+        },
+        {
+          "date": "2023-12-02",
+          "sst_c": 22.92,
+          "reference_c": 21.18,
+          "p90_c": 22.063,
+          "anomaly_c": 1.741,
+          "duration_days": 43,
+          "mhw": true
+        },
+        {
+          "date": "2023-12-03",
+          "sst_c": 22.633,
+          "reference_c": 21.087,
+          "p90_c": 21.971,
+          "anomaly_c": 1.546,
+          "duration_days": 44,
+          "mhw": true
+        },
+        {
+          "date": "2023-12-04",
+          "sst_c": 22.902,
+          "reference_c": 20.997,
+          "p90_c": 21.881,
+          "anomaly_c": 1.905,
+          "duration_days": 45,
+          "mhw": true
+        },
+        {
+          "date": "2023-12-05",
+          "sst_c": 22.702,
+          "reference_c": 20.908,
+          "p90_c": 21.793,
+          "anomaly_c": 1.794,
+          "duration_days": 46,
+          "mhw": true
+        },
+        {
+          "date": "2023-12-06",
+          "sst_c": 22.467,
+          "reference_c": 20.822,
+          "p90_c": 21.708,
+          "anomaly_c": 1.645,
+          "duration_days": 47,
+          "mhw": true
+        },
+        {
+          "date": "2023-12-07",
+          "sst_c": 22.229,
+          "reference_c": 20.737,
+          "p90_c": 21.622,
+          "anomaly_c": 1.492,
+          "duration_days": 48,
+          "mhw": true
+        },
+        {
+          "date": "2023-12-08",
+          "sst_c": 22.12,
+          "reference_c": 20.654,
+          "p90_c": 21.54,
+          "anomaly_c": 1.466,
+          "duration_days": 49,
+          "mhw": true
+        },
+        {
+          "date": "2023-12-09",
+          "sst_c": 22.339,
+          "reference_c": 20.572,
+          "p90_c": 21.464,
+          "anomaly_c": 1.766,
+          "duration_days": 50,
+          "mhw": true
+        },
+        {
+          "date": "2023-12-10",
+          "sst_c": 22.442,
+          "reference_c": 20.492,
+          "p90_c": 21.39,
+          "anomaly_c": 1.95,
+          "duration_days": 51,
+          "mhw": true
+        },
+        {
+          "date": "2023-12-11",
+          "sst_c": 22.363,
+          "reference_c": 20.415,
+          "p90_c": 21.32,
+          "anomaly_c": 1.949,
+          "duration_days": 52,
+          "mhw": true
+        },
+        {
+          "date": "2023-12-12",
+          "sst_c": 22.428,
+          "reference_c": 20.338,
+          "p90_c": 21.251,
+          "anomaly_c": 2.09,
+          "duration_days": 53,
+          "mhw": true
+        },
+        {
+          "date": "2023-12-13",
+          "sst_c": 22.365,
+          "reference_c": 20.264,
+          "p90_c": 21.184,
+          "anomaly_c": 2.101,
+          "duration_days": 54,
+          "mhw": true
+        },
+        {
+          "date": "2023-12-14",
+          "sst_c": 22.133,
+          "reference_c": 20.19,
+          "p90_c": 21.118,
+          "anomaly_c": 1.942,
+          "duration_days": 55,
+          "mhw": true
+        },
+        {
+          "date": "2023-12-15",
+          "sst_c": 22.107,
+          "reference_c": 20.118,
+          "p90_c": 21.053,
+          "anomaly_c": 1.988,
+          "duration_days": 56,
+          "mhw": true
+        },
+        {
+          "date": "2023-12-16",
+          "sst_c": 22.119,
+          "reference_c": 20.047,
+          "p90_c": 20.99,
+          "anomaly_c": 2.071,
+          "duration_days": 57,
+          "mhw": true
+        },
+        {
+          "date": "2023-12-17",
+          "sst_c": 22.304,
+          "reference_c": 19.978,
+          "p90_c": 20.925,
+          "anomaly_c": 2.326,
+          "duration_days": 58,
+          "mhw": true
+        },
+        {
+          "date": "2023-12-18",
+          "sst_c": 22.162,
+          "reference_c": 19.909,
+          "p90_c": 20.857,
+          "anomaly_c": 2.253,
+          "duration_days": 59,
+          "mhw": true
+        },
+        {
+          "date": "2023-12-19",
+          "sst_c": 21.73,
+          "reference_c": 19.843,
+          "p90_c": 20.793,
+          "anomaly_c": 1.887,
+          "duration_days": 60,
+          "mhw": true
+        },
+        {
+          "date": "2023-12-20",
+          "sst_c": 21.696,
+          "reference_c": 19.779,
+          "p90_c": 20.73,
+          "anomaly_c": 1.917,
+          "duration_days": 61,
+          "mhw": true
+        },
+        {
+          "date": "2023-12-21",
+          "sst_c": 21.636,
+          "reference_c": 19.716,
+          "p90_c": 20.669,
+          "anomaly_c": 1.92,
+          "duration_days": 62,
+          "mhw": true
+        },
+        {
+          "date": "2023-12-22",
+          "sst_c": 21.582,
+          "reference_c": 19.656,
+          "p90_c": 20.609,
+          "anomaly_c": 1.926,
+          "duration_days": 63,
+          "mhw": true
+        },
+        {
+          "date": "2023-12-23",
+          "sst_c": 21.639,
+          "reference_c": 19.598,
+          "p90_c": 20.549,
+          "anomaly_c": 2.041,
+          "duration_days": 64,
+          "mhw": true
+        },
+        {
+          "date": "2023-12-24",
+          "sst_c": 21.465,
+          "reference_c": 19.541,
+          "p90_c": 20.49,
+          "anomaly_c": 1.924,
+          "duration_days": 65,
+          "mhw": true
+        },
+        {
+          "date": "2023-12-25",
+          "sst_c": 21.946,
+          "reference_c": 19.487,
+          "p90_c": 20.431,
+          "anomaly_c": 2.458,
+          "duration_days": 66,
+          "mhw": true
+        },
+        {
+          "date": "2023-12-26",
+          "sst_c": 21.816,
+          "reference_c": 19.434,
+          "p90_c": 20.375,
+          "anomaly_c": 2.382,
+          "duration_days": 67,
+          "mhw": true
+        },
+        {
+          "date": "2023-12-27",
+          "sst_c": 21.794,
+          "reference_c": 19.383,
+          "p90_c": 20.323,
+          "anomaly_c": 2.411,
+          "duration_days": 68,
+          "mhw": true
+        },
+        {
+          "date": "2023-12-28",
+          "sst_c": 21.652,
+          "reference_c": 19.334,
+          "p90_c": 20.274,
+          "anomaly_c": 2.318,
+          "duration_days": 69,
+          "mhw": true
+        },
+        {
+          "date": "2023-12-29",
+          "sst_c": 21.535,
+          "reference_c": 19.286,
+          "p90_c": 20.229,
+          "anomaly_c": 2.25,
+          "duration_days": 70,
+          "mhw": true
+        },
+        {
+          "date": "2023-12-30",
+          "sst_c": 21.327,
+          "reference_c": 19.239,
+          "p90_c": 20.185,
+          "anomaly_c": 2.088,
+          "duration_days": 71,
+          "mhw": true
+        },
+        {
+          "date": "2023-12-31",
+          "sst_c": 21.318,
+          "reference_c": 19.193,
+          "p90_c": 20.141,
+          "anomaly_c": 2.125,
+          "duration_days": 72,
+          "mhw": true
+        },
+        {
+          "date": "2024-01-01",
+          "sst_c": 21.066,
+          "reference_c": 19.147,
+          "p90_c": 20.097,
+          "anomaly_c": 1.919,
+          "duration_days": 73,
+          "mhw": true
+        },
+        {
+          "date": "2024-01-02",
+          "sst_c": 20.992,
+          "reference_c": 19.103,
+          "p90_c": 20.051,
+          "anomaly_c": 1.89,
+          "duration_days": 74,
+          "mhw": true
+        },
+        {
+          "date": "2024-01-03",
+          "sst_c": 21.021,
+          "reference_c": 19.058,
+          "p90_c": 20.001,
+          "anomaly_c": 1.962,
+          "duration_days": 75,
+          "mhw": true
+        },
+        {
+          "date": "2024-01-04",
+          "sst_c": 20.906,
+          "reference_c": 19.014,
+          "p90_c": 19.95,
+          "anomaly_c": 1.892,
+          "duration_days": 76,
+          "mhw": true
+        },
+        {
+          "date": "2024-01-05",
+          "sst_c": 20.917,
+          "reference_c": 18.97,
+          "p90_c": 19.898,
+          "anomaly_c": 1.948,
+          "duration_days": 77,
+          "mhw": true
+        },
+        {
+          "date": "2024-01-06",
+          "sst_c": 21.339,
+          "reference_c": 18.925,
+          "p90_c": 19.845,
+          "anomaly_c": 2.414,
+          "duration_days": 78,
+          "mhw": true
+        },
+        {
+          "date": "2024-01-07",
+          "sst_c": 21.188,
+          "reference_c": 18.88,
+          "p90_c": 19.791,
+          "anomaly_c": 2.308,
+          "duration_days": 79,
+          "mhw": true
+        },
+        {
+          "date": "2024-01-08",
+          "sst_c": 20.92,
+          "reference_c": 18.835,
+          "p90_c": 19.737,
+          "anomaly_c": 2.085,
+          "duration_days": 80,
+          "mhw": true
+        },
+        {
+          "date": "2024-01-09",
+          "sst_c": 20.679,
+          "reference_c": 18.791,
+          "p90_c": 19.682,
+          "anomaly_c": 1.888,
+          "duration_days": 81,
+          "mhw": true
+        },
+        {
+          "date": "2024-01-10",
+          "sst_c": 20.52,
+          "reference_c": 18.746,
+          "p90_c": 19.625,
+          "anomaly_c": 1.774,
+          "duration_days": 82,
+          "mhw": true
+        },
+        {
+          "date": "2024-01-11",
+          "sst_c": 20.442,
+          "reference_c": 18.7,
+          "p90_c": 19.568,
+          "anomaly_c": 1.742,
+          "duration_days": 83,
+          "mhw": true
+        },
+        {
+          "date": "2024-01-12",
+          "sst_c": 20.312,
+          "reference_c": 18.655,
+          "p90_c": 19.511,
+          "anomaly_c": 1.657,
+          "duration_days": 84,
+          "mhw": true
+        },
+        {
+          "date": "2024-01-13",
+          "sst_c": 20.289,
+          "reference_c": 18.61,
+          "p90_c": 19.453,
+          "anomaly_c": 1.679,
+          "duration_days": 85,
+          "mhw": true
+        },
+        {
+          "date": "2024-01-14",
+          "sst_c": 20.445,
+          "reference_c": 18.565,
+          "p90_c": 19.396,
+          "anomaly_c": 1.88,
+          "duration_days": 86,
+          "mhw": true
+        },
+        {
+          "date": "2024-01-15",
+          "sst_c": 19.932,
+          "reference_c": 18.521,
+          "p90_c": 19.338,
+          "anomaly_c": 1.41,
+          "duration_days": 87,
+          "mhw": true
+        },
+        {
+          "date": "2024-01-16",
+          "sst_c": 19.993,
+          "reference_c": 18.478,
+          "p90_c": 19.282,
+          "anomaly_c": 1.515,
+          "duration_days": 88,
+          "mhw": true
+        },
+        {
+          "date": "2024-01-17",
+          "sst_c": 20.045,
+          "reference_c": 18.435,
+          "p90_c": 19.228,
+          "anomaly_c": 1.61,
+          "duration_days": 89,
+          "mhw": true
+        },
+        {
+          "date": "2024-01-18",
+          "sst_c": 20.086,
+          "reference_c": 18.394,
+          "p90_c": 19.179,
+          "anomaly_c": 1.693,
+          "duration_days": 90,
+          "mhw": true
+        },
+        {
+          "date": "2024-01-19",
+          "sst_c": 20.151,
+          "reference_c": 18.352,
+          "p90_c": 19.131,
+          "anomaly_c": 1.798,
+          "duration_days": 91,
+          "mhw": true
+        },
+        {
+          "date": "2024-01-20",
+          "sst_c": 20.314,
+          "reference_c": 18.311,
+          "p90_c": 19.083,
+          "anomaly_c": 2.003,
+          "duration_days": 92,
+          "mhw": true
+        },
+        {
+          "date": "2024-01-21",
+          "sst_c": 20.168,
+          "reference_c": 18.269,
+          "p90_c": 19.035,
+          "anomaly_c": 1.899,
+          "duration_days": 93,
+          "mhw": true
+        },
+        {
+          "date": "2024-01-22",
+          "sst_c": 20.018,
+          "reference_c": 18.228,
+          "p90_c": 18.987,
+          "anomaly_c": 1.79,
+          "duration_days": 94,
+          "mhw": true
+        },
+        {
+          "date": "2024-01-23",
+          "sst_c": 20.069,
+          "reference_c": 18.187,
+          "p90_c": 18.939,
+          "anomaly_c": 1.881,
+          "duration_days": 95,
+          "mhw": true
+        },
+        {
+          "date": "2024-01-24",
+          "sst_c": 20.272,
+          "reference_c": 18.146,
+          "p90_c": 18.89,
+          "anomaly_c": 2.125,
+          "duration_days": 96,
+          "mhw": true
+        },
+        {
+          "date": "2024-01-25",
+          "sst_c": 20.066,
+          "reference_c": 18.105,
+          "p90_c": 18.841,
+          "anomaly_c": 1.961,
+          "duration_days": 97,
+          "mhw": true
+        },
+        {
+          "date": "2024-01-26",
+          "sst_c": 19.783,
+          "reference_c": 18.064,
+          "p90_c": 18.792,
+          "anomaly_c": 1.719,
+          "duration_days": 98,
+          "mhw": true
+        },
+        {
+          "date": "2024-01-27",
+          "sst_c": 19.764,
+          "reference_c": 18.024,
+          "p90_c": 18.744,
+          "anomaly_c": 1.74,
+          "duration_days": 99,
+          "mhw": true
+        },
+        {
+          "date": "2024-01-28",
+          "sst_c": 19.731,
+          "reference_c": 17.984,
+          "p90_c": 18.695,
+          "anomaly_c": 1.747,
+          "duration_days": 100,
+          "mhw": true
+        },
+        {
+          "date": "2024-01-29",
+          "sst_c": 19.695,
+          "reference_c": 17.945,
+          "p90_c": 18.647,
+          "anomaly_c": 1.751,
+          "duration_days": 101,
+          "mhw": true
+        },
+        {
+          "date": "2024-01-30",
+          "sst_c": 19.669,
+          "reference_c": 17.906,
+          "p90_c": 18.603,
+          "anomaly_c": 1.762,
+          "duration_days": 102,
+          "mhw": true
+        },
+        {
+          "date": "2024-01-31",
+          "sst_c": 19.58,
+          "reference_c": 17.87,
+          "p90_c": 18.559,
+          "anomaly_c": 1.711,
+          "duration_days": 103,
+          "mhw": true
+        },
+        {
+          "date": "2024-02-01",
+          "sst_c": 19.704,
+          "reference_c": 17.835,
+          "p90_c": 18.517,
+          "anomaly_c": 1.869,
+          "duration_days": 104,
+          "mhw": true
+        },
+        {
+          "date": "2024-02-02",
+          "sst_c": 19.861,
+          "reference_c": 17.801,
+          "p90_c": 18.476,
+          "anomaly_c": 2.06,
+          "duration_days": 105,
+          "mhw": true
+        },
+        {
+          "date": "2024-02-03",
+          "sst_c": 19.543,
+          "reference_c": 17.768,
+          "p90_c": 18.439,
+          "anomaly_c": 1.774,
+          "duration_days": 106,
+          "mhw": true
+        },
+        {
+          "date": "2024-02-04",
+          "sst_c": 19.469,
+          "reference_c": 17.737,
+          "p90_c": 18.408,
+          "anomaly_c": 1.733,
+          "duration_days": 107,
+          "mhw": true
+        },
+        {
+          "date": "2024-02-05",
+          "sst_c": 19.389,
+          "reference_c": 17.705,
+          "p90_c": 18.375,
+          "anomaly_c": 1.683,
+          "duration_days": 108,
+          "mhw": true
+        },
+        {
+          "date": "2024-02-06",
+          "sst_c": 19.414,
+          "reference_c": 17.675,
+          "p90_c": 18.344,
+          "anomaly_c": 1.739,
+          "duration_days": 109,
+          "mhw": true
+        },
+        {
+          "date": "2024-02-07",
+          "sst_c": 19.302,
+          "reference_c": 17.646,
+          "p90_c": 18.314,
+          "anomaly_c": 1.656,
+          "duration_days": 110,
+          "mhw": true
+        },
+        {
+          "date": "2024-02-08",
+          "sst_c": 19.22,
+          "reference_c": 17.618,
+          "p90_c": 18.287,
+          "anomaly_c": 1.602,
+          "duration_days": 111,
+          "mhw": true
+        },
+        {
+          "date": "2024-02-09",
+          "sst_c": 19.178,
+          "reference_c": 17.591,
+          "p90_c": 18.262,
+          "anomaly_c": 1.586,
+          "duration_days": 112,
+          "mhw": true
+        },
+        {
+          "date": "2024-02-10",
+          "sst_c": 19.271,
+          "reference_c": 17.565,
+          "p90_c": 18.238,
+          "anomaly_c": 1.706,
+          "duration_days": 113,
+          "mhw": true
+        },
+        {
+          "date": "2024-02-11",
+          "sst_c": 19.304,
+          "reference_c": 17.54,
+          "p90_c": 18.214,
+          "anomaly_c": 1.763,
+          "duration_days": 114,
+          "mhw": true
+        },
+        {
+          "date": "2024-02-12",
+          "sst_c": 19.304,
+          "reference_c": 17.516,
+          "p90_c": 18.191,
+          "anomaly_c": 1.788,
+          "duration_days": 115,
+          "mhw": true
+        },
+        {
+          "date": "2024-02-13",
+          "sst_c": 19.183,
+          "reference_c": 17.492,
+          "p90_c": 18.167,
+          "anomaly_c": 1.691,
+          "duration_days": 116,
+          "mhw": true
+        },
+        {
+          "date": "2024-02-14",
+          "sst_c": 18.987,
+          "reference_c": 17.469,
+          "p90_c": 18.144,
+          "anomaly_c": 1.518,
+          "duration_days": 117,
+          "mhw": true
+        },
+        {
+          "date": "2024-02-15",
+          "sst_c": 19.267,
+          "reference_c": 17.448,
+          "p90_c": 18.121,
+          "anomaly_c": 1.819,
+          "duration_days": 118,
+          "mhw": true
+        },
+        {
+          "date": "2024-02-16",
+          "sst_c": 19.066,
+          "reference_c": 17.428,
+          "p90_c": 18.1,
+          "anomaly_c": 1.638,
+          "duration_days": 119,
+          "mhw": true
+        },
+        {
+          "date": "2024-02-17",
+          "sst_c": 18.894,
+          "reference_c": 17.409,
+          "p90_c": 18.08,
+          "anomaly_c": 1.485,
+          "duration_days": 120,
+          "mhw": true
+        },
+        {
+          "date": "2024-02-18",
+          "sst_c": 19.046,
+          "reference_c": 17.391,
+          "p90_c": 18.058,
+          "anomaly_c": 1.655,
+          "duration_days": 121,
+          "mhw": true
+        },
+        {
+          "date": "2024-02-19",
+          "sst_c": 19.004,
+          "reference_c": 17.372,
+          "p90_c": 18.037,
+          "anomaly_c": 1.632,
+          "duration_days": 122,
+          "mhw": true
+        },
+        {
+          "date": "2024-02-20",
+          "sst_c": 19.201,
+          "reference_c": 17.355,
+          "p90_c": 18.018,
+          "anomaly_c": 1.846,
+          "duration_days": 123,
+          "mhw": true
+        },
+        {
+          "date": "2024-02-21",
+          "sst_c": 19.061,
+          "reference_c": 17.34,
+          "p90_c": 17.999,
+          "anomaly_c": 1.722,
+          "duration_days": 124,
+          "mhw": true
+        },
+        {
+          "date": "2024-02-22",
+          "sst_c": 18.598,
+          "reference_c": 17.325,
+          "p90_c": 17.982,
+          "anomaly_c": 1.273,
+          "duration_days": 125,
+          "mhw": true
+        },
+        {
+          "date": "2024-02-23",
+          "sst_c": 19.125,
+          "reference_c": 17.312,
+          "p90_c": 17.967,
+          "anomaly_c": 1.813,
+          "duration_days": 126,
+          "mhw": true
+        },
+        {
+          "date": "2024-02-24",
+          "sst_c": 18.999,
+          "reference_c": 17.3,
+          "p90_c": 17.955,
+          "anomaly_c": 1.699,
+          "duration_days": 127,
+          "mhw": true
+        },
+        {
+          "date": "2024-02-25",
+          "sst_c": 19.033,
+          "reference_c": 17.29,
+          "p90_c": 17.945,
+          "anomaly_c": 1.743,
+          "duration_days": 128,
+          "mhw": true
+        },
+        {
+          "date": "2024-02-26",
+          "sst_c": 18.715,
+          "reference_c": 17.281,
+          "p90_c": 17.938,
+          "anomaly_c": 1.434,
+          "duration_days": 129,
+          "mhw": true
+        },
+        {
+          "date": "2024-02-27",
+          "sst_c": 19.032,
+          "reference_c": 17.273,
+          "p90_c": 17.932,
+          "anomaly_c": 1.759,
+          "duration_days": 130,
+          "mhw": true
+        },
+        {
+          "date": "2024-02-28",
+          "sst_c": 18.683,
+          "reference_c": 17.266,
+          "p90_c": 17.928,
+          "anomaly_c": 1.417,
+          "duration_days": 131,
+          "mhw": true
+        },
+        {
+          "date": "2024-02-29",
+          "sst_c": 18.65,
+          "reference_c": 17.261,
+          "p90_c": 17.927,
+          "anomaly_c": 1.389,
+          "duration_days": 132,
+          "mhw": true
+        },
+        {
+          "date": "2024-03-01",
+          "sst_c": 18.795,
+          "reference_c": 17.257,
+          "p90_c": 17.925,
+          "anomaly_c": 1.538,
+          "duration_days": 133,
+          "mhw": true
+        },
+        {
+          "date": "2024-03-02",
+          "sst_c": 18.56,
+          "reference_c": 17.254,
+          "p90_c": 17.924,
+          "anomaly_c": 1.307,
+          "duration_days": 134,
+          "mhw": true
+        },
+        {
+          "date": "2024-03-03",
+          "sst_c": 18.149,
+          "reference_c": 17.251,
+          "p90_c": 17.925,
+          "anomaly_c": 0.898,
+          "duration_days": 135,
+          "mhw": true
+        },
+        {
+          "date": "2024-03-04",
+          "sst_c": 18.098,
+          "reference_c": 17.25,
+          "p90_c": 17.927,
+          "anomaly_c": 0.848,
+          "duration_days": 136,
+          "mhw": true
+        },
+        {
+          "date": "2024-03-05",
+          "sst_c": 18.592,
+          "reference_c": 17.25,
+          "p90_c": 17.928,
+          "anomaly_c": 1.342,
+          "duration_days": 137,
+          "mhw": true
+        },
+        {
+          "date": "2024-03-06",
+          "sst_c": 18.58,
+          "reference_c": 17.25,
+          "p90_c": 17.927,
+          "anomaly_c": 1.33,
+          "duration_days": 138,
+          "mhw": true
+        },
+        {
+          "date": "2024-03-07",
+          "sst_c": 18.181,
+          "reference_c": 17.252,
+          "p90_c": 17.929,
+          "anomaly_c": 0.929,
+          "duration_days": 139,
+          "mhw": true
+        },
+        {
+          "date": "2024-03-08",
+          "sst_c": 18.715,
+          "reference_c": 17.254,
+          "p90_c": 17.932,
+          "anomaly_c": 1.461,
+          "duration_days": 140,
+          "mhw": true
+        },
+        {
+          "date": "2024-03-09",
+          "sst_c": 18.645,
+          "reference_c": 17.258,
+          "p90_c": 17.934,
+          "anomaly_c": 1.387,
+          "duration_days": 141,
+          "mhw": true
+        },
+        {
+          "date": "2024-03-10",
+          "sst_c": 18.624,
+          "reference_c": 17.263,
+          "p90_c": 17.936,
+          "anomaly_c": 1.36,
+          "duration_days": 142,
+          "mhw": true
+        },
+        {
+          "date": "2024-03-11",
+          "sst_c": 18.513,
+          "reference_c": 17.27,
+          "p90_c": 17.938,
+          "anomaly_c": 1.243,
+          "duration_days": 143,
+          "mhw": true
+        },
+        {
+          "date": "2024-03-12",
+          "sst_c": 18.473,
+          "reference_c": 17.277,
+          "p90_c": 17.941,
+          "anomaly_c": 1.195,
+          "duration_days": 144,
+          "mhw": true
+        },
+        {
+          "date": "2024-03-13",
+          "sst_c": 18.573,
+          "reference_c": 17.285,
+          "p90_c": 17.946,
+          "anomaly_c": 1.287,
+          "duration_days": 145,
+          "mhw": true
+        },
+        {
+          "date": "2024-03-14",
+          "sst_c": 18.885,
+          "reference_c": 17.294,
+          "p90_c": 17.951,
+          "anomaly_c": 1.591,
+          "duration_days": 146,
+          "mhw": true
+        },
+        {
+          "date": "2024-03-15",
+          "sst_c": 18.53,
+          "reference_c": 17.304,
+          "p90_c": 17.961,
+          "anomaly_c": 1.227,
+          "duration_days": 147,
+          "mhw": true
+        },
+        {
+          "date": "2024-03-16",
+          "sst_c": 18.135,
+          "reference_c": 17.315,
+          "p90_c": 17.975,
+          "anomaly_c": 0.82,
+          "duration_days": 148,
+          "mhw": true
+        },
+        {
+          "date": "2024-03-17",
+          "sst_c": 18.364,
+          "reference_c": 17.328,
+          "p90_c": 17.99,
+          "anomaly_c": 1.037,
+          "duration_days": 149,
+          "mhw": true
+        },
+        {
+          "date": "2024-03-18",
+          "sst_c": 18.463,
+          "reference_c": 17.342,
+          "p90_c": 18.007,
+          "anomaly_c": 1.121,
+          "duration_days": 150,
+          "mhw": true
+        },
+        {
+          "date": "2024-03-19",
+          "sst_c": 18.439,
+          "reference_c": 17.358,
+          "p90_c": 18.025,
+          "anomaly_c": 1.081,
+          "duration_days": 151,
+          "mhw": true
+        },
+        {
+          "date": "2024-03-20",
+          "sst_c": 18.469,
+          "reference_c": 17.376,
+          "p90_c": 18.045,
+          "anomaly_c": 1.093,
+          "duration_days": 152,
+          "mhw": true
+        },
+        {
+          "date": "2024-03-21",
+          "sst_c": 18.587,
+          "reference_c": 17.396,
+          "p90_c": 18.066,
+          "anomaly_c": 1.191,
+          "duration_days": 153,
+          "mhw": true
+        },
+        {
+          "date": "2024-03-22",
+          "sst_c": 19.022,
+          "reference_c": 17.417,
+          "p90_c": 18.092,
+          "anomaly_c": 1.605,
+          "duration_days": 154,
+          "mhw": true
+        },
+        {
+          "date": "2024-03-23",
+          "sst_c": 18.333,
+          "reference_c": 17.44,
+          "p90_c": 18.121,
+          "anomaly_c": 0.893,
+          "duration_days": 155,
+          "mhw": true
+        },
+        {
+          "date": "2024-03-24",
+          "sst_c": 18.126,
+          "reference_c": 17.464,
+          "p90_c": 18.151,
+          "anomaly_c": 0.662,
+          "duration_days": 0,
+          "mhw": false
+        },
+        {
+          "date": "2024-03-25",
+          "sst_c": 18.159,
+          "reference_c": 17.489,
+          "p90_c": 18.181,
+          "anomaly_c": 0.67,
+          "duration_days": 0,
+          "mhw": false
+        },
+        {
+          "date": "2024-03-26",
+          "sst_c": 18.033,
+          "reference_c": 17.516,
+          "p90_c": 18.213,
+          "anomaly_c": 0.517,
+          "duration_days": 0,
+          "mhw": false
+        },
+        {
+          "date": "2024-03-27",
+          "sst_c": 17.746,
+          "reference_c": 17.543,
+          "p90_c": 18.243,
+          "anomaly_c": 0.203,
+          "duration_days": 0,
+          "mhw": false
+        },
+        {
+          "date": "2024-03-28",
+          "sst_c": 17.798,
+          "reference_c": 17.57,
+          "p90_c": 18.275,
+          "anomaly_c": 0.227,
+          "duration_days": 0,
+          "mhw": false
+        },
+        {
+          "date": "2024-03-29",
+          "sst_c": 17.923,
+          "reference_c": 17.6,
+          "p90_c": 18.307,
+          "anomaly_c": 0.323,
+          "duration_days": 0,
+          "mhw": false
+        },
+        {
+          "date": "2024-03-30",
+          "sst_c": 18.096,
+          "reference_c": 17.63,
+          "p90_c": 18.344,
+          "anomaly_c": 0.466,
+          "duration_days": 0,
+          "mhw": false
+        },
+        {
+          "date": "2024-03-31",
+          "sst_c": 18.962,
+          "reference_c": 17.661,
+          "p90_c": 18.39,
+          "anomaly_c": 1.302,
+          "duration_days": 1,
+          "mhw": false
+        },
+        {
+          "date": "2024-04-01",
+          "sst_c": 19.068,
+          "reference_c": 17.693,
+          "p90_c": 18.439,
+          "anomaly_c": 1.375,
+          "duration_days": 2,
+          "mhw": false
+        },
+        {
+          "date": "2024-04-02",
+          "sst_c": 19.991,
+          "reference_c": 17.725,
+          "p90_c": 18.489,
+          "anomaly_c": 2.265,
+          "duration_days": 3,
+          "mhw": false
+        },
+        {
+          "date": "2024-04-03",
+          "sst_c": 19.393,
+          "reference_c": 17.76,
+          "p90_c": 18.539,
+          "anomaly_c": 1.634,
+          "duration_days": 4,
+          "mhw": false
+        },
+        {
+          "date": "2024-04-04",
+          "sst_c": 19.431,
+          "reference_c": 17.795,
+          "p90_c": 18.589,
+          "anomaly_c": 1.636,
+          "duration_days": 5,
+          "mhw": true
+        },
+        {
+          "date": "2024-04-05",
+          "sst_c": 19.963,
+          "reference_c": 17.831,
+          "p90_c": 18.64,
+          "anomaly_c": 2.132,
+          "duration_days": 6,
+          "mhw": true
+        },
+        {
+          "date": "2024-04-06",
+          "sst_c": 19.917,
+          "reference_c": 17.868,
+          "p90_c": 18.692,
+          "anomaly_c": 2.049,
+          "duration_days": 7,
+          "mhw": true
+        },
+        {
+          "date": "2024-04-07",
+          "sst_c": 19.431,
+          "reference_c": 17.908,
+          "p90_c": 18.745,
+          "anomaly_c": 1.523,
+          "duration_days": 8,
+          "mhw": true
+        },
+        {
+          "date": "2024-04-08",
+          "sst_c": 19.082,
+          "reference_c": 17.949,
+          "p90_c": 18.802,
+          "anomaly_c": 1.133,
+          "duration_days": 9,
+          "mhw": true
+        },
+        {
+          "date": "2024-04-09",
+          "sst_c": 19.125,
+          "reference_c": 17.991,
+          "p90_c": 18.861,
+          "anomaly_c": 1.134,
+          "duration_days": 10,
+          "mhw": true
+        },
+        {
+          "date": "2024-04-10",
+          "sst_c": 19.119,
+          "reference_c": 18.036,
+          "p90_c": 18.923,
+          "anomaly_c": 1.082,
+          "duration_days": 11,
+          "mhw": true
+        },
+        {
+          "date": "2024-04-11",
+          "sst_c": 19.141,
+          "reference_c": 18.084,
+          "p90_c": 18.987,
+          "anomaly_c": 1.057,
+          "duration_days": 12,
+          "mhw": true
+        },
+        {
+          "date": "2024-04-12",
+          "sst_c": 18.891,
+          "reference_c": 18.136,
+          "p90_c": 19.052,
+          "anomaly_c": 0.755,
+          "duration_days": 0,
+          "mhw": false
+        },
+        {
+          "date": "2024-04-13",
+          "sst_c": 19.703,
+          "reference_c": 18.19,
+          "p90_c": 19.125,
+          "anomaly_c": 1.512,
+          "duration_days": 1,
+          "mhw": false
+        },
+        {
+          "date": "2024-04-14",
+          "sst_c": 20.133,
+          "reference_c": 18.248,
+          "p90_c": 19.2,
+          "anomaly_c": 1.884,
+          "duration_days": 2,
+          "mhw": false
+        },
+        {
+          "date": "2024-04-15",
+          "sst_c": 19.51,
+          "reference_c": 18.31,
+          "p90_c": 19.279,
+          "anomaly_c": 1.2,
+          "duration_days": 3,
+          "mhw": false
+        },
+        {
+          "date": "2024-04-16",
+          "sst_c": 19.888,
+          "reference_c": 18.374,
+          "p90_c": 19.363,
+          "anomaly_c": 1.514,
+          "duration_days": 4,
+          "mhw": false
+        },
+        {
+          "date": "2024-04-17",
+          "sst_c": 20.443,
+          "reference_c": 18.441,
+          "p90_c": 19.452,
+          "anomaly_c": 2.002,
+          "duration_days": 5,
+          "mhw": true
+        },
+        {
+          "date": "2024-04-18",
+          "sst_c": 20.556,
+          "reference_c": 18.51,
+          "p90_c": 19.546,
+          "anomaly_c": 2.046,
+          "duration_days": 6,
+          "mhw": true
+        },
+        {
+          "date": "2024-04-19",
+          "sst_c": 19.721,
+          "reference_c": 18.581,
+          "p90_c": 19.651,
+          "anomaly_c": 1.14,
+          "duration_days": 7,
+          "mhw": true
+        },
+        {
+          "date": "2024-04-20",
+          "sst_c": 19.878,
+          "reference_c": 18.654,
+          "p90_c": 19.758,
+          "anomaly_c": 1.224,
+          "duration_days": 8,
+          "mhw": true
+        },
+        {
+          "date": "2024-04-21",
+          "sst_c": 20.371,
+          "reference_c": 18.728,
+          "p90_c": 19.864,
+          "anomaly_c": 1.643,
+          "duration_days": 9,
+          "mhw": true
+        },
+        {
+          "date": "2024-04-22",
+          "sst_c": 20.265,
+          "reference_c": 18.805,
+          "p90_c": 19.974,
+          "anomaly_c": 1.461,
+          "duration_days": 10,
+          "mhw": true
+        },
+        {
+          "date": "2024-04-23",
+          "sst_c": 18.886,
+          "reference_c": 18.883,
+          "p90_c": 20.086,
+          "anomaly_c": 0.003,
+          "duration_days": 0,
+          "mhw": false
+        },
+        {
+          "date": "2024-04-24",
+          "sst_c": 19.639,
+          "reference_c": 18.963,
+          "p90_c": 20.199,
+          "anomaly_c": 0.676,
+          "duration_days": 0,
+          "mhw": false
+        },
+        {
+          "date": "2024-04-25",
+          "sst_c": 20.062,
+          "reference_c": 19.046,
+          "p90_c": 20.313,
+          "anomaly_c": 1.016,
+          "duration_days": 0,
+          "mhw": false
+        },
+        {
+          "date": "2024-04-26",
+          "sst_c": 20.029,
+          "reference_c": 19.131,
+          "p90_c": 20.428,
+          "anomaly_c": 0.898,
+          "duration_days": 0,
+          "mhw": false
+        },
+        {
+          "date": "2024-04-27",
+          "sst_c": 20.192,
+          "reference_c": 19.22,
+          "p90_c": 20.545,
+          "anomaly_c": 0.972,
+          "duration_days": 0,
+          "mhw": false
+        },
+        {
+          "date": "2024-04-28",
+          "sst_c": 20.286,
+          "reference_c": 19.311,
+          "p90_c": 20.659,
+          "anomaly_c": 0.975,
+          "duration_days": 0,
+          "mhw": false
+        },
+        {
+          "date": "2024-04-29",
+          "sst_c": 21.47,
+          "reference_c": 19.404,
+          "p90_c": 20.772,
+          "anomaly_c": 2.065,
+          "duration_days": 1,
+          "mhw": false
+        },
+        {
+          "date": "2024-04-30",
+          "sst_c": 21.316,
+          "reference_c": 19.5,
+          "p90_c": 20.884,
+          "anomaly_c": 1.815,
+          "duration_days": 2,
+          "mhw": false
+        },
+        {
+          "date": "2024-05-01",
+          "sst_c": 22.775,
+          "reference_c": 19.598,
+          "p90_c": 20.988,
+          "anomaly_c": 3.177,
+          "duration_days": 3,
+          "mhw": false
+        },
+        {
+          "date": "2024-05-02",
+          "sst_c": 22.938,
+          "reference_c": 19.696,
+          "p90_c": 21.092,
+          "anomaly_c": 3.242,
+          "duration_days": 4,
+          "mhw": false
+        },
+        {
+          "date": "2024-05-03",
+          "sst_c": 22.246,
+          "reference_c": 19.795,
+          "p90_c": 21.201,
+          "anomaly_c": 2.451,
+          "duration_days": 5,
+          "mhw": true
+        },
+        {
+          "date": "2024-05-04",
+          "sst_c": 21.141,
+          "reference_c": 19.895,
+          "p90_c": 21.312,
+          "anomaly_c": 1.246,
+          "duration_days": 0,
+          "mhw": false
+        },
+        {
+          "date": "2024-05-05",
+          "sst_c": 19.352,
+          "reference_c": 19.996,
+          "p90_c": 21.424,
+          "anomaly_c": -0.644,
+          "duration_days": 0,
+          "mhw": false
+        },
+        {
+          "date": "2024-05-06",
+          "sst_c": 19.514,
+          "reference_c": 20.097,
+          "p90_c": 21.539,
+          "anomaly_c": -0.583,
+          "duration_days": 0,
+          "mhw": false
+        },
+        {
+          "date": "2024-05-07",
+          "sst_c": 19.626,
+          "reference_c": 20.199,
+          "p90_c": 21.655,
+          "anomaly_c": -0.572,
+          "duration_days": 0,
+          "mhw": false
+        },
+        {
+          "date": "2024-05-08",
+          "sst_c": 19.978,
+          "reference_c": 20.301,
+          "p90_c": 21.77,
+          "anomaly_c": -0.323,
+          "duration_days": 0,
+          "mhw": false
+        },
+        {
+          "date": "2024-05-09",
+          "sst_c": 20.431,
+          "reference_c": 20.402,
+          "p90_c": 21.881,
+          "anomaly_c": 0.029,
+          "duration_days": 0,
+          "mhw": false
+        },
+        {
+          "date": "2024-05-10",
+          "sst_c": 21.098,
+          "reference_c": 20.504,
+          "p90_c": 21.992,
+          "anomaly_c": 0.595,
+          "duration_days": 0,
+          "mhw": false
+        },
+        {
+          "date": "2024-05-11",
+          "sst_c": 20.848,
+          "reference_c": 20.605,
+          "p90_c": 22.102,
+          "anomaly_c": 0.243,
+          "duration_days": 0,
+          "mhw": false
+        },
+        {
+          "date": "2024-05-12",
+          "sst_c": 21.314,
+          "reference_c": 20.707,
+          "p90_c": 22.208,
+          "anomaly_c": 0.607,
+          "duration_days": 0,
+          "mhw": false
+        },
+        {
+          "date": "2024-05-13",
+          "sst_c": 20.703,
+          "reference_c": 20.81,
+          "p90_c": 22.318,
+          "anomaly_c": -0.107,
+          "duration_days": 0,
+          "mhw": false
+        },
+        {
+          "date": "2024-05-14",
+          "sst_c": 21.162,
+          "reference_c": 20.913,
+          "p90_c": 22.42,
+          "anomaly_c": 0.249,
+          "duration_days": 0,
+          "mhw": false
+        },
+        {
+          "date": "2024-05-15",
+          "sst_c": 21.222,
+          "reference_c": 21.017,
+          "p90_c": 22.522,
+          "anomaly_c": 0.204,
+          "duration_days": 0,
+          "mhw": false
+        },
+        {
+          "date": "2024-05-16",
+          "sst_c": 21.038,
+          "reference_c": 21.122,
+          "p90_c": 22.624,
+          "anomaly_c": -0.084,
+          "duration_days": 0,
+          "mhw": false
+        },
+        {
+          "date": "2024-05-17",
+          "sst_c": 21.245,
+          "reference_c": 21.227,
+          "p90_c": 22.726,
+          "anomaly_c": 0.018,
+          "duration_days": 0,
+          "mhw": false
+        },
+        {
+          "date": "2024-05-18",
+          "sst_c": 21.76,
+          "reference_c": 21.332,
+          "p90_c": 22.822,
+          "anomaly_c": 0.428,
+          "duration_days": 0,
+          "mhw": false
+        },
+        {
+          "date": "2024-05-19",
+          "sst_c": 22.12,
+          "reference_c": 21.436,
+          "p90_c": 22.911,
+          "anomaly_c": 0.684,
+          "duration_days": 0,
+          "mhw": false
+        },
+        {
+          "date": "2024-05-20",
+          "sst_c": 21.319,
+          "reference_c": 21.541,
+          "p90_c": 22.992,
+          "anomaly_c": -0.222,
+          "duration_days": 0,
+          "mhw": false
+        },
+        {
+          "date": "2024-05-21",
+          "sst_c": 21.944,
+          "reference_c": 21.648,
+          "p90_c": 23.078,
+          "anomaly_c": 0.296,
+          "duration_days": 0,
+          "mhw": false
+        },
+        {
+          "date": "2024-05-22",
+          "sst_c": 23.424,
+          "reference_c": 21.756,
+          "p90_c": 23.17,
+          "anomaly_c": 1.668,
+          "duration_days": 1,
+          "mhw": false
+        },
+        {
+          "date": "2024-05-23",
+          "sst_c": 22.77,
+          "reference_c": 21.865,
+          "p90_c": 23.256,
+          "anomaly_c": 0.905,
+          "duration_days": 0,
+          "mhw": false
+        },
+        {
+          "date": "2024-05-24",
+          "sst_c": 22.739,
+          "reference_c": 21.975,
+          "p90_c": 23.343,
+          "anomaly_c": 0.764,
+          "duration_days": 0,
+          "mhw": false
+        },
+        {
+          "date": "2024-05-25",
+          "sst_c": 22.62,
+          "reference_c": 22.086,
+          "p90_c": 23.431,
+          "anomaly_c": 0.534,
+          "duration_days": 0,
+          "mhw": false
+        },
+        {
+          "date": "2024-05-26",
+          "sst_c": 22.809,
+          "reference_c": 22.198,
+          "p90_c": 23.521,
+          "anomaly_c": 0.611,
+          "duration_days": 0,
+          "mhw": false
+        },
+        {
+          "date": "2024-05-27",
+          "sst_c": 22.554,
+          "reference_c": 22.31,
+          "p90_c": 23.621,
+          "anomaly_c": 0.244,
+          "duration_days": 0,
+          "mhw": false
+        },
+        {
+          "date": "2024-05-28",
+          "sst_c": 22.576,
+          "reference_c": 22.424,
+          "p90_c": 23.734,
+          "anomaly_c": 0.152,
+          "duration_days": 0,
+          "mhw": false
+        },
+        {
+          "date": "2024-05-29",
+          "sst_c": 23.498,
+          "reference_c": 22.539,
+          "p90_c": 23.851,
+          "anomaly_c": 0.958,
+          "duration_days": 0,
+          "mhw": false
+        },
+        {
+          "date": "2024-05-30",
+          "sst_c": 23.712,
+          "reference_c": 22.657,
+          "p90_c": 23.971,
+          "anomaly_c": 1.056,
+          "duration_days": 0,
+          "mhw": false
+        },
+        {
+          "date": "2024-05-31",
+          "sst_c": 23.752,
+          "reference_c": 22.775,
+          "p90_c": 24.087,
+          "anomaly_c": 0.977,
+          "duration_days": 0,
+          "mhw": false
+        },
+        {
+          "date": "2024-06-01",
+          "sst_c": 23.452,
+          "reference_c": 22.896,
+          "p90_c": 24.202,
+          "anomaly_c": 0.555,
+          "duration_days": 0,
+          "mhw": false
+        },
+        {
+          "date": "2024-06-02",
+          "sst_c": 24.368,
+          "reference_c": 23.02,
+          "p90_c": 24.321,
+          "anomaly_c": 1.348,
+          "duration_days": 1,
+          "mhw": false
+        },
+        {
+          "date": "2024-06-03",
+          "sst_c": 24.522,
+          "reference_c": 23.146,
+          "p90_c": 24.437,
+          "anomaly_c": 1.377,
+          "duration_days": 2,
+          "mhw": false
+        },
+        {
+          "date": "2024-06-04",
+          "sst_c": 25.384,
+          "reference_c": 23.273,
+          "p90_c": 24.555,
+          "anomaly_c": 2.11,
+          "duration_days": 3,
+          "mhw": false
+        },
+        {
+          "date": "2024-06-05",
+          "sst_c": 25.973,
+          "reference_c": 23.403,
+          "p90_c": 24.679,
+          "anomaly_c": 2.57,
+          "duration_days": 4,
+          "mhw": false
+        },
+        {
+          "date": "2024-06-06",
+          "sst_c": 26.839,
+          "reference_c": 23.534,
+          "p90_c": 24.802,
+          "anomaly_c": 3.305,
+          "duration_days": 5,
+          "mhw": true
+        },
+        {
+          "date": "2024-06-07",
+          "sst_c": 27.012,
+          "reference_c": 23.667,
+          "p90_c": 24.929,
+          "anomaly_c": 3.346,
+          "duration_days": 6,
+          "mhw": true
+        },
+        {
+          "date": "2024-06-08",
+          "sst_c": 25.974,
+          "reference_c": 23.801,
+          "p90_c": 25.056,
+          "anomaly_c": 2.173,
+          "duration_days": 7,
+          "mhw": true
+        },
+        {
+          "date": "2024-06-09",
+          "sst_c": 25.703,
+          "reference_c": 23.938,
+          "p90_c": 25.191,
+          "anomaly_c": 1.765,
+          "duration_days": 8,
+          "mhw": true
+        },
+        {
+          "date": "2024-06-10",
+          "sst_c": 26.312,
+          "reference_c": 24.076,
+          "p90_c": 25.325,
+          "anomaly_c": 2.236,
+          "duration_days": 9,
+          "mhw": true
+        },
+        {
+          "date": "2024-06-11",
+          "sst_c": 26.4,
+          "reference_c": 24.213,
+          "p90_c": 25.461,
+          "anomaly_c": 2.186,
+          "duration_days": 10,
+          "mhw": true
+        },
+        {
+          "date": "2024-06-12",
+          "sst_c": 26.173,
+          "reference_c": 24.349,
+          "p90_c": 25.598,
+          "anomaly_c": 1.824,
+          "duration_days": 11,
+          "mhw": true
+        },
+        {
+          "date": "2024-06-13",
+          "sst_c": 26.254,
+          "reference_c": 24.484,
+          "p90_c": 25.733,
+          "anomaly_c": 1.771,
+          "duration_days": 12,
+          "mhw": true
+        },
+        {
+          "date": "2024-06-14",
+          "sst_c": 27.128,
+          "reference_c": 24.617,
+          "p90_c": 25.869,
+          "anomaly_c": 2.512,
+          "duration_days": 13,
+          "mhw": true
+        },
+        {
+          "date": "2024-06-15",
+          "sst_c": 26.676,
+          "reference_c": 24.748,
+          "p90_c": 26.005,
+          "anomaly_c": 1.928,
+          "duration_days": 14,
+          "mhw": true
+        },
+        {
+          "date": "2024-06-16",
+          "sst_c": 26.421,
+          "reference_c": 24.877,
+          "p90_c": 26.139,
+          "anomaly_c": 1.544,
+          "duration_days": 15,
+          "mhw": true
+        },
+        {
+          "date": "2024-06-17",
+          "sst_c": 27.367,
+          "reference_c": 25.005,
+          "p90_c": 26.265,
+          "anomaly_c": 2.361,
+          "duration_days": 16,
+          "mhw": true
+        },
+        {
+          "date": "2024-06-18",
+          "sst_c": 27.411,
+          "reference_c": 25.133,
+          "p90_c": 26.395,
+          "anomaly_c": 2.278,
+          "duration_days": 17,
+          "mhw": true
+        },
+        {
+          "date": "2024-06-19",
+          "sst_c": 27.046,
+          "reference_c": 25.261,
+          "p90_c": 26.526,
+          "anomaly_c": 1.786,
+          "duration_days": 18,
+          "mhw": true
+        },
+        {
+          "date": "2024-06-20",
+          "sst_c": 27.469,
+          "reference_c": 25.386,
+          "p90_c": 26.656,
+          "anomaly_c": 2.082,
+          "duration_days": 19,
+          "mhw": true
+        },
+        {
+          "date": "2024-06-21",
+          "sst_c": 27.275,
+          "reference_c": 25.511,
+          "p90_c": 26.779,
+          "anomaly_c": 1.763,
+          "duration_days": 20,
+          "mhw": true
+        },
+        {
+          "date": "2024-06-22",
+          "sst_c": 27.936,
+          "reference_c": 25.636,
+          "p90_c": 26.896,
+          "anomaly_c": 2.3,
+          "duration_days": 21,
+          "mhw": true
+        },
+        {
+          "date": "2024-06-23",
+          "sst_c": 27.472,
+          "reference_c": 25.76,
+          "p90_c": 27.015,
+          "anomaly_c": 1.711,
+          "duration_days": 22,
+          "mhw": true
+        },
+        {
+          "date": "2024-06-24",
+          "sst_c": 27.675,
+          "reference_c": 25.884,
+          "p90_c": 27.13,
+          "anomaly_c": 1.79,
+          "duration_days": 23,
+          "mhw": true
+        },
+        {
+          "date": "2024-06-25",
+          "sst_c": 27.833,
+          "reference_c": 26.007,
+          "p90_c": 27.245,
+          "anomaly_c": 1.826,
+          "duration_days": 24,
+          "mhw": true
+        },
+        {
+          "date": "2024-06-26",
+          "sst_c": 28.379,
+          "reference_c": 26.129,
+          "p90_c": 27.359,
+          "anomaly_c": 2.25,
+          "duration_days": 25,
+          "mhw": true
+        },
+        {
+          "date": "2024-06-27",
+          "sst_c": 27.965,
+          "reference_c": 26.25,
+          "p90_c": 27.46,
+          "anomaly_c": 1.715,
+          "duration_days": 26,
+          "mhw": true
+        },
+        {
+          "date": "2024-06-28",
+          "sst_c": 28.69,
+          "reference_c": 26.368,
+          "p90_c": 27.55,
+          "anomaly_c": 2.322,
+          "duration_days": 27,
+          "mhw": true
+        },
+        {
+          "date": "2024-06-29",
+          "sst_c": 28.614,
+          "reference_c": 26.484,
+          "p90_c": 27.636,
+          "anomaly_c": 2.131,
+          "duration_days": 28,
+          "mhw": true
+        },
+        {
+          "date": "2024-06-30",
+          "sst_c": 29.311,
+          "reference_c": 26.596,
+          "p90_c": 27.722,
+          "anomaly_c": 2.715,
+          "duration_days": 29,
+          "mhw": true
+        },
+        {
+          "date": "2024-07-01",
+          "sst_c": 28.393,
+          "reference_c": 26.706,
+          "p90_c": 27.811,
+          "anomaly_c": 1.687,
+          "duration_days": 30,
+          "mhw": true
+        },
+        {
+          "date": "2024-07-02",
+          "sst_c": 27.874,
+          "reference_c": 26.812,
+          "p90_c": 27.899,
+          "anomaly_c": 1.062,
+          "duration_days": 0,
+          "mhw": false
+        },
+        {
+          "date": "2024-07-03",
+          "sst_c": 28.138,
+          "reference_c": 26.915,
+          "p90_c": 27.982,
+          "anomaly_c": 1.223,
+          "duration_days": 1,
+          "mhw": false
+        },
+        {
+          "date": "2024-07-04",
+          "sst_c": 28.51,
+          "reference_c": 27.015,
+          "p90_c": 28.075,
+          "anomaly_c": 1.495,
+          "duration_days": 2,
+          "mhw": false
+        },
+        {
+          "date": "2024-07-05",
+          "sst_c": 28.813,
+          "reference_c": 27.113,
+          "p90_c": 28.165,
+          "anomaly_c": 1.701,
+          "duration_days": 3,
+          "mhw": false
+        },
+        {
+          "date": "2024-07-06",
+          "sst_c": 28.843,
+          "reference_c": 27.207,
+          "p90_c": 28.249,
+          "anomaly_c": 1.636,
+          "duration_days": 4,
+          "mhw": false
+        },
+        {
+          "date": "2024-07-07",
+          "sst_c": 28.611,
+          "reference_c": 27.3,
+          "p90_c": 28.329,
+          "anomaly_c": 1.311,
+          "duration_days": 5,
+          "mhw": true
+        },
+        {
+          "date": "2024-07-08",
+          "sst_c": 29.113,
+          "reference_c": 27.389,
+          "p90_c": 28.403,
+          "anomaly_c": 1.724,
+          "duration_days": 6,
+          "mhw": true
+        },
+        {
+          "date": "2024-07-09",
+          "sst_c": 28.946,
+          "reference_c": 27.475,
+          "p90_c": 28.476,
+          "anomaly_c": 1.471,
+          "duration_days": 7,
+          "mhw": true
+        },
+        {
+          "date": "2024-07-10",
+          "sst_c": 28.865,
+          "reference_c": 27.558,
+          "p90_c": 28.541,
+          "anomaly_c": 1.307,
+          "duration_days": 8,
+          "mhw": true
+        },
+        {
+          "date": "2024-07-11",
+          "sst_c": 29.648,
+          "reference_c": 27.639,
+          "p90_c": 28.606,
+          "anomaly_c": 2.009,
+          "duration_days": 9,
+          "mhw": true
+        },
+        {
+          "date": "2024-07-12",
+          "sst_c": 29.899,
+          "reference_c": 27.717,
+          "p90_c": 28.666,
+          "anomaly_c": 2.182,
+          "duration_days": 10,
+          "mhw": true
+        },
+        {
+          "date": "2024-07-13",
+          "sst_c": 29.199,
+          "reference_c": 27.795,
+          "p90_c": 28.726,
+          "anomaly_c": 1.405,
+          "duration_days": 11,
+          "mhw": true
+        },
+        {
+          "date": "2024-07-14",
+          "sst_c": 29.384,
+          "reference_c": 27.871,
+          "p90_c": 28.782,
+          "anomaly_c": 1.512,
+          "duration_days": 12,
+          "mhw": true
+        },
+        {
+          "date": "2024-07-15",
+          "sst_c": 29.113,
+          "reference_c": 27.946,
+          "p90_c": 28.839,
+          "anomaly_c": 1.167,
+          "duration_days": 13,
+          "mhw": true
+        },
+        {
+          "date": "2024-07-16",
+          "sst_c": 29.216,
+          "reference_c": 28.02,
+          "p90_c": 28.897,
+          "anomaly_c": 1.196,
+          "duration_days": 14,
+          "mhw": true
+        },
+        {
+          "date": "2024-07-17",
+          "sst_c": 29.245,
+          "reference_c": 28.092,
+          "p90_c": 28.952,
+          "anomaly_c": 1.153,
+          "duration_days": 15,
+          "mhw": true
+        },
+        {
+          "date": "2024-07-18",
+          "sst_c": 29.575,
+          "reference_c": 28.163,
+          "p90_c": 29.008,
+          "anomaly_c": 1.412,
+          "duration_days": 16,
+          "mhw": true
+        },
+        {
+          "date": "2024-07-19",
+          "sst_c": 29.79,
+          "reference_c": 28.233,
+          "p90_c": 29.063,
+          "anomaly_c": 1.557,
+          "duration_days": 17,
+          "mhw": true
+        },
+        {
+          "date": "2024-07-20",
+          "sst_c": 30.177,
+          "reference_c": 28.302,
+          "p90_c": 29.119,
+          "anomaly_c": 1.875,
+          "duration_days": 18,
+          "mhw": true
+        },
+        {
+          "date": "2024-07-21",
+          "sst_c": 30.233,
+          "reference_c": 28.369,
+          "p90_c": 29.174,
+          "anomaly_c": 1.864,
+          "duration_days": 19,
+          "mhw": true
+        },
+        {
+          "date": "2024-07-22",
+          "sst_c": 30.455,
+          "reference_c": 28.433,
+          "p90_c": 29.229,
+          "anomaly_c": 2.021,
+          "duration_days": 20,
+          "mhw": true
+        },
+        {
+          "date": "2024-07-23",
+          "sst_c": 30.525,
+          "reference_c": 28.495,
+          "p90_c": 29.284,
+          "anomaly_c": 2.03,
+          "duration_days": 21,
+          "mhw": true
+        },
+        {
+          "date": "2024-07-24",
+          "sst_c": 29.989,
+          "reference_c": 28.552,
+          "p90_c": 29.334,
+          "anomaly_c": 1.437,
+          "duration_days": 22,
+          "mhw": true
+        },
+        {
+          "date": "2024-07-25",
+          "sst_c": 30.294,
+          "reference_c": 28.605,
+          "p90_c": 29.379,
+          "anomaly_c": 1.689,
+          "duration_days": 23,
+          "mhw": true
+        },
+        {
+          "date": "2024-07-26",
+          "sst_c": 30.215,
+          "reference_c": 28.654,
+          "p90_c": 29.423,
+          "anomaly_c": 1.56,
+          "duration_days": 24,
+          "mhw": true
+        },
+        {
+          "date": "2024-07-27",
+          "sst_c": 29.93,
+          "reference_c": 28.701,
+          "p90_c": 29.464,
+          "anomaly_c": 1.229,
+          "duration_days": 25,
+          "mhw": true
+        },
+        {
+          "date": "2024-07-28",
+          "sst_c": 29.567,
+          "reference_c": 28.743,
+          "p90_c": 29.504,
+          "anomaly_c": 0.825,
+          "duration_days": 26,
+          "mhw": true
+        },
+        {
+          "date": "2024-07-29",
+          "sst_c": 29.493,
+          "reference_c": 28.782,
+          "p90_c": 29.54,
+          "anomaly_c": 0.711,
+          "duration_days": 0,
+          "mhw": false
+        },
+        {
+          "date": "2024-07-30",
+          "sst_c": 29.493,
+          "reference_c": 28.819,
+          "p90_c": 29.574,
+          "anomaly_c": 0.674,
+          "duration_days": 0,
+          "mhw": false
+        },
+        {
+          "date": "2024-07-31",
+          "sst_c": 29.631,
+          "reference_c": 28.853,
+          "p90_c": 29.607,
+          "anomaly_c": 0.778,
+          "duration_days": 1,
+          "mhw": false
+        },
+        {
+          "date": "2024-08-01",
+          "sst_c": 29.507,
+          "reference_c": 28.886,
+          "p90_c": 29.636,
+          "anomaly_c": 0.621,
+          "duration_days": 0,
+          "mhw": false
+        },
+        {
+          "date": "2024-08-02",
+          "sst_c": 29.78,
+          "reference_c": 28.917,
+          "p90_c": 29.664,
+          "anomaly_c": 0.863,
+          "duration_days": 1,
+          "mhw": false
+        },
+        {
+          "date": "2024-08-03",
+          "sst_c": 29.771,
+          "reference_c": 28.947,
+          "p90_c": 29.691,
+          "anomaly_c": 0.824,
+          "duration_days": 2,
+          "mhw": false
+        },
+        {
+          "date": "2024-08-04",
+          "sst_c": 29.849,
+          "reference_c": 28.976,
+          "p90_c": 29.705,
+          "anomaly_c": 0.873,
+          "duration_days": 3,
+          "mhw": false
+        },
+        {
+          "date": "2024-08-05",
+          "sst_c": 29.371,
+          "reference_c": 29.003,
+          "p90_c": 29.717,
+          "anomaly_c": 0.368,
+          "duration_days": 0,
+          "mhw": false
+        },
+        {
+          "date": "2024-08-06",
+          "sst_c": 29.147,
+          "reference_c": 29.029,
+          "p90_c": 29.729,
+          "anomaly_c": 0.118,
+          "duration_days": 0,
+          "mhw": false
+        },
+        {
+          "date": "2024-08-07",
+          "sst_c": 29.794,
+          "reference_c": 29.053,
+          "p90_c": 29.741,
+          "anomaly_c": 0.741,
+          "duration_days": 1,
+          "mhw": false
+        },
+        {
+          "date": "2024-08-08",
+          "sst_c": 29.935,
+          "reference_c": 29.077,
+          "p90_c": 29.753,
+          "anomaly_c": 0.858,
+          "duration_days": 2,
+          "mhw": false
+        },
+        {
+          "date": "2024-08-09",
+          "sst_c": 30.28,
+          "reference_c": 29.1,
+          "p90_c": 29.765,
+          "anomaly_c": 1.18,
+          "duration_days": 3,
+          "mhw": false
+        },
+        {
+          "date": "2024-08-10",
+          "sst_c": 30.283,
+          "reference_c": 29.122,
+          "p90_c": 29.778,
+          "anomaly_c": 1.161,
+          "duration_days": 4,
+          "mhw": false
+        },
+        {
+          "date": "2024-08-11",
+          "sst_c": 30.393,
+          "reference_c": 29.143,
+          "p90_c": 29.791,
+          "anomaly_c": 1.25,
+          "duration_days": 5,
+          "mhw": true
+        },
+        {
+          "date": "2024-08-12",
+          "sst_c": 30.343,
+          "reference_c": 29.162,
+          "p90_c": 29.804,
+          "anomaly_c": 1.181,
+          "duration_days": 6,
+          "mhw": true
+        },
+        {
+          "date": "2024-08-13",
+          "sst_c": 30.089,
+          "reference_c": 29.18,
+          "p90_c": 29.815,
+          "anomaly_c": 0.91,
+          "duration_days": 7,
+          "mhw": true
+        },
+        {
+          "date": "2024-08-14",
+          "sst_c": 29.998,
+          "reference_c": 29.195,
+          "p90_c": 29.826,
+          "anomaly_c": 0.802,
+          "duration_days": 8,
+          "mhw": true
+        },
+        {
+          "date": "2024-08-15",
+          "sst_c": 30.653,
+          "reference_c": 29.21,
+          "p90_c": 29.833,
+          "anomaly_c": 1.443,
+          "duration_days": 9,
+          "mhw": true
+        },
+        {
+          "date": "2024-08-16",
+          "sst_c": 30.247,
+          "reference_c": 29.222,
+          "p90_c": 29.837,
+          "anomaly_c": 1.025,
+          "duration_days": 10,
+          "mhw": true
+        },
+        {
+          "date": "2024-08-17",
+          "sst_c": 29.806,
+          "reference_c": 29.233,
+          "p90_c": 29.836,
+          "anomaly_c": 0.573,
+          "duration_days": 0,
+          "mhw": false
+        },
+        {
+          "date": "2024-08-18",
+          "sst_c": 30.274,
+          "reference_c": 29.241,
+          "p90_c": 29.833,
+          "anomaly_c": 1.033,
+          "duration_days": 1,
+          "mhw": false
+        },
+        {
+          "date": "2024-08-19",
+          "sst_c": 30.437,
+          "reference_c": 29.247,
+          "p90_c": 29.826,
+          "anomaly_c": 1.19,
+          "duration_days": 2,
+          "mhw": false
+        },
+        {
+          "date": "2024-08-20",
+          "sst_c": 30.426,
+          "reference_c": 29.249,
+          "p90_c": 29.816,
+          "anomaly_c": 1.177,
+          "duration_days": 3,
+          "mhw": false
+        },
+        {
+          "date": "2024-08-21",
+          "sst_c": 29.637,
+          "reference_c": 29.249,
+          "p90_c": 29.805,
+          "anomaly_c": 0.388,
+          "duration_days": 0,
+          "mhw": false
+        },
+        {
+          "date": "2024-08-22",
+          "sst_c": 29.996,
+          "reference_c": 29.247,
+          "p90_c": 29.792,
+          "anomaly_c": 0.748,
+          "duration_days": 1,
+          "mhw": false
+        },
+        {
+          "date": "2024-08-23",
+          "sst_c": 30.147,
+          "reference_c": 29.244,
+          "p90_c": 29.78,
+          "anomaly_c": 0.903,
+          "duration_days": 2,
+          "mhw": false
+        },
+        {
+          "date": "2024-08-24",
+          "sst_c": 30.132,
+          "reference_c": 29.24,
+          "p90_c": 29.769,
+          "anomaly_c": 0.892,
+          "duration_days": 3,
+          "mhw": false
+        },
+        {
+          "date": "2024-08-25",
+          "sst_c": 29.889,
+          "reference_c": 29.235,
+          "p90_c": 29.758,
+          "anomaly_c": 0.654,
+          "duration_days": 4,
+          "mhw": false
+        },
+        {
+          "date": "2024-08-26",
+          "sst_c": 30.312,
+          "reference_c": 29.227,
+          "p90_c": 29.746,
+          "anomaly_c": 1.085,
+          "duration_days": 5,
+          "mhw": true
+        },
+        {
+          "date": "2024-08-27",
+          "sst_c": 30.266,
+          "reference_c": 29.218,
+          "p90_c": 29.732,
+          "anomaly_c": 1.048,
+          "duration_days": 6,
+          "mhw": true
+        },
+        {
+          "date": "2024-08-28",
+          "sst_c": 29.738,
+          "reference_c": 29.208,
+          "p90_c": 29.718,
+          "anomaly_c": 0.53,
+          "duration_days": 7,
+          "mhw": true
+        },
+        {
+          "date": "2024-08-29",
+          "sst_c": 30.243,
+          "reference_c": 29.196,
+          "p90_c": 29.703,
+          "anomaly_c": 1.048,
+          "duration_days": 8,
+          "mhw": true
+        },
+        {
+          "date": "2024-08-30",
+          "sst_c": 30.226,
+          "reference_c": 29.182,
+          "p90_c": 29.687,
+          "anomaly_c": 1.044,
+          "duration_days": 9,
+          "mhw": true
+        },
+        {
+          "date": "2024-08-31",
+          "sst_c": 30.399,
+          "reference_c": 29.166,
+          "p90_c": 29.669,
+          "anomaly_c": 1.233,
+          "duration_days": 10,
+          "mhw": true
+        },
+        {
+          "date": "2024-09-01",
+          "sst_c": 30.003,
+          "reference_c": 29.147,
+          "p90_c": 29.649,
+          "anomaly_c": 0.857,
+          "duration_days": 11,
+          "mhw": true
+        },
+        {
+          "date": "2024-09-02",
+          "sst_c": 29.885,
+          "reference_c": 29.125,
+          "p90_c": 29.628,
+          "anomaly_c": 0.76,
+          "duration_days": 12,
+          "mhw": true
+        },
+        {
+          "date": "2024-09-03",
+          "sst_c": 29.777,
+          "reference_c": 29.1,
+          "p90_c": 29.605,
+          "anomaly_c": 0.677,
+          "duration_days": 13,
+          "mhw": true
+        },
+        {
+          "date": "2024-09-04",
+          "sst_c": 29.478,
+          "reference_c": 29.071,
+          "p90_c": 29.581,
+          "anomaly_c": 0.407,
+          "duration_days": 0,
+          "mhw": false
+        },
+        {
+          "date": "2024-09-05",
+          "sst_c": 29.219,
+          "reference_c": 29.038,
+          "p90_c": 29.556,
+          "anomaly_c": 0.181,
+          "duration_days": 0,
+          "mhw": false
+        },
+        {
+          "date": "2024-09-06",
+          "sst_c": 29.334,
+          "reference_c": 29.003,
+          "p90_c": 29.53,
+          "anomaly_c": 0.331,
+          "duration_days": 0,
+          "mhw": false
+        },
+        {
+          "date": "2024-09-07",
+          "sst_c": 29.855,
+          "reference_c": 28.965,
+          "p90_c": 29.502,
+          "anomaly_c": 0.89,
+          "duration_days": 1,
+          "mhw": false
+        },
+        {
+          "date": "2024-09-08",
+          "sst_c": 29.578,
+          "reference_c": 28.924,
+          "p90_c": 29.472,
+          "anomaly_c": 0.653,
+          "duration_days": 2,
+          "mhw": false
+        },
+        {
+          "date": "2024-09-09",
+          "sst_c": 29.457,
+          "reference_c": 28.88,
+          "p90_c": 29.44,
+          "anomaly_c": 0.576,
+          "duration_days": 3,
+          "mhw": false
+        },
+        {
+          "date": "2024-09-10",
+          "sst_c": 29.305,
+          "reference_c": 28.834,
+          "p90_c": 29.407,
+          "anomaly_c": 0.471,
+          "duration_days": 0,
+          "mhw": false
+        },
+        {
+          "date": "2024-09-11",
+          "sst_c": 29.74,
+          "reference_c": 28.786,
+          "p90_c": 29.367,
+          "anomaly_c": 0.954,
+          "duration_days": 1,
+          "mhw": false
+        },
+        {
+          "date": "2024-09-12",
+          "sst_c": 29.395,
+          "reference_c": 28.735,
+          "p90_c": 29.324,
+          "anomaly_c": 0.66,
+          "duration_days": 2,
+          "mhw": false
+        },
+        {
+          "date": "2024-09-13",
+          "sst_c": 29.574,
+          "reference_c": 28.681,
+          "p90_c": 29.279,
+          "anomaly_c": 0.893,
+          "duration_days": 3,
+          "mhw": false
+        },
+        {
+          "date": "2024-09-14",
+          "sst_c": 29.459,
+          "reference_c": 28.625,
+          "p90_c": 29.235,
+          "anomaly_c": 0.833,
+          "duration_days": 4,
+          "mhw": false
+        },
+        {
+          "date": "2024-09-15",
+          "sst_c": 29.475,
+          "reference_c": 28.567,
+          "p90_c": 29.189,
+          "anomaly_c": 0.908,
+          "duration_days": 5,
+          "mhw": true
+        },
+        {
+          "date": "2024-09-16",
+          "sst_c": 28.96,
+          "reference_c": 28.506,
+          "p90_c": 29.141,
+          "anomaly_c": 0.454,
+          "duration_days": 0,
+          "mhw": false
+        },
+        {
+          "date": "2024-09-17",
+          "sst_c": 28.493,
+          "reference_c": 28.443,
+          "p90_c": 29.092,
+          "anomaly_c": 0.05,
+          "duration_days": 0,
+          "mhw": false
+        },
+        {
+          "date": "2024-09-18",
+          "sst_c": 28.579,
+          "reference_c": 28.376,
+          "p90_c": 29.043,
+          "anomaly_c": 0.203,
+          "duration_days": 0,
+          "mhw": false
+        },
+        {
+          "date": "2024-09-19",
+          "sst_c": 28.452,
+          "reference_c": 28.306,
+          "p90_c": 28.989,
+          "anomaly_c": 0.145,
+          "duration_days": 0,
+          "mhw": false
+        },
+        {
+          "date": "2024-09-20",
+          "sst_c": 27.646,
+          "reference_c": 28.234,
+          "p90_c": 28.933,
+          "anomaly_c": -0.588,
+          "duration_days": 0,
+          "mhw": false
+        },
+        {
+          "date": "2024-09-21",
+          "sst_c": 27.911,
+          "reference_c": 28.16,
+          "p90_c": 28.872,
+          "anomaly_c": -0.248,
+          "duration_days": 0,
+          "mhw": false
+        },
+        {
+          "date": "2024-09-22",
+          "sst_c": 28.191,
+          "reference_c": 28.082,
+          "p90_c": 28.812,
+          "anomaly_c": 0.109,
+          "duration_days": 0,
+          "mhw": false
+        },
+        {
+          "date": "2024-09-23",
+          "sst_c": 28.387,
+          "reference_c": 28.002,
+          "p90_c": 28.748,
+          "anomaly_c": 0.386,
+          "duration_days": 0,
+          "mhw": false
+        },
+        {
+          "date": "2024-09-24",
+          "sst_c": 28.366,
+          "reference_c": 27.92,
+          "p90_c": 28.68,
+          "anomaly_c": 0.447,
+          "duration_days": 0,
+          "mhw": false
+        },
+        {
+          "date": "2024-09-25",
+          "sst_c": 28.282,
+          "reference_c": 27.835,
+          "p90_c": 28.611,
+          "anomaly_c": 0.447,
+          "duration_days": 0,
+          "mhw": false
+        },
+        {
+          "date": "2024-09-26",
+          "sst_c": 28.308,
+          "reference_c": 27.749,
+          "p90_c": 28.535,
+          "anomaly_c": 0.559,
+          "duration_days": 0,
+          "mhw": false
+        },
+        {
+          "date": "2024-09-27",
+          "sst_c": 28.675,
+          "reference_c": 27.662,
+          "p90_c": 28.461,
+          "anomaly_c": 1.013,
+          "duration_days": 1,
+          "mhw": false
+        },
+        {
+          "date": "2024-09-28",
+          "sst_c": 28.274,
+          "reference_c": 27.574,
+          "p90_c": 28.384,
+          "anomaly_c": 0.7,
+          "duration_days": 0,
+          "mhw": false
+        },
+        {
+          "date": "2024-09-29",
+          "sst_c": 28.519,
+          "reference_c": 27.485,
+          "p90_c": 28.307,
+          "anomaly_c": 1.034,
+          "duration_days": 1,
+          "mhw": false
+        },
+        {
+          "date": "2024-09-30",
+          "sst_c": 28.43,
+          "reference_c": 27.395,
+          "p90_c": 28.23,
+          "anomaly_c": 1.035,
+          "duration_days": 2,
+          "mhw": false
+        },
+        {
+          "date": "2024-10-01",
+          "sst_c": 27.944,
+          "reference_c": 27.306,
+          "p90_c": 28.154,
+          "anomaly_c": 0.638,
+          "duration_days": 0,
+          "mhw": false
+        },
+        {
+          "date": "2024-10-02",
+          "sst_c": 28.145,
+          "reference_c": 27.216,
+          "p90_c": 28.078,
+          "anomaly_c": 0.929,
+          "duration_days": 1,
+          "mhw": false
+        },
+        {
+          "date": "2024-10-03",
+          "sst_c": 27.74,
+          "reference_c": 27.127,
+          "p90_c": 28.003,
+          "anomaly_c": 0.613,
+          "duration_days": 0,
+          "mhw": false
+        },
+        {
+          "date": "2024-10-04",
+          "sst_c": 27.499,
+          "reference_c": 27.038,
+          "p90_c": 27.928,
+          "anomaly_c": 0.461,
+          "duration_days": 0,
+          "mhw": false
+        },
+        {
+          "date": "2024-10-05",
+          "sst_c": 27.523,
+          "reference_c": 26.95,
+          "p90_c": 27.853,
+          "anomaly_c": 0.573,
+          "duration_days": 0,
+          "mhw": false
+        },
+        {
+          "date": "2024-10-06",
+          "sst_c": 27.164,
+          "reference_c": 26.862,
+          "p90_c": 27.778,
+          "anomaly_c": 0.302,
+          "duration_days": 0,
+          "mhw": false
+        },
+        {
+          "date": "2024-10-07",
+          "sst_c": 27.822,
+          "reference_c": 26.774,
+          "p90_c": 27.698,
+          "anomaly_c": 1.048,
+          "duration_days": 1,
+          "mhw": false
+        },
+        {
+          "date": "2024-10-08",
+          "sst_c": 27.674,
+          "reference_c": 26.685,
+          "p90_c": 27.617,
+          "anomaly_c": 0.989,
+          "duration_days": 2,
+          "mhw": false
+        },
+        {
+          "date": "2024-10-09",
+          "sst_c": 27.384,
+          "reference_c": 26.594,
+          "p90_c": 27.534,
+          "anomaly_c": 0.79,
+          "duration_days": 0,
+          "mhw": false
+        },
+        {
+          "date": "2024-10-10",
+          "sst_c": 27.442,
+          "reference_c": 26.503,
+          "p90_c": 27.451,
+          "anomaly_c": 0.939,
+          "duration_days": 0,
+          "mhw": false
+        },
+        {
+          "date": "2024-10-11",
+          "sst_c": 27.732,
+          "reference_c": 26.411,
+          "p90_c": 27.363,
+          "anomaly_c": 1.321,
+          "duration_days": 1,
+          "mhw": false
+        },
+        {
+          "date": "2024-10-12",
+          "sst_c": 27.595,
+          "reference_c": 26.316,
+          "p90_c": 27.277,
+          "anomaly_c": 1.279,
+          "duration_days": 2,
+          "mhw": false
+        },
+        {
+          "date": "2024-10-13",
+          "sst_c": 27.045,
+          "reference_c": 26.221,
+          "p90_c": 27.189,
+          "anomaly_c": 0.825,
+          "duration_days": 0,
+          "mhw": false
+        },
+        {
+          "date": "2024-10-14",
+          "sst_c": 26.633,
+          "reference_c": 26.124,
+          "p90_c": 27.099,
+          "anomaly_c": 0.509,
+          "duration_days": 0,
+          "mhw": false
+        },
+        {
+          "date": "2024-10-15",
+          "sst_c": 27.426,
+          "reference_c": 26.024,
+          "p90_c": 27.0,
+          "anomaly_c": 1.401,
+          "duration_days": 1,
+          "mhw": false
+        },
+        {
+          "date": "2024-10-16",
+          "sst_c": 27.424,
+          "reference_c": 25.923,
+          "p90_c": 26.9,
+          "anomaly_c": 1.501,
+          "duration_days": 2,
+          "mhw": false
+        },
+        {
+          "date": "2024-10-17",
+          "sst_c": 27.575,
+          "reference_c": 25.82,
+          "p90_c": 26.799,
+          "anomaly_c": 1.754,
+          "duration_days": 3,
+          "mhw": false
+        },
+        {
+          "date": "2024-10-18",
+          "sst_c": 27.255,
+          "reference_c": 25.717,
+          "p90_c": 26.698,
+          "anomaly_c": 1.537,
+          "duration_days": 4,
+          "mhw": false
+        },
+        {
+          "date": "2024-10-19",
+          "sst_c": 26.471,
+          "reference_c": 25.614,
+          "p90_c": 26.595,
+          "anomaly_c": 0.857,
+          "duration_days": 0,
+          "mhw": false
+        },
+        {
+          "date": "2024-10-20",
+          "sst_c": 26.374,
+          "reference_c": 25.51,
+          "p90_c": 26.497,
+          "anomaly_c": 0.863,
+          "duration_days": 0,
+          "mhw": false
+        },
+        {
+          "date": "2024-10-21",
+          "sst_c": 26.414,
+          "reference_c": 25.407,
+          "p90_c": 26.392,
+          "anomaly_c": 1.007,
+          "duration_days": 1,
+          "mhw": false
+        },
+        {
+          "date": "2024-10-22",
+          "sst_c": 26.179,
+          "reference_c": 25.304,
+          "p90_c": 26.289,
+          "anomaly_c": 0.875,
+          "duration_days": 0,
+          "mhw": false
+        },
+        {
+          "date": "2024-10-23",
+          "sst_c": 25.461,
+          "reference_c": 25.202,
+          "p90_c": 26.187,
+          "anomaly_c": 0.26,
+          "duration_days": 0,
+          "mhw": false
+        },
+        {
+          "date": "2024-10-24",
+          "sst_c": 25.456,
+          "reference_c": 25.099,
+          "p90_c": 26.084,
+          "anomaly_c": 0.357,
+          "duration_days": 0,
+          "mhw": false
+        },
+        {
+          "date": "2024-10-25",
+          "sst_c": 25.563,
+          "reference_c": 24.997,
+          "p90_c": 25.982,
+          "anomaly_c": 0.566,
+          "duration_days": 0,
+          "mhw": false
+        },
+        {
+          "date": "2024-10-26",
+          "sst_c": 25.143,
+          "reference_c": 24.896,
+          "p90_c": 25.88,
+          "anomaly_c": 0.248,
+          "duration_days": 0,
+          "mhw": false
+        },
+        {
+          "date": "2024-10-27",
+          "sst_c": 24.825,
+          "reference_c": 24.795,
+          "p90_c": 25.782,
+          "anomaly_c": 0.03,
+          "duration_days": 0,
+          "mhw": false
+        },
+        {
+          "date": "2024-10-28",
+          "sst_c": 24.475,
+          "reference_c": 24.693,
+          "p90_c": 25.683,
+          "anomaly_c": -0.218,
+          "duration_days": 0,
+          "mhw": false
+        },
+        {
+          "date": "2024-10-29",
+          "sst_c": 24.629,
+          "reference_c": 24.591,
+          "p90_c": 25.584,
+          "anomaly_c": 0.038,
+          "duration_days": 0,
+          "mhw": false
+        },
+        {
+          "date": "2024-10-30",
+          "sst_c": 24.637,
+          "reference_c": 24.489,
+          "p90_c": 25.481,
+          "anomaly_c": 0.148,
+          "duration_days": 0,
+          "mhw": false
+        },
+        {
+          "date": "2024-10-31",
+          "sst_c": 24.408,
+          "reference_c": 24.387,
+          "p90_c": 25.376,
+          "anomaly_c": 0.021,
+          "duration_days": 0,
+          "mhw": false
+        },
+        {
+          "date": "2024-11-01",
+          "sst_c": 24.246,
+          "reference_c": 24.283,
+          "p90_c": 25.27,
+          "anomaly_c": -0.037,
+          "duration_days": 0,
+          "mhw": false
+        },
+        {
+          "date": "2024-11-02",
+          "sst_c": 24.271,
+          "reference_c": 24.179,
+          "p90_c": 25.161,
+          "anomaly_c": 0.093,
+          "duration_days": 0,
+          "mhw": false
+        },
+        {
+          "date": "2024-11-03",
+          "sst_c": 23.753,
+          "reference_c": 24.073,
+          "p90_c": 25.05,
+          "anomaly_c": -0.319,
+          "duration_days": 0,
+          "mhw": false
+        },
+        {
+          "date": "2024-11-04",
+          "sst_c": 24.036,
+          "reference_c": 23.966,
+          "p90_c": 24.939,
+          "anomaly_c": 0.07,
+          "duration_days": 0,
+          "mhw": false
+        },
+        {
+          "date": "2024-11-05",
+          "sst_c": 23.679,
+          "reference_c": 23.858,
+          "p90_c": 24.825,
+          "anomaly_c": -0.179,
+          "duration_days": 0,
+          "mhw": false
+        },
+        {
+          "date": "2024-11-06",
+          "sst_c": 23.93,
+          "reference_c": 23.75,
+          "p90_c": 24.71,
+          "anomaly_c": 0.179,
+          "duration_days": 0,
+          "mhw": false
+        },
+        {
+          "date": "2024-11-07",
+          "sst_c": 23.599,
+          "reference_c": 23.643,
+          "p90_c": 24.598,
+          "anomaly_c": -0.043,
+          "duration_days": 0,
+          "mhw": false
+        },
+        {
+          "date": "2024-11-08",
+          "sst_c": 23.447,
+          "reference_c": 23.535,
+          "p90_c": 24.482,
+          "anomaly_c": -0.089,
+          "duration_days": 0,
+          "mhw": false
+        },
+        {
+          "date": "2024-11-09",
+          "sst_c": 23.415,
+          "reference_c": 23.429,
+          "p90_c": 24.367,
+          "anomaly_c": -0.014,
+          "duration_days": 0,
+          "mhw": false
+        },
+        {
+          "date": "2024-11-10",
+          "sst_c": 23.414,
+          "reference_c": 23.323,
+          "p90_c": 24.252,
+          "anomaly_c": 0.091,
+          "duration_days": 0,
+          "mhw": false
+        },
+        {
+          "date": "2024-11-11",
+          "sst_c": 23.199,
+          "reference_c": 23.218,
+          "p90_c": 24.14,
+          "anomaly_c": -0.018,
+          "duration_days": 0,
+          "mhw": false
+        },
+        {
+          "date": "2024-11-12",
+          "sst_c": 22.922,
+          "reference_c": 23.114,
+          "p90_c": 24.031,
+          "anomaly_c": -0.192,
+          "duration_days": 0,
+          "mhw": false
+        },
+        {
+          "date": "2024-11-13",
+          "sst_c": 22.894,
+          "reference_c": 23.011,
+          "p90_c": 23.924,
+          "anomaly_c": -0.117,
+          "duration_days": 0,
+          "mhw": false
+        },
+        {
+          "date": "2024-11-14",
+          "sst_c": 23.222,
+          "reference_c": 22.91,
+          "p90_c": 23.821,
+          "anomaly_c": 0.312,
+          "duration_days": 0,
+          "mhw": false
+        },
+        {
+          "date": "2024-11-15",
+          "sst_c": 23.119,
+          "reference_c": 22.809,
+          "p90_c": 23.72,
+          "anomaly_c": 0.309,
+          "duration_days": 0,
+          "mhw": false
+        },
+        {
+          "date": "2024-11-16",
+          "sst_c": 22.854,
+          "reference_c": 22.711,
+          "p90_c": 23.623,
+          "anomaly_c": 0.143,
+          "duration_days": 0,
+          "mhw": false
+        },
+        {
+          "date": "2024-11-17",
+          "sst_c": 22.791,
+          "reference_c": 22.614,
+          "p90_c": 23.527,
+          "anomaly_c": 0.178,
+          "duration_days": 0,
+          "mhw": false
+        },
+        {
+          "date": "2024-11-18",
+          "sst_c": 22.586,
+          "reference_c": 22.517,
+          "p90_c": 23.426,
+          "anomaly_c": 0.069,
+          "duration_days": 0,
+          "mhw": false
+        },
+        {
+          "date": "2024-11-19",
+          "sst_c": 22.519,
+          "reference_c": 22.421,
+          "p90_c": 23.326,
+          "anomaly_c": 0.098,
+          "duration_days": 0,
+          "mhw": false
+        },
+        {
+          "date": "2024-11-20",
+          "sst_c": 22.65,
+          "reference_c": 22.325,
+          "p90_c": 23.224,
+          "anomaly_c": 0.324,
+          "duration_days": 0,
+          "mhw": false
+        },
+        {
+          "date": "2024-11-21",
+          "sst_c": 22.975,
+          "reference_c": 22.229,
+          "p90_c": 23.131,
+          "anomaly_c": 0.746,
+          "duration_days": 0,
+          "mhw": false
+        }
+      ],
+      "evaluation": {
+        "source": {
+          "provider": "Copernicus Marine",
+          "dataset_id": "SST_MED_SST_L4_NRT_OBSERVATIONS_010_004_c_V2",
+          "dataset_version": "202311",
+          "variable": "analysed_sst",
+          "resolution": "~1 km (catalogue 0.01°)",
+          "access": "public catalogue ARCO Zarr",
+          "aggregation": "cos(latitude)-weighted open-sea ROI mean",
+          "region_id": "akkuyu",
+          "bounds": [
+            35.95,
+            33.4,
+            36.15,
+            33.7
+          ],
+          "url": "https://s3.waw3-1.cloudferro.com/mdl-arco-geo-046/arco/SST_MED_SST_L4_NRT_OBSERVATIONS_010_004/SST_MED_SST_L4_NRT_OBSERVATIONS_010_004_c_V2_202311/geoChunked.zarr",
+          "retrieved_at": "2026-10-16T12:57:56.544286+00:00",
+          "sha256": "d3b2453cd22ad08090e8a17254f634c7d452030eac0a57ef49968ca3bb54e7e9",
+          "catalogue_last_observation": "2026-10-16",
+          "catalog_url": "https://data.marine.copernicus.eu/product/SST_MED_SST_L4_NRT_OBSERVATIONS_010_004/services",
+          "first_observation": "2008-01-01",
+          "last_observation": "2026-10-16",
+          "valid_days": 6864,
+          "missing_days": 0
+        },
+        "created_at": "2026-10-16T12:58:09.940839+00:00",
+        "split": {
+          "train_end": "2020-03-19",
+          "tuning_end": "2022-02-04",
+          "calibration_end": "2023-12-22",
+          "test_start": "2023-12-23",
+          "test_end": "2026-10-16"
+        },
+        "horizons": {
+          "1": {
+            "xgboost_weight": 0.75,
+            "selected_method": "XGBoost delta + persistence",
+            "model": {
+              "mae_c": 0.2648662922475172,
+              "rmse_c": 0.354717576352358,
+              "bias_c": -0.020389943425821653
+            },
+            "persistence": {
+              "mae_c": 0.280680087268183,
+              "rmse_c": 0.37579712462628917,
+              "bias_c": -0.004718317792936421
+            },
+            "interval_radius_c": 0.42580306260433076,
+            "coverage_80": 0.8025291828793775,
+            "warm_day_f1": 0.8416075650118203,
+            "warm_test_days": 429,
+            "train_n": 4447,
+            "tuning_n": 686,
+            "calibration_n": 685,
+            "test_n": 1028,
+            "warm_days_mae_c": 0.2561741250430661
+          },
+          "2": {
+            "xgboost_weight": 0.75,
+            "selected_method": "XGBoost delta + persistence",
+            "model": {
+              "mae_c": 0.352034605207896,
+              "rmse_c": 0.4667410473934316,
+              "bias_c": -0.03674581762588212
+            },
+            "persistence": {
+              "mae_c": 0.39102478641396093,
+              "rmse_c": 0.5132301134082666,
+              "bias_c": -0.009801648921809472
+            },
+            "interval_radius_c": 0.5405766464236592,
+            "coverage_80": 0.7818889970788705,
+            "warm_day_f1": 0.7611044417767107,
+            "warm_test_days": 428,
+            "train_n": 4446,
+            "tuning_n": 685,
+            "calibration_n": 684,
+            "test_n": 1027,
+            "warm_days_mae_c": 0.3396595253669311
+          },
+          "3": {
+            "xgboost_weight": 0.75,
+            "selected_method": "XGBoost delta + persistence",
+            "model": {
+              "mae_c": 0.3798509696036781,
+              "rmse_c": 0.512721577347692,
+              "bias_c": -0.045063989319555
+            },
+            "persistence": {
+              "mae_c": 0.4358112139014473,
+              "rmse_c": 0.5830902760703002,
+              "bias_c": -0.014088126343339865
+            },
+            "interval_radius_c": 0.5661638365196886,
+            "coverage_80": 0.7777777777777778,
+            "warm_day_f1": 0.755771567436209,
+            "warm_test_days": 427,
+            "train_n": 4445,
+            "tuning_n": 684,
+            "calibration_n": 683,
+            "test_n": 1026,
+            "warm_days_mae_c": 0.36164221760233195
+          }
+        },
+        "reference": "2008-01-01..2020-03-19; ±5 gün, 31 gün dairesel yumuşatma; kısa MVP referansı, standart 30 yıl değil",
+        "limitations": [
+          "Günlük bölgesel SST; gerçek zamanlı sensör veya tesis etkisi değildir.",
+          "Ampirik %80 tahmin aralığı; mevsimsel dağılım kaymasında kapsama garantisi yok.",
+          "Eşik sınıflaması klimatolojiye göre sıcak gün taramasıdır; biyolojik zarar etiketi değildir."
+        ]
+      },
+      "reports": [
+        {
+          "text": "GEÇMİŞ OLAY TEKRARI — güncel uyarı değildir.\nAkkuyu açıkları, Mersin | 2024-11-24\nTahmin edilen SST: 22.65 °C. Mevsimsel referans: 21.94 °C. Anomali: +0.71 °C. 90. yüzdelik: 22.85 °C. İnceleme önceliği: Normal.\nKaynak: Copernicus Marine. Tahmin başlangıcı/son gözlem: 2024-11-21.\nBu sonuç santral kaynaklı ısınmayı veya biyolojik zararı kanıtlamaz.\nBir sonraki günlük uydu analizinde süreklilik ve veri kalitesi yeniden kontrol edilmelidir. Uydu analizi yüzeyi temsil eder; kıyı çözünürlüğü ve tahmin hatası yorumu sınırlar. Bağımsız saha ölçümleri ve komşu açık-deniz hücreleriyle karşılaştırma önerilir.\nAmpirik %80 tahmin aralığı: 22.09–23.21 °C.\nUyarı nedeni: +72 saat için son gözlemin devamı 22.97 °C; validation ile seçilen P95 ve -0.20 °C marjlı 22.89 °C tetik eşiğini aşıyor. Bu sinyal bir olayın gerçekleşme olasılığı değildir.\nTahmin ufku: 72 saat. Veri tarihi: 2024-11-21.",
+          "method": "template",
+          "facts": {
+            "region_id": "akkuyu",
+            "region_name": "Akkuyu açıkları, Mersin",
+            "mode": "replay",
+            "provider": "Copernicus Marine",
+            "dataset_id": "SST_MED_SST_L4_NRT_OBSERVATIONS_010_004_c_V2",
+            "origin_date": "2024-11-21",
+            "data_date": "2024-11-21",
+            "horizon_days": 3,
+            "target_date": "2024-11-24",
+            "sst_c": 22.651,
+            "lower_c": 22.089,
+            "upper_c": 23.213,
+            "reference_c": 21.942245903049315,
+            "p90_c": 22.845998182269064,
+            "method": "XGBoost + persistence",
+            "interval": {
+              "nominal_coverage": 0.8,
+              "method": "validation residual seasonal envelope",
+              "calibration_end": "2023-12-22",
+              "test_coverage": 0.8109161793372319
+            },
+            "risk": "normal",
+            "warning": {
+              "triggered": true,
+              "signal_c": 22.97494656293366,
+              "threshold_c": 22.8926007895494,
+              "percentile": 95,
+              "source": "persistence_c",
+              "margin_c": -0.2,
+              "reason": "+72 saat için son gözlemin devamı 22.97 °C; validation ile seçilen P95 ve -0.20 °C marjlı 22.89 °C tetik eşiğini aşıyor. Bu sinyal bir olayın gerçekleşme olasılığı değildir."
+            },
+            "kind": "predicted",
+            "event_date": "2024-11-24",
+            "horizon_hours": 72,
+            "reason": "+72 saat için son gözlemin devamı 22.97 °C; validation ile seçilen P95 ve -0.20 °C marjlı 22.89 °C tetik eşiğini aşıyor. Bu sinyal bir olayın gerçekleşme olasılığı değildir.",
+            "uncertainty": {
+              "lower_c": 22.089,
+              "upper_c": 23.213,
+              "nominal_coverage": 0.8
+            }
+          }
+        }
+      ],
+      "early_warning": {
+        "state": "forecast_risk",
+        "reason": "+72 saat için son gözlemin devamı 22.97 °C; validation ile seçilen P95 ve -0.20 °C marjlı 22.89 °C tetik eşiğini aşıyor. Bu sinyal bir olayın gerçekleşme olasılığı değildir.",
+        "origin_date": "2024-11-21",
+        "horizon_hours": 72,
+        "uncertainty": {
+          "lower_c": 22.089,
+          "upper_c": 23.213,
+          "nominal_coverage": 0.8,
+          "guaranteed": false
+        },
+        "notify": true,
+        "episode_start": "2024-11-21",
+        "alert_id": "34e402822cb2aa80d110",
+        "suppression_reason": null,
+        "active": true,
+        "clear_days": 0,
+        "peak_level": 1,
+        "last_date": "2024-11-21",
+        "policy_version": "reliability-v1",
+        "data_date": "2024-11-21",
+        "model_sha256": "ac761b85e51221ed7a5dbd2f6b6edbf728eca29a234306be46c176b5d8090a7a",
+        "rule": "Olay başlangıcı ve gözlenmiş anomaliye geçişte bir bildirim; iki normal günle yeniden kurulur."
+      },
+      "comparison": {
+        "date": "2015-11-12",
+        "sst_c": 23.11450124414323,
+        "reference_c": 23.113945256094855,
+        "anomaly_c": 0.0005559880483758661,
+        "note": "Aynı aydan önceki normal gözlem; nedensel kontrol değildir."
+      },
+      "replay_label": "Olay oluşmayan sinyal",
+      "replay_assessment": "Sonradan gözlenen sonuç: uyarının hedefi beş günlük bir P90 olayına denk gelmedi. Bu örnek yanlış olay uyarısını gösterir; kısa eşik aşımı yaşanmış olabilir."
+    },
+    {
+      "status": "ready",
+      "mode": "replay",
+      "region": {
+        "id": "akkuyu",
+        "name": "Akkuyu açıkları, Mersin",
+        "lat": 36.05,
+        "lon": 33.55,
+        "south": 35.95,
+        "north": 36.15,
+        "west": 33.4,
+        "east": 33.7
+      },
+      "source": {
+        "provider": "Copernicus Marine",
+        "dataset_id": "SST_MED_SST_L4_NRT_OBSERVATIONS_010_004_c_V2",
+        "dataset_version": "202311",
+        "variable": "analysed_sst",
+        "resolution": "~1 km (catalogue 0.01°)",
+        "access": "public catalogue ARCO Zarr",
+        "aggregation": "cos(latitude)-weighted open-sea ROI mean",
+        "region_id": "akkuyu",
+        "bounds": [
+          35.95,
+          33.4,
+          36.15,
+          33.7
+        ],
+        "url": "https://s3.waw3-1.cloudferro.com/mdl-arco-geo-046/arco/SST_MED_SST_L4_NRT_OBSERVATIONS_010_004/SST_MED_SST_L4_NRT_OBSERVATIONS_010_004_c_V2_202311/geoChunked.zarr",
+        "retrieved_at": "2026-10-16T12:57:56.544286+00:00",
+        "sha256": "d3b2453cd22ad08090e8a17254f634c7d452030eac0a57ef49968ca3bb54e7e9",
+        "catalogue_last_observation": "2026-10-16",
+        "catalog_url": "https://data.marine.copernicus.eu/product/SST_MED_SST_L4_NRT_OBSERVATIONS_010_004/services",
+        "first_observation": "2008-01-01",
+        "last_observation": "2026-10-16",
+        "valid_days": 6864,
+        "missing_days": 0
+      },
+      "checked_at": "2026-10-16T14:25:23.068247+00:00",
+      "origin_date": "2025-01-27",
+      "age_days": 627,
+      "stale": false,
+      "observation": {
+        "sst_c": 18.65586767855815,
+        "reference_c": 18.02419701610128,
+        "p90_c": 18.744250468915006,
+        "anomaly_c": 0.6316706624568695,
+        "risk": "normal",
+        "duration_days": 0,
+        "mhw": false
+      },
+      "forecasts": [
+        {
+          "horizon_days": 1,
+          "origin_date": "2025-01-27",
+          "target_date": "2025-01-28",
+          "sst_c": 18.641,
+          "lower_c": 18.22,
+          "upper_c": 19.062,
+          "reference_c": 17.984231483361697,
+          "p90_c": 18.694937125230812,
+          "method": "XGBoost + persistence",
+          "interval": {
+            "nominal_coverage": 0.8,
+            "method": "validation residual seasonal envelope",
+            "calibration_end": "2023-12-22",
+            "test_coverage": 0.8171206225680934
+          },
+          "risk": "normal",
+          "warning": {
+            "triggered": false,
+            "signal_c": 18.61590214581857,
+            "threshold_c": 18.694937125230812,
+            "percentile": 90,
+            "source": "seasonal_drift_c",
+            "margin_c": 0.0,
+            "reason": "+24 saat için son gözlem ve mevsimsel değişim 18.62 °C; validation ile seçilen P90 ve +0.00 °C marjlı 18.69 °C tetik eşiğini aşmıyor. Bu sinyal bir olayın gerçekleşme olasılığı değildir."
+          }
+        },
+        {
+          "horizon_days": 2,
+          "origin_date": "2025-01-27",
+          "target_date": "2025-01-29",
+          "sst_c": 18.628,
+          "lower_c": 18.088,
+          "upper_c": 19.168,
+          "reference_c": 17.944698859189902,
+          "p90_c": 18.647291937168365,
+          "method": "XGBoost + persistence",
+          "interval": {
+            "nominal_coverage": 0.8,
+            "method": "validation residual seasonal envelope",
+            "calibration_end": "2023-12-22",
+            "test_coverage": 0.8120740019474196
+          },
+          "risk": "normal",
+          "warning": {
+            "triggered": false,
+            "signal_c": 18.57636952164677,
+            "threshold_c": 18.647291937168365,
+            "percentile": 90,
+            "source": "seasonal_drift_c",
+            "margin_c": 0.0,
+            "reason": "+48 saat için son gözlem ve mevsimsel değişim 18.58 °C; validation ile seçilen P90 ve +0.00 °C marjlı 18.65 °C tetik eşiğini aşmıyor. Bu sinyal bir olayın gerçekleşme olasılığı değildir."
+          }
+        },
+        {
+          "horizon_days": 3,
+          "origin_date": "2025-01-27",
+          "target_date": "2025-01-30",
+          "sst_c": 18.576,
+          "lower_c": 18.014,
+          "upper_c": 19.138,
+          "reference_c": 17.9064515344773,
+          "p90_c": 18.602709820251203,
+          "method": "XGBoost + persistence",
+          "interval": {
+            "nominal_coverage": 0.8,
+            "method": "validation residual seasonal envelope",
+            "calibration_end": "2023-12-22",
+            "test_coverage": 0.8109161793372319
+          },
+          "risk": "normal",
+          "warning": {
+            "triggered": true,
+            "signal_c": 18.65586767855815,
+            "threshold_c": 18.523477367641455,
+            "percentile": 95,
+            "source": "persistence_c",
+            "margin_c": -0.2,
+            "reason": "+72 saat için son gözlemin devamı 18.66 °C; validation ile seçilen P95 ve -0.20 °C marjlı 18.52 °C tetik eşiğini aşıyor. Bu sinyal bir olayın gerçekleşme olasılığı değildir."
+          }
+        }
+      ],
+      "history": [
+        {
+          "date": "2024-01-29",
+          "sst_c": 19.695,
+          "reference_c": 17.945,
+          "p90_c": 18.647,
+          "anomaly_c": 1.751,
+          "duration_days": 101,
+          "mhw": true
+        },
+        {
+          "date": "2024-01-30",
+          "sst_c": 19.669,
+          "reference_c": 17.906,
+          "p90_c": 18.603,
+          "anomaly_c": 1.762,
+          "duration_days": 102,
+          "mhw": true
+        },
+        {
+          "date": "2024-01-31",
+          "sst_c": 19.58,
+          "reference_c": 17.87,
+          "p90_c": 18.559,
+          "anomaly_c": 1.711,
+          "duration_days": 103,
+          "mhw": true
+        },
+        {
+          "date": "2024-02-01",
+          "sst_c": 19.704,
+          "reference_c": 17.835,
+          "p90_c": 18.517,
+          "anomaly_c": 1.869,
+          "duration_days": 104,
+          "mhw": true
+        },
+        {
+          "date": "2024-02-02",
+          "sst_c": 19.861,
+          "reference_c": 17.801,
+          "p90_c": 18.476,
+          "anomaly_c": 2.06,
+          "duration_days": 105,
+          "mhw": true
+        },
+        {
+          "date": "2024-02-03",
+          "sst_c": 19.543,
+          "reference_c": 17.768,
+          "p90_c": 18.439,
+          "anomaly_c": 1.774,
+          "duration_days": 106,
+          "mhw": true
+        },
+        {
+          "date": "2024-02-04",
+          "sst_c": 19.469,
+          "reference_c": 17.737,
+          "p90_c": 18.408,
+          "anomaly_c": 1.733,
+          "duration_days": 107,
+          "mhw": true
+        },
+        {
+          "date": "2024-02-05",
+          "sst_c": 19.389,
+          "reference_c": 17.705,
+          "p90_c": 18.375,
+          "anomaly_c": 1.683,
+          "duration_days": 108,
+          "mhw": true
+        },
+        {
+          "date": "2024-02-06",
+          "sst_c": 19.414,
+          "reference_c": 17.675,
+          "p90_c": 18.344,
+          "anomaly_c": 1.739,
+          "duration_days": 109,
+          "mhw": true
+        },
+        {
+          "date": "2024-02-07",
+          "sst_c": 19.302,
+          "reference_c": 17.646,
+          "p90_c": 18.314,
+          "anomaly_c": 1.656,
+          "duration_days": 110,
+          "mhw": true
+        },
+        {
+          "date": "2024-02-08",
+          "sst_c": 19.22,
+          "reference_c": 17.618,
+          "p90_c": 18.287,
+          "anomaly_c": 1.602,
+          "duration_days": 111,
+          "mhw": true
+        },
+        {
+          "date": "2024-02-09",
+          "sst_c": 19.178,
+          "reference_c": 17.591,
+          "p90_c": 18.262,
+          "anomaly_c": 1.586,
+          "duration_days": 112,
+          "mhw": true
+        },
+        {
+          "date": "2024-02-10",
+          "sst_c": 19.271,
+          "reference_c": 17.565,
+          "p90_c": 18.238,
+          "anomaly_c": 1.706,
+          "duration_days": 113,
+          "mhw": true
+        },
+        {
+          "date": "2024-02-11",
+          "sst_c": 19.304,
+          "reference_c": 17.54,
+          "p90_c": 18.214,
+          "anomaly_c": 1.763,
+          "duration_days": 114,
+          "mhw": true
+        },
+        {
+          "date": "2024-02-12",
+          "sst_c": 19.304,
+          "reference_c": 17.516,
+          "p90_c": 18.191,
+          "anomaly_c": 1.788,
+          "duration_days": 115,
+          "mhw": true
+        },
+        {
+          "date": "2024-02-13",
+          "sst_c": 19.183,
+          "reference_c": 17.492,
+          "p90_c": 18.167,
+          "anomaly_c": 1.691,
+          "duration_days": 116,
+          "mhw": true
+        },
+        {
+          "date": "2024-02-14",
+          "sst_c": 18.987,
+          "reference_c": 17.469,
+          "p90_c": 18.144,
+          "anomaly_c": 1.518,
+          "duration_days": 117,
+          "mhw": true
+        },
+        {
+          "date": "2024-02-15",
+          "sst_c": 19.267,
+          "reference_c": 17.448,
+          "p90_c": 18.121,
+          "anomaly_c": 1.819,
+          "duration_days": 118,
+          "mhw": true
+        },
+        {
+          "date": "2024-02-16",
+          "sst_c": 19.066,
+          "reference_c": 17.428,
+          "p90_c": 18.1,
+          "anomaly_c": 1.638,
+          "duration_days": 119,
+          "mhw": true
+        },
+        {
+          "date": "2024-02-17",
+          "sst_c": 18.894,
+          "reference_c": 17.409,
+          "p90_c": 18.08,
+          "anomaly_c": 1.485,
+          "duration_days": 120,
+          "mhw": true
+        },
+        {
+          "date": "2024-02-18",
+          "sst_c": 19.046,
+          "reference_c": 17.391,
+          "p90_c": 18.058,
+          "anomaly_c": 1.655,
+          "duration_days": 121,
+          "mhw": true
+        },
+        {
+          "date": "2024-02-19",
+          "sst_c": 19.004,
+          "reference_c": 17.372,
+          "p90_c": 18.037,
+          "anomaly_c": 1.632,
+          "duration_days": 122,
+          "mhw": true
+        },
+        {
+          "date": "2024-02-20",
+          "sst_c": 19.201,
+          "reference_c": 17.355,
+          "p90_c": 18.018,
+          "anomaly_c": 1.846,
+          "duration_days": 123,
+          "mhw": true
+        },
+        {
+          "date": "2024-02-21",
+          "sst_c": 19.061,
+          "reference_c": 17.34,
+          "p90_c": 17.999,
+          "anomaly_c": 1.722,
+          "duration_days": 124,
+          "mhw": true
+        },
+        {
+          "date": "2024-02-22",
+          "sst_c": 18.598,
+          "reference_c": 17.325,
+          "p90_c": 17.982,
+          "anomaly_c": 1.273,
+          "duration_days": 125,
+          "mhw": true
+        },
+        {
+          "date": "2024-02-23",
+          "sst_c": 19.125,
+          "reference_c": 17.312,
+          "p90_c": 17.967,
+          "anomaly_c": 1.813,
+          "duration_days": 126,
+          "mhw": true
+        },
+        {
+          "date": "2024-02-24",
+          "sst_c": 18.999,
+          "reference_c": 17.3,
+          "p90_c": 17.955,
+          "anomaly_c": 1.699,
+          "duration_days": 127,
+          "mhw": true
+        },
+        {
+          "date": "2024-02-25",
+          "sst_c": 19.033,
+          "reference_c": 17.29,
+          "p90_c": 17.945,
+          "anomaly_c": 1.743,
+          "duration_days": 128,
+          "mhw": true
+        },
+        {
+          "date": "2024-02-26",
+          "sst_c": 18.715,
+          "reference_c": 17.281,
+          "p90_c": 17.938,
+          "anomaly_c": 1.434,
+          "duration_days": 129,
+          "mhw": true
+        },
+        {
+          "date": "2024-02-27",
+          "sst_c": 19.032,
+          "reference_c": 17.273,
+          "p90_c": 17.932,
+          "anomaly_c": 1.759,
+          "duration_days": 130,
+          "mhw": true
+        },
+        {
+          "date": "2024-02-28",
+          "sst_c": 18.683,
+          "reference_c": 17.266,
+          "p90_c": 17.928,
+          "anomaly_c": 1.417,
+          "duration_days": 131,
+          "mhw": true
+        },
+        {
+          "date": "2024-02-29",
+          "sst_c": 18.65,
+          "reference_c": 17.261,
+          "p90_c": 17.927,
+          "anomaly_c": 1.389,
+          "duration_days": 132,
+          "mhw": true
+        },
+        {
+          "date": "2024-03-01",
+          "sst_c": 18.795,
+          "reference_c": 17.257,
+          "p90_c": 17.925,
+          "anomaly_c": 1.538,
+          "duration_days": 133,
+          "mhw": true
+        },
+        {
+          "date": "2024-03-02",
+          "sst_c": 18.56,
+          "reference_c": 17.254,
+          "p90_c": 17.924,
+          "anomaly_c": 1.307,
+          "duration_days": 134,
+          "mhw": true
+        },
+        {
+          "date": "2024-03-03",
+          "sst_c": 18.149,
+          "reference_c": 17.251,
+          "p90_c": 17.925,
+          "anomaly_c": 0.898,
+          "duration_days": 135,
+          "mhw": true
+        },
+        {
+          "date": "2024-03-04",
+          "sst_c": 18.098,
+          "reference_c": 17.25,
+          "p90_c": 17.927,
+          "anomaly_c": 0.848,
+          "duration_days": 136,
+          "mhw": true
+        },
+        {
+          "date": "2024-03-05",
+          "sst_c": 18.592,
+          "reference_c": 17.25,
+          "p90_c": 17.928,
+          "anomaly_c": 1.342,
+          "duration_days": 137,
+          "mhw": true
+        },
+        {
+          "date": "2024-03-06",
+          "sst_c": 18.58,
+          "reference_c": 17.25,
+          "p90_c": 17.927,
+          "anomaly_c": 1.33,
+          "duration_days": 138,
+          "mhw": true
+        },
+        {
+          "date": "2024-03-07",
+          "sst_c": 18.181,
+          "reference_c": 17.252,
+          "p90_c": 17.929,
+          "anomaly_c": 0.929,
+          "duration_days": 139,
+          "mhw": true
+        },
+        {
+          "date": "2024-03-08",
+          "sst_c": 18.715,
+          "reference_c": 17.254,
+          "p90_c": 17.932,
+          "anomaly_c": 1.461,
+          "duration_days": 140,
+          "mhw": true
+        },
+        {
+          "date": "2024-03-09",
+          "sst_c": 18.645,
+          "reference_c": 17.258,
+          "p90_c": 17.934,
+          "anomaly_c": 1.387,
+          "duration_days": 141,
+          "mhw": true
+        },
+        {
+          "date": "2024-03-10",
+          "sst_c": 18.624,
+          "reference_c": 17.263,
+          "p90_c": 17.936,
+          "anomaly_c": 1.36,
+          "duration_days": 142,
+          "mhw": true
+        },
+        {
+          "date": "2024-03-11",
+          "sst_c": 18.513,
+          "reference_c": 17.27,
+          "p90_c": 17.938,
+          "anomaly_c": 1.243,
+          "duration_days": 143,
+          "mhw": true
+        },
+        {
+          "date": "2024-03-12",
+          "sst_c": 18.473,
+          "reference_c": 17.277,
+          "p90_c": 17.941,
+          "anomaly_c": 1.195,
+          "duration_days": 144,
+          "mhw": true
+        },
+        {
+          "date": "2024-03-13",
+          "sst_c": 18.573,
+          "reference_c": 17.285,
+          "p90_c": 17.946,
+          "anomaly_c": 1.287,
+          "duration_days": 145,
+          "mhw": true
+        },
+        {
+          "date": "2024-03-14",
+          "sst_c": 18.885,
+          "reference_c": 17.294,
+          "p90_c": 17.951,
+          "anomaly_c": 1.591,
+          "duration_days": 146,
+          "mhw": true
+        },
+        {
+          "date": "2024-03-15",
+          "sst_c": 18.53,
+          "reference_c": 17.304,
+          "p90_c": 17.961,
+          "anomaly_c": 1.227,
+          "duration_days": 147,
+          "mhw": true
+        },
+        {
+          "date": "2024-03-16",
+          "sst_c": 18.135,
+          "reference_c": 17.315,
+          "p90_c": 17.975,
+          "anomaly_c": 0.82,
+          "duration_days": 148,
+          "mhw": true
+        },
+        {
+          "date": "2024-03-17",
+          "sst_c": 18.364,
+          "reference_c": 17.328,
+          "p90_c": 17.99,
+          "anomaly_c": 1.037,
+          "duration_days": 149,
+          "mhw": true
+        },
+        {
+          "date": "2024-03-18",
+          "sst_c": 18.463,
+          "reference_c": 17.342,
+          "p90_c": 18.007,
+          "anomaly_c": 1.121,
+          "duration_days": 150,
+          "mhw": true
+        },
+        {
+          "date": "2024-03-19",
+          "sst_c": 18.439,
+          "reference_c": 17.358,
+          "p90_c": 18.025,
+          "anomaly_c": 1.081,
+          "duration_days": 151,
+          "mhw": true
+        },
+        {
+          "date": "2024-03-20",
+          "sst_c": 18.469,
+          "reference_c": 17.376,
+          "p90_c": 18.045,
+          "anomaly_c": 1.093,
+          "duration_days": 152,
+          "mhw": true
+        },
+        {
+          "date": "2024-03-21",
+          "sst_c": 18.587,
+          "reference_c": 17.396,
+          "p90_c": 18.066,
+          "anomaly_c": 1.191,
+          "duration_days": 153,
+          "mhw": true
+        },
+        {
+          "date": "2024-03-22",
+          "sst_c": 19.022,
+          "reference_c": 17.417,
+          "p90_c": 18.092,
+          "anomaly_c": 1.605,
+          "duration_days": 154,
+          "mhw": true
+        },
+        {
+          "date": "2024-03-23",
+          "sst_c": 18.333,
+          "reference_c": 17.44,
+          "p90_c": 18.121,
+          "anomaly_c": 0.893,
+          "duration_days": 155,
+          "mhw": true
+        },
+        {
+          "date": "2024-03-24",
+          "sst_c": 18.126,
+          "reference_c": 17.464,
+          "p90_c": 18.151,
+          "anomaly_c": 0.662,
+          "duration_days": 0,
+          "mhw": false
+        },
+        {
+          "date": "2024-03-25",
+          "sst_c": 18.159,
+          "reference_c": 17.489,
+          "p90_c": 18.181,
+          "anomaly_c": 0.67,
+          "duration_days": 0,
+          "mhw": false
+        },
+        {
+          "date": "2024-03-26",
+          "sst_c": 18.033,
+          "reference_c": 17.516,
+          "p90_c": 18.213,
+          "anomaly_c": 0.517,
+          "duration_days": 0,
+          "mhw": false
+        },
+        {
+          "date": "2024-03-27",
+          "sst_c": 17.746,
+          "reference_c": 17.543,
+          "p90_c": 18.243,
+          "anomaly_c": 0.203,
+          "duration_days": 0,
+          "mhw": false
+        },
+        {
+          "date": "2024-03-28",
+          "sst_c": 17.798,
+          "reference_c": 17.57,
+          "p90_c": 18.275,
+          "anomaly_c": 0.227,
+          "duration_days": 0,
+          "mhw": false
+        },
+        {
+          "date": "2024-03-29",
+          "sst_c": 17.923,
+          "reference_c": 17.6,
+          "p90_c": 18.307,
+          "anomaly_c": 0.323,
+          "duration_days": 0,
+          "mhw": false
+        },
+        {
+          "date": "2024-03-30",
+          "sst_c": 18.096,
+          "reference_c": 17.63,
+          "p90_c": 18.344,
+          "anomaly_c": 0.466,
+          "duration_days": 0,
+          "mhw": false
+        },
+        {
+          "date": "2024-03-31",
+          "sst_c": 18.962,
+          "reference_c": 17.661,
+          "p90_c": 18.39,
+          "anomaly_c": 1.302,
+          "duration_days": 1,
+          "mhw": false
+        },
+        {
+          "date": "2024-04-01",
+          "sst_c": 19.068,
+          "reference_c": 17.693,
+          "p90_c": 18.439,
+          "anomaly_c": 1.375,
+          "duration_days": 2,
+          "mhw": false
+        },
+        {
+          "date": "2024-04-02",
+          "sst_c": 19.991,
+          "reference_c": 17.725,
+          "p90_c": 18.489,
+          "anomaly_c": 2.265,
+          "duration_days": 3,
+          "mhw": false
+        },
+        {
+          "date": "2024-04-03",
+          "sst_c": 19.393,
+          "reference_c": 17.76,
+          "p90_c": 18.539,
+          "anomaly_c": 1.634,
+          "duration_days": 4,
+          "mhw": false
+        },
+        {
+          "date": "2024-04-04",
+          "sst_c": 19.431,
+          "reference_c": 17.795,
+          "p90_c": 18.589,
+          "anomaly_c": 1.636,
+          "duration_days": 5,
+          "mhw": true
+        },
+        {
+          "date": "2024-04-05",
+          "sst_c": 19.963,
+          "reference_c": 17.831,
+          "p90_c": 18.64,
+          "anomaly_c": 2.132,
+          "duration_days": 6,
+          "mhw": true
+        },
+        {
+          "date": "2024-04-06",
+          "sst_c": 19.917,
+          "reference_c": 17.868,
+          "p90_c": 18.692,
+          "anomaly_c": 2.049,
+          "duration_days": 7,
+          "mhw": true
+        },
+        {
+          "date": "2024-04-07",
+          "sst_c": 19.431,
+          "reference_c": 17.908,
+          "p90_c": 18.745,
+          "anomaly_c": 1.523,
+          "duration_days": 8,
+          "mhw": true
+        },
+        {
+          "date": "2024-04-08",
+          "sst_c": 19.082,
+          "reference_c": 17.949,
+          "p90_c": 18.802,
+          "anomaly_c": 1.133,
+          "duration_days": 9,
+          "mhw": true
+        },
+        {
+          "date": "2024-04-09",
+          "sst_c": 19.125,
+          "reference_c": 17.991,
+          "p90_c": 18.861,
+          "anomaly_c": 1.134,
+          "duration_days": 10,
+          "mhw": true
+        },
+        {
+          "date": "2024-04-10",
+          "sst_c": 19.119,
+          "reference_c": 18.036,
+          "p90_c": 18.923,
+          "anomaly_c": 1.082,
+          "duration_days": 11,
+          "mhw": true
+        },
+        {
+          "date": "2024-04-11",
+          "sst_c": 19.141,
+          "reference_c": 18.084,
+          "p90_c": 18.987,
+          "anomaly_c": 1.057,
+          "duration_days": 12,
+          "mhw": true
+        },
+        {
+          "date": "2024-04-12",
+          "sst_c": 18.891,
+          "reference_c": 18.136,
+          "p90_c": 19.052,
+          "anomaly_c": 0.755,
+          "duration_days": 0,
+          "mhw": false
+        },
+        {
+          "date": "2024-04-13",
+          "sst_c": 19.703,
+          "reference_c": 18.19,
+          "p90_c": 19.125,
+          "anomaly_c": 1.512,
+          "duration_days": 1,
+          "mhw": false
+        },
+        {
+          "date": "2024-04-14",
+          "sst_c": 20.133,
+          "reference_c": 18.248,
+          "p90_c": 19.2,
+          "anomaly_c": 1.884,
+          "duration_days": 2,
+          "mhw": false
+        },
+        {
+          "date": "2024-04-15",
+          "sst_c": 19.51,
+          "reference_c": 18.31,
+          "p90_c": 19.279,
+          "anomaly_c": 1.2,
+          "duration_days": 3,
+          "mhw": false
+        },
+        {
+          "date": "2024-04-16",
+          "sst_c": 19.888,
+          "reference_c": 18.374,
+          "p90_c": 19.363,
+          "anomaly_c": 1.514,
+          "duration_days": 4,
+          "mhw": false
+        },
+        {
+          "date": "2024-04-17",
+          "sst_c": 20.443,
+          "reference_c": 18.441,
+          "p90_c": 19.452,
+          "anomaly_c": 2.002,
+          "duration_days": 5,
+          "mhw": true
+        },
+        {
+          "date": "2024-04-18",
+          "sst_c": 20.556,
+          "reference_c": 18.51,
+          "p90_c": 19.546,
+          "anomaly_c": 2.046,
+          "duration_days": 6,
+          "mhw": true
+        },
+        {
+          "date": "2024-04-19",
+          "sst_c": 19.721,
+          "reference_c": 18.581,
+          "p90_c": 19.651,
+          "anomaly_c": 1.14,
+          "duration_days": 7,
+          "mhw": true
+        },
+        {
+          "date": "2024-04-20",
+          "sst_c": 19.878,
+          "reference_c": 18.654,
+          "p90_c": 19.758,
+          "anomaly_c": 1.224,
+          "duration_days": 8,
+          "mhw": true
+        },
+        {
+          "date": "2024-04-21",
+          "sst_c": 20.371,
+          "reference_c": 18.728,
+          "p90_c": 19.864,
+          "anomaly_c": 1.643,
+          "duration_days": 9,
+          "mhw": true
+        },
+        {
+          "date": "2024-04-22",
+          "sst_c": 20.265,
+          "reference_c": 18.805,
+          "p90_c": 19.974,
+          "anomaly_c": 1.461,
+          "duration_days": 10,
+          "mhw": true
+        },
+        {
+          "date": "2024-04-23",
+          "sst_c": 18.886,
+          "reference_c": 18.883,
+          "p90_c": 20.086,
+          "anomaly_c": 0.003,
+          "duration_days": 0,
+          "mhw": false
+        },
+        {
+          "date": "2024-04-24",
+          "sst_c": 19.639,
+          "reference_c": 18.963,
+          "p90_c": 20.199,
+          "anomaly_c": 0.676,
+          "duration_days": 0,
+          "mhw": false
+        },
+        {
+          "date": "2024-04-25",
+          "sst_c": 20.062,
+          "reference_c": 19.046,
+          "p90_c": 20.313,
+          "anomaly_c": 1.016,
+          "duration_days": 0,
+          "mhw": false
+        },
+        {
+          "date": "2024-04-26",
+          "sst_c": 20.029,
+          "reference_c": 19.131,
+          "p90_c": 20.428,
+          "anomaly_c": 0.898,
+          "duration_days": 0,
+          "mhw": false
+        },
+        {
+          "date": "2024-04-27",
+          "sst_c": 20.192,
+          "reference_c": 19.22,
+          "p90_c": 20.545,
+          "anomaly_c": 0.972,
+          "duration_days": 0,
+          "mhw": false
+        },
+        {
+          "date": "2024-04-28",
+          "sst_c": 20.286,
+          "reference_c": 19.311,
+          "p90_c": 20.659,
+          "anomaly_c": 0.975,
+          "duration_days": 0,
+          "mhw": false
+        },
+        {
+          "date": "2024-04-29",
+          "sst_c": 21.47,
+          "reference_c": 19.404,
+          "p90_c": 20.772,
+          "anomaly_c": 2.065,
+          "duration_days": 1,
+          "mhw": false
+        },
+        {
+          "date": "2024-04-30",
+          "sst_c": 21.316,
+          "reference_c": 19.5,
+          "p90_c": 20.884,
+          "anomaly_c": 1.815,
+          "duration_days": 2,
+          "mhw": false
+        },
+        {
+          "date": "2024-05-01",
+          "sst_c": 22.775,
+          "reference_c": 19.598,
+          "p90_c": 20.988,
+          "anomaly_c": 3.177,
+          "duration_days": 3,
+          "mhw": false
+        },
+        {
+          "date": "2024-05-02",
+          "sst_c": 22.938,
+          "reference_c": 19.696,
+          "p90_c": 21.092,
+          "anomaly_c": 3.242,
+          "duration_days": 4,
+          "mhw": false
+        },
+        {
+          "date": "2024-05-03",
+          "sst_c": 22.246,
+          "reference_c": 19.795,
+          "p90_c": 21.201,
+          "anomaly_c": 2.451,
+          "duration_days": 5,
+          "mhw": true
+        },
+        {
+          "date": "2024-05-04",
+          "sst_c": 21.141,
+          "reference_c": 19.895,
+          "p90_c": 21.312,
+          "anomaly_c": 1.246,
+          "duration_days": 0,
+          "mhw": false
+        },
+        {
+          "date": "2024-05-05",
+          "sst_c": 19.352,
+          "reference_c": 19.996,
+          "p90_c": 21.424,
+          "anomaly_c": -0.644,
+          "duration_days": 0,
+          "mhw": false
+        },
+        {
+          "date": "2024-05-06",
+          "sst_c": 19.514,
+          "reference_c": 20.097,
+          "p90_c": 21.539,
+          "anomaly_c": -0.583,
+          "duration_days": 0,
+          "mhw": false
+        },
+        {
+          "date": "2024-05-07",
+          "sst_c": 19.626,
+          "reference_c": 20.199,
+          "p90_c": 21.655,
+          "anomaly_c": -0.572,
+          "duration_days": 0,
+          "mhw": false
+        },
+        {
+          "date": "2024-05-08",
+          "sst_c": 19.978,
+          "reference_c": 20.301,
+          "p90_c": 21.77,
+          "anomaly_c": -0.323,
+          "duration_days": 0,
+          "mhw": false
+        },
+        {
+          "date": "2024-05-09",
+          "sst_c": 20.431,
+          "reference_c": 20.402,
+          "p90_c": 21.881,
+          "anomaly_c": 0.029,
+          "duration_days": 0,
+          "mhw": false
+        },
+        {
+          "date": "2024-05-10",
+          "sst_c": 21.098,
+          "reference_c": 20.504,
+          "p90_c": 21.992,
+          "anomaly_c": 0.595,
+          "duration_days": 0,
+          "mhw": false
+        },
+        {
+          "date": "2024-05-11",
+          "sst_c": 20.848,
+          "reference_c": 20.605,
+          "p90_c": 22.102,
+          "anomaly_c": 0.243,
+          "duration_days": 0,
+          "mhw": false
+        },
+        {
+          "date": "2024-05-12",
+          "sst_c": 21.314,
+          "reference_c": 20.707,
+          "p90_c": 22.208,
+          "anomaly_c": 0.607,
+          "duration_days": 0,
+          "mhw": false
+        },
+        {
+          "date": "2024-05-13",
+          "sst_c": 20.703,
+          "reference_c": 20.81,
+          "p90_c": 22.318,
+          "anomaly_c": -0.107,
+          "duration_days": 0,
+          "mhw": false
+        },
+        {
+          "date": "2024-05-14",
+          "sst_c": 21.162,
+          "reference_c": 20.913,
+          "p90_c": 22.42,
+          "anomaly_c": 0.249,
+          "duration_days": 0,
+          "mhw": false
+        },
+        {
+          "date": "2024-05-15",
+          "sst_c": 21.222,
+          "reference_c": 21.017,
+          "p90_c": 22.522,
+          "anomaly_c": 0.204,
+          "duration_days": 0,
+          "mhw": false
+        },
+        {
+          "date": "2024-05-16",
+          "sst_c": 21.038,
+          "reference_c": 21.122,
+          "p90_c": 22.624,
+          "anomaly_c": -0.084,
+          "duration_days": 0,
+          "mhw": false
+        },
+        {
+          "date": "2024-05-17",
+          "sst_c": 21.245,
+          "reference_c": 21.227,
+          "p90_c": 22.726,
+          "anomaly_c": 0.018,
+          "duration_days": 0,
+          "mhw": false
+        },
+        {
+          "date": "2024-05-18",
+          "sst_c": 21.76,
+          "reference_c": 21.332,
+          "p90_c": 22.822,
+          "anomaly_c": 0.428,
+          "duration_days": 0,
+          "mhw": false
+        },
+        {
+          "date": "2024-05-19",
+          "sst_c": 22.12,
+          "reference_c": 21.436,
+          "p90_c": 22.911,
+          "anomaly_c": 0.684,
+          "duration_days": 0,
+          "mhw": false
+        },
+        {
+          "date": "2024-05-20",
+          "sst_c": 21.319,
+          "reference_c": 21.541,
+          "p90_c": 22.992,
+          "anomaly_c": -0.222,
+          "duration_days": 0,
+          "mhw": false
+        },
+        {
+          "date": "2024-05-21",
+          "sst_c": 21.944,
+          "reference_c": 21.648,
+          "p90_c": 23.078,
+          "anomaly_c": 0.296,
+          "duration_days": 0,
+          "mhw": false
+        },
+        {
+          "date": "2024-05-22",
+          "sst_c": 23.424,
+          "reference_c": 21.756,
+          "p90_c": 23.17,
+          "anomaly_c": 1.668,
+          "duration_days": 1,
+          "mhw": false
+        },
+        {
+          "date": "2024-05-23",
+          "sst_c": 22.77,
+          "reference_c": 21.865,
+          "p90_c": 23.256,
+          "anomaly_c": 0.905,
+          "duration_days": 0,
+          "mhw": false
+        },
+        {
+          "date": "2024-05-24",
+          "sst_c": 22.739,
+          "reference_c": 21.975,
+          "p90_c": 23.343,
+          "anomaly_c": 0.764,
+          "duration_days": 0,
+          "mhw": false
+        },
+        {
+          "date": "2024-05-25",
+          "sst_c": 22.62,
+          "reference_c": 22.086,
+          "p90_c": 23.431,
+          "anomaly_c": 0.534,
+          "duration_days": 0,
+          "mhw": false
+        },
+        {
+          "date": "2024-05-26",
+          "sst_c": 22.809,
+          "reference_c": 22.198,
+          "p90_c": 23.521,
+          "anomaly_c": 0.611,
+          "duration_days": 0,
+          "mhw": false
+        },
+        {
+          "date": "2024-05-27",
+          "sst_c": 22.554,
+          "reference_c": 22.31,
+          "p90_c": 23.621,
+          "anomaly_c": 0.244,
+          "duration_days": 0,
+          "mhw": false
+        },
+        {
+          "date": "2024-05-28",
+          "sst_c": 22.576,
+          "reference_c": 22.424,
+          "p90_c": 23.734,
+          "anomaly_c": 0.152,
+          "duration_days": 0,
+          "mhw": false
+        },
+        {
+          "date": "2024-05-29",
+          "sst_c": 23.498,
+          "reference_c": 22.539,
+          "p90_c": 23.851,
+          "anomaly_c": 0.958,
+          "duration_days": 0,
+          "mhw": false
+        },
+        {
+          "date": "2024-05-30",
+          "sst_c": 23.712,
+          "reference_c": 22.657,
+          "p90_c": 23.971,
+          "anomaly_c": 1.056,
+          "duration_days": 0,
+          "mhw": false
+        },
+        {
+          "date": "2024-05-31",
+          "sst_c": 23.752,
+          "reference_c": 22.775,
+          "p90_c": 24.087,
+          "anomaly_c": 0.977,
+          "duration_days": 0,
+          "mhw": false
+        },
+        {
+          "date": "2024-06-01",
+          "sst_c": 23.452,
+          "reference_c": 22.896,
+          "p90_c": 24.202,
+          "anomaly_c": 0.555,
+          "duration_days": 0,
+          "mhw": false
+        },
+        {
+          "date": "2024-06-02",
+          "sst_c": 24.368,
+          "reference_c": 23.02,
+          "p90_c": 24.321,
+          "anomaly_c": 1.348,
+          "duration_days": 1,
+          "mhw": false
+        },
+        {
+          "date": "2024-06-03",
+          "sst_c": 24.522,
+          "reference_c": 23.146,
+          "p90_c": 24.437,
+          "anomaly_c": 1.377,
+          "duration_days": 2,
+          "mhw": false
+        },
+        {
+          "date": "2024-06-04",
+          "sst_c": 25.384,
+          "reference_c": 23.273,
+          "p90_c": 24.555,
+          "anomaly_c": 2.11,
+          "duration_days": 3,
+          "mhw": false
+        },
+        {
+          "date": "2024-06-05",
+          "sst_c": 25.973,
+          "reference_c": 23.403,
+          "p90_c": 24.679,
+          "anomaly_c": 2.57,
+          "duration_days": 4,
+          "mhw": false
+        },
+        {
+          "date": "2024-06-06",
+          "sst_c": 26.839,
+          "reference_c": 23.534,
+          "p90_c": 24.802,
+          "anomaly_c": 3.305,
+          "duration_days": 5,
+          "mhw": true
+        },
+        {
+          "date": "2024-06-07",
+          "sst_c": 27.012,
+          "reference_c": 23.667,
+          "p90_c": 24.929,
+          "anomaly_c": 3.346,
+          "duration_days": 6,
+          "mhw": true
+        },
+        {
+          "date": "2024-06-08",
+          "sst_c": 25.974,
+          "reference_c": 23.801,
+          "p90_c": 25.056,
+          "anomaly_c": 2.173,
+          "duration_days": 7,
+          "mhw": true
+        },
+        {
+          "date": "2024-06-09",
+          "sst_c": 25.703,
+          "reference_c": 23.938,
+          "p90_c": 25.191,
+          "anomaly_c": 1.765,
+          "duration_days": 8,
+          "mhw": true
+        },
+        {
+          "date": "2024-06-10",
+          "sst_c": 26.312,
+          "reference_c": 24.076,
+          "p90_c": 25.325,
+          "anomaly_c": 2.236,
+          "duration_days": 9,
+          "mhw": true
+        },
+        {
+          "date": "2024-06-11",
+          "sst_c": 26.4,
+          "reference_c": 24.213,
+          "p90_c": 25.461,
+          "anomaly_c": 2.186,
+          "duration_days": 10,
+          "mhw": true
+        },
+        {
+          "date": "2024-06-12",
+          "sst_c": 26.173,
+          "reference_c": 24.349,
+          "p90_c": 25.598,
+          "anomaly_c": 1.824,
+          "duration_days": 11,
+          "mhw": true
+        },
+        {
+          "date": "2024-06-13",
+          "sst_c": 26.254,
+          "reference_c": 24.484,
+          "p90_c": 25.733,
+          "anomaly_c": 1.771,
+          "duration_days": 12,
+          "mhw": true
+        },
+        {
+          "date": "2024-06-14",
+          "sst_c": 27.128,
+          "reference_c": 24.617,
+          "p90_c": 25.869,
+          "anomaly_c": 2.512,
+          "duration_days": 13,
+          "mhw": true
+        },
+        {
+          "date": "2024-06-15",
+          "sst_c": 26.676,
+          "reference_c": 24.748,
+          "p90_c": 26.005,
+          "anomaly_c": 1.928,
+          "duration_days": 14,
+          "mhw": true
+        },
+        {
+          "date": "2024-06-16",
+          "sst_c": 26.421,
+          "reference_c": 24.877,
+          "p90_c": 26.139,
+          "anomaly_c": 1.544,
+          "duration_days": 15,
+          "mhw": true
+        },
+        {
+          "date": "2024-06-17",
+          "sst_c": 27.367,
+          "reference_c": 25.005,
+          "p90_c": 26.265,
+          "anomaly_c": 2.361,
+          "duration_days": 16,
+          "mhw": true
+        },
+        {
+          "date": "2024-06-18",
+          "sst_c": 27.411,
+          "reference_c": 25.133,
+          "p90_c": 26.395,
+          "anomaly_c": 2.278,
+          "duration_days": 17,
+          "mhw": true
+        },
+        {
+          "date": "2024-06-19",
+          "sst_c": 27.046,
+          "reference_c": 25.261,
+          "p90_c": 26.526,
+          "anomaly_c": 1.786,
+          "duration_days": 18,
+          "mhw": true
+        },
+        {
+          "date": "2024-06-20",
+          "sst_c": 27.469,
+          "reference_c": 25.386,
+          "p90_c": 26.656,
+          "anomaly_c": 2.082,
+          "duration_days": 19,
+          "mhw": true
+        },
+        {
+          "date": "2024-06-21",
+          "sst_c": 27.275,
+          "reference_c": 25.511,
+          "p90_c": 26.779,
+          "anomaly_c": 1.763,
+          "duration_days": 20,
+          "mhw": true
+        },
+        {
+          "date": "2024-06-22",
+          "sst_c": 27.936,
+          "reference_c": 25.636,
+          "p90_c": 26.896,
+          "anomaly_c": 2.3,
+          "duration_days": 21,
+          "mhw": true
+        },
+        {
+          "date": "2024-06-23",
+          "sst_c": 27.472,
+          "reference_c": 25.76,
+          "p90_c": 27.015,
+          "anomaly_c": 1.711,
+          "duration_days": 22,
+          "mhw": true
+        },
+        {
+          "date": "2024-06-24",
+          "sst_c": 27.675,
+          "reference_c": 25.884,
+          "p90_c": 27.13,
+          "anomaly_c": 1.79,
+          "duration_days": 23,
+          "mhw": true
+        },
+        {
+          "date": "2024-06-25",
+          "sst_c": 27.833,
+          "reference_c": 26.007,
+          "p90_c": 27.245,
+          "anomaly_c": 1.826,
+          "duration_days": 24,
+          "mhw": true
+        },
+        {
+          "date": "2024-06-26",
+          "sst_c": 28.379,
+          "reference_c": 26.129,
+          "p90_c": 27.359,
+          "anomaly_c": 2.25,
+          "duration_days": 25,
+          "mhw": true
+        },
+        {
+          "date": "2024-06-27",
+          "sst_c": 27.965,
+          "reference_c": 26.25,
+          "p90_c": 27.46,
+          "anomaly_c": 1.715,
+          "duration_days": 26,
+          "mhw": true
+        },
+        {
+          "date": "2024-06-28",
+          "sst_c": 28.69,
+          "reference_c": 26.368,
+          "p90_c": 27.55,
+          "anomaly_c": 2.322,
+          "duration_days": 27,
+          "mhw": true
+        },
+        {
+          "date": "2024-06-29",
+          "sst_c": 28.614,
+          "reference_c": 26.484,
+          "p90_c": 27.636,
+          "anomaly_c": 2.131,
+          "duration_days": 28,
+          "mhw": true
+        },
+        {
+          "date": "2024-06-30",
+          "sst_c": 29.311,
+          "reference_c": 26.596,
+          "p90_c": 27.722,
+          "anomaly_c": 2.715,
+          "duration_days": 29,
+          "mhw": true
+        },
+        {
+          "date": "2024-07-01",
+          "sst_c": 28.393,
+          "reference_c": 26.706,
+          "p90_c": 27.811,
+          "anomaly_c": 1.687,
+          "duration_days": 30,
+          "mhw": true
+        },
+        {
+          "date": "2024-07-02",
+          "sst_c": 27.874,
+          "reference_c": 26.812,
+          "p90_c": 27.899,
+          "anomaly_c": 1.062,
+          "duration_days": 0,
+          "mhw": false
+        },
+        {
+          "date": "2024-07-03",
+          "sst_c": 28.138,
+          "reference_c": 26.915,
+          "p90_c": 27.982,
+          "anomaly_c": 1.223,
+          "duration_days": 1,
+          "mhw": false
+        },
+        {
+          "date": "2024-07-04",
+          "sst_c": 28.51,
+          "reference_c": 27.015,
+          "p90_c": 28.075,
+          "anomaly_c": 1.495,
+          "duration_days": 2,
+          "mhw": false
+        },
+        {
+          "date": "2024-07-05",
+          "sst_c": 28.813,
+          "reference_c": 27.113,
+          "p90_c": 28.165,
+          "anomaly_c": 1.701,
+          "duration_days": 3,
+          "mhw": false
+        },
+        {
+          "date": "2024-07-06",
+          "sst_c": 28.843,
+          "reference_c": 27.207,
+          "p90_c": 28.249,
+          "anomaly_c": 1.636,
+          "duration_days": 4,
+          "mhw": false
+        },
+        {
+          "date": "2024-07-07",
+          "sst_c": 28.611,
+          "reference_c": 27.3,
+          "p90_c": 28.329,
+          "anomaly_c": 1.311,
+          "duration_days": 5,
+          "mhw": true
+        },
+        {
+          "date": "2024-07-08",
+          "sst_c": 29.113,
+          "reference_c": 27.389,
+          "p90_c": 28.403,
+          "anomaly_c": 1.724,
+          "duration_days": 6,
+          "mhw": true
+        },
+        {
+          "date": "2024-07-09",
+          "sst_c": 28.946,
+          "reference_c": 27.475,
+          "p90_c": 28.476,
+          "anomaly_c": 1.471,
+          "duration_days": 7,
+          "mhw": true
+        },
+        {
+          "date": "2024-07-10",
+          "sst_c": 28.865,
+          "reference_c": 27.558,
+          "p90_c": 28.541,
+          "anomaly_c": 1.307,
+          "duration_days": 8,
+          "mhw": true
+        },
+        {
+          "date": "2024-07-11",
+          "sst_c": 29.648,
+          "reference_c": 27.639,
+          "p90_c": 28.606,
+          "anomaly_c": 2.009,
+          "duration_days": 9,
+          "mhw": true
+        },
+        {
+          "date": "2024-07-12",
+          "sst_c": 29.899,
+          "reference_c": 27.717,
+          "p90_c": 28.666,
+          "anomaly_c": 2.182,
+          "duration_days": 10,
+          "mhw": true
+        },
+        {
+          "date": "2024-07-13",
+          "sst_c": 29.199,
+          "reference_c": 27.795,
+          "p90_c": 28.726,
+          "anomaly_c": 1.405,
+          "duration_days": 11,
+          "mhw": true
+        },
+        {
+          "date": "2024-07-14",
+          "sst_c": 29.384,
+          "reference_c": 27.871,
+          "p90_c": 28.782,
+          "anomaly_c": 1.512,
+          "duration_days": 12,
+          "mhw": true
+        },
+        {
+          "date": "2024-07-15",
+          "sst_c": 29.113,
+          "reference_c": 27.946,
+          "p90_c": 28.839,
+          "anomaly_c": 1.167,
+          "duration_days": 13,
+          "mhw": true
+        },
+        {
+          "date": "2024-07-16",
+          "sst_c": 29.216,
+          "reference_c": 28.02,
+          "p90_c": 28.897,
+          "anomaly_c": 1.196,
+          "duration_days": 14,
+          "mhw": true
+        },
+        {
+          "date": "2024-07-17",
+          "sst_c": 29.245,
+          "reference_c": 28.092,
+          "p90_c": 28.952,
+          "anomaly_c": 1.153,
+          "duration_days": 15,
+          "mhw": true
+        },
+        {
+          "date": "2024-07-18",
+          "sst_c": 29.575,
+          "reference_c": 28.163,
+          "p90_c": 29.008,
+          "anomaly_c": 1.412,
+          "duration_days": 16,
+          "mhw": true
+        },
+        {
+          "date": "2024-07-19",
+          "sst_c": 29.79,
+          "reference_c": 28.233,
+          "p90_c": 29.063,
+          "anomaly_c": 1.557,
+          "duration_days": 17,
+          "mhw": true
+        },
+        {
+          "date": "2024-07-20",
+          "sst_c": 30.177,
+          "reference_c": 28.302,
+          "p90_c": 29.119,
+          "anomaly_c": 1.875,
+          "duration_days": 18,
+          "mhw": true
+        },
+        {
+          "date": "2024-07-21",
+          "sst_c": 30.233,
+          "reference_c": 28.369,
+          "p90_c": 29.174,
+          "anomaly_c": 1.864,
+          "duration_days": 19,
+          "mhw": true
+        },
+        {
+          "date": "2024-07-22",
+          "sst_c": 30.455,
+          "reference_c": 28.433,
+          "p90_c": 29.229,
+          "anomaly_c": 2.021,
+          "duration_days": 20,
+          "mhw": true
+        },
+        {
+          "date": "2024-07-23",
+          "sst_c": 30.525,
+          "reference_c": 28.495,
+          "p90_c": 29.284,
+          "anomaly_c": 2.03,
+          "duration_days": 21,
+          "mhw": true
+        },
+        {
+          "date": "2024-07-24",
+          "sst_c": 29.989,
+          "reference_c": 28.552,
+          "p90_c": 29.334,
+          "anomaly_c": 1.437,
+          "duration_days": 22,
+          "mhw": true
+        },
+        {
+          "date": "2024-07-25",
+          "sst_c": 30.294,
+          "reference_c": 28.605,
+          "p90_c": 29.379,
+          "anomaly_c": 1.689,
+          "duration_days": 23,
+          "mhw": true
+        },
+        {
+          "date": "2024-07-26",
+          "sst_c": 30.215,
+          "reference_c": 28.654,
+          "p90_c": 29.423,
+          "anomaly_c": 1.56,
+          "duration_days": 24,
+          "mhw": true
+        },
+        {
+          "date": "2024-07-27",
+          "sst_c": 29.93,
+          "reference_c": 28.701,
+          "p90_c": 29.464,
+          "anomaly_c": 1.229,
+          "duration_days": 25,
+          "mhw": true
+        },
+        {
+          "date": "2024-07-28",
+          "sst_c": 29.567,
+          "reference_c": 28.743,
+          "p90_c": 29.504,
+          "anomaly_c": 0.825,
+          "duration_days": 26,
+          "mhw": true
+        },
+        {
+          "date": "2024-07-29",
+          "sst_c": 29.493,
+          "reference_c": 28.782,
+          "p90_c": 29.54,
+          "anomaly_c": 0.711,
+          "duration_days": 0,
+          "mhw": false
+        },
+        {
+          "date": "2024-07-30",
+          "sst_c": 29.493,
+          "reference_c": 28.819,
+          "p90_c": 29.574,
+          "anomaly_c": 0.674,
+          "duration_days": 0,
+          "mhw": false
+        },
+        {
+          "date": "2024-07-31",
+          "sst_c": 29.631,
+          "reference_c": 28.853,
+          "p90_c": 29.607,
+          "anomaly_c": 0.778,
+          "duration_days": 1,
+          "mhw": false
+        },
+        {
+          "date": "2024-08-01",
+          "sst_c": 29.507,
+          "reference_c": 28.886,
+          "p90_c": 29.636,
+          "anomaly_c": 0.621,
+          "duration_days": 0,
+          "mhw": false
+        },
+        {
+          "date": "2024-08-02",
+          "sst_c": 29.78,
+          "reference_c": 28.917,
+          "p90_c": 29.664,
+          "anomaly_c": 0.863,
+          "duration_days": 1,
+          "mhw": false
+        },
+        {
+          "date": "2024-08-03",
+          "sst_c": 29.771,
+          "reference_c": 28.947,
+          "p90_c": 29.691,
+          "anomaly_c": 0.824,
+          "duration_days": 2,
+          "mhw": false
+        },
+        {
+          "date": "2024-08-04",
+          "sst_c": 29.849,
+          "reference_c": 28.976,
+          "p90_c": 29.705,
+          "anomaly_c": 0.873,
+          "duration_days": 3,
+          "mhw": false
+        },
+        {
+          "date": "2024-08-05",
+          "sst_c": 29.371,
+          "reference_c": 29.003,
+          "p90_c": 29.717,
+          "anomaly_c": 0.368,
+          "duration_days": 0,
+          "mhw": false
+        },
+        {
+          "date": "2024-08-06",
+          "sst_c": 29.147,
+          "reference_c": 29.029,
+          "p90_c": 29.729,
+          "anomaly_c": 0.118,
+          "duration_days": 0,
+          "mhw": false
+        },
+        {
+          "date": "2024-08-07",
+          "sst_c": 29.794,
+          "reference_c": 29.053,
+          "p90_c": 29.741,
+          "anomaly_c": 0.741,
+          "duration_days": 1,
+          "mhw": false
+        },
+        {
+          "date": "2024-08-08",
+          "sst_c": 29.935,
+          "reference_c": 29.077,
+          "p90_c": 29.753,
+          "anomaly_c": 0.858,
+          "duration_days": 2,
+          "mhw": false
+        },
+        {
+          "date": "2024-08-09",
+          "sst_c": 30.28,
+          "reference_c": 29.1,
+          "p90_c": 29.765,
+          "anomaly_c": 1.18,
+          "duration_days": 3,
+          "mhw": false
+        },
+        {
+          "date": "2024-08-10",
+          "sst_c": 30.283,
+          "reference_c": 29.122,
+          "p90_c": 29.778,
+          "anomaly_c": 1.161,
+          "duration_days": 4,
+          "mhw": false
+        },
+        {
+          "date": "2024-08-11",
+          "sst_c": 30.393,
+          "reference_c": 29.143,
+          "p90_c": 29.791,
+          "anomaly_c": 1.25,
+          "duration_days": 5,
+          "mhw": true
+        },
+        {
+          "date": "2024-08-12",
+          "sst_c": 30.343,
+          "reference_c": 29.162,
+          "p90_c": 29.804,
+          "anomaly_c": 1.181,
+          "duration_days": 6,
+          "mhw": true
+        },
+        {
+          "date": "2024-08-13",
+          "sst_c": 30.089,
+          "reference_c": 29.18,
+          "p90_c": 29.815,
+          "anomaly_c": 0.91,
+          "duration_days": 7,
+          "mhw": true
+        },
+        {
+          "date": "2024-08-14",
+          "sst_c": 29.998,
+          "reference_c": 29.195,
+          "p90_c": 29.826,
+          "anomaly_c": 0.802,
+          "duration_days": 8,
+          "mhw": true
+        },
+        {
+          "date": "2024-08-15",
+          "sst_c": 30.653,
+          "reference_c": 29.21,
+          "p90_c": 29.833,
+          "anomaly_c": 1.443,
+          "duration_days": 9,
+          "mhw": true
+        },
+        {
+          "date": "2024-08-16",
+          "sst_c": 30.247,
+          "reference_c": 29.222,
+          "p90_c": 29.837,
+          "anomaly_c": 1.025,
+          "duration_days": 10,
+          "mhw": true
+        },
+        {
+          "date": "2024-08-17",
+          "sst_c": 29.806,
+          "reference_c": 29.233,
+          "p90_c": 29.836,
+          "anomaly_c": 0.573,
+          "duration_days": 0,
+          "mhw": false
+        },
+        {
+          "date": "2024-08-18",
+          "sst_c": 30.274,
+          "reference_c": 29.241,
+          "p90_c": 29.833,
+          "anomaly_c": 1.033,
+          "duration_days": 1,
+          "mhw": false
+        },
+        {
+          "date": "2024-08-19",
+          "sst_c": 30.437,
+          "reference_c": 29.247,
+          "p90_c": 29.826,
+          "anomaly_c": 1.19,
+          "duration_days": 2,
+          "mhw": false
+        },
+        {
+          "date": "2024-08-20",
+          "sst_c": 30.426,
+          "reference_c": 29.249,
+          "p90_c": 29.816,
+          "anomaly_c": 1.177,
+          "duration_days": 3,
+          "mhw": false
+        },
+        {
+          "date": "2024-08-21",
+          "sst_c": 29.637,
+          "reference_c": 29.249,
+          "p90_c": 29.805,
+          "anomaly_c": 0.388,
+          "duration_days": 0,
+          "mhw": false
+        },
+        {
+          "date": "2024-08-22",
+          "sst_c": 29.996,
+          "reference_c": 29.247,
+          "p90_c": 29.792,
+          "anomaly_c": 0.748,
+          "duration_days": 1,
+          "mhw": false
+        },
+        {
+          "date": "2024-08-23",
+          "sst_c": 30.147,
+          "reference_c": 29.244,
+          "p90_c": 29.78,
+          "anomaly_c": 0.903,
+          "duration_days": 2,
+          "mhw": false
+        },
+        {
+          "date": "2024-08-24",
+          "sst_c": 30.132,
+          "reference_c": 29.24,
+          "p90_c": 29.769,
+          "anomaly_c": 0.892,
+          "duration_days": 3,
+          "mhw": false
+        },
+        {
+          "date": "2024-08-25",
+          "sst_c": 29.889,
+          "reference_c": 29.235,
+          "p90_c": 29.758,
+          "anomaly_c": 0.654,
+          "duration_days": 4,
+          "mhw": false
+        },
+        {
+          "date": "2024-08-26",
+          "sst_c": 30.312,
+          "reference_c": 29.227,
+          "p90_c": 29.746,
+          "anomaly_c": 1.085,
+          "duration_days": 5,
+          "mhw": true
+        },
+        {
+          "date": "2024-08-27",
+          "sst_c": 30.266,
+          "reference_c": 29.218,
+          "p90_c": 29.732,
+          "anomaly_c": 1.048,
+          "duration_days": 6,
+          "mhw": true
+        },
+        {
+          "date": "2024-08-28",
+          "sst_c": 29.738,
+          "reference_c": 29.208,
+          "p90_c": 29.718,
+          "anomaly_c": 0.53,
+          "duration_days": 7,
+          "mhw": true
+        },
+        {
+          "date": "2024-08-29",
+          "sst_c": 30.243,
+          "reference_c": 29.196,
+          "p90_c": 29.703,
+          "anomaly_c": 1.048,
+          "duration_days": 8,
+          "mhw": true
+        },
+        {
+          "date": "2024-08-30",
+          "sst_c": 30.226,
+          "reference_c": 29.182,
+          "p90_c": 29.687,
+          "anomaly_c": 1.044,
+          "duration_days": 9,
+          "mhw": true
+        },
+        {
+          "date": "2024-08-31",
+          "sst_c": 30.399,
+          "reference_c": 29.166,
+          "p90_c": 29.669,
+          "anomaly_c": 1.233,
+          "duration_days": 10,
+          "mhw": true
+        },
+        {
+          "date": "2024-09-01",
+          "sst_c": 30.003,
+          "reference_c": 29.147,
+          "p90_c": 29.649,
+          "anomaly_c": 0.857,
+          "duration_days": 11,
+          "mhw": true
+        },
+        {
+          "date": "2024-09-02",
+          "sst_c": 29.885,
+          "reference_c": 29.125,
+          "p90_c": 29.628,
+          "anomaly_c": 0.76,
+          "duration_days": 12,
+          "mhw": true
+        },
+        {
+          "date": "2024-09-03",
+          "sst_c": 29.777,
+          "reference_c": 29.1,
+          "p90_c": 29.605,
+          "anomaly_c": 0.677,
+          "duration_days": 13,
+          "mhw": true
+        },
+        {
+          "date": "2024-09-04",
+          "sst_c": 29.478,
+          "reference_c": 29.071,
+          "p90_c": 29.581,
+          "anomaly_c": 0.407,
+          "duration_days": 0,
+          "mhw": false
+        },
+        {
+          "date": "2024-09-05",
+          "sst_c": 29.219,
+          "reference_c": 29.038,
+          "p90_c": 29.556,
+          "anomaly_c": 0.181,
+          "duration_days": 0,
+          "mhw": false
+        },
+        {
+          "date": "2024-09-06",
+          "sst_c": 29.334,
+          "reference_c": 29.003,
+          "p90_c": 29.53,
+          "anomaly_c": 0.331,
+          "duration_days": 0,
+          "mhw": false
+        },
+        {
+          "date": "2024-09-07",
+          "sst_c": 29.855,
+          "reference_c": 28.965,
+          "p90_c": 29.502,
+          "anomaly_c": 0.89,
+          "duration_days": 1,
+          "mhw": false
+        },
+        {
+          "date": "2024-09-08",
+          "sst_c": 29.578,
+          "reference_c": 28.924,
+          "p90_c": 29.472,
+          "anomaly_c": 0.653,
+          "duration_days": 2,
+          "mhw": false
+        },
+        {
+          "date": "2024-09-09",
+          "sst_c": 29.457,
+          "reference_c": 28.88,
+          "p90_c": 29.44,
+          "anomaly_c": 0.576,
+          "duration_days": 3,
+          "mhw": false
+        },
+        {
+          "date": "2024-09-10",
+          "sst_c": 29.305,
+          "reference_c": 28.834,
+          "p90_c": 29.407,
+          "anomaly_c": 0.471,
+          "duration_days": 0,
+          "mhw": false
+        },
+        {
+          "date": "2024-09-11",
+          "sst_c": 29.74,
+          "reference_c": 28.786,
+          "p90_c": 29.367,
+          "anomaly_c": 0.954,
+          "duration_days": 1,
+          "mhw": false
+        },
+        {
+          "date": "2024-09-12",
+          "sst_c": 29.395,
+          "reference_c": 28.735,
+          "p90_c": 29.324,
+          "anomaly_c": 0.66,
+          "duration_days": 2,
+          "mhw": false
+        },
+        {
+          "date": "2024-09-13",
+          "sst_c": 29.574,
+          "reference_c": 28.681,
+          "p90_c": 29.279,
+          "anomaly_c": 0.893,
+          "duration_days": 3,
+          "mhw": false
+        },
+        {
+          "date": "2024-09-14",
+          "sst_c": 29.459,
+          "reference_c": 28.625,
+          "p90_c": 29.235,
+          "anomaly_c": 0.833,
+          "duration_days": 4,
+          "mhw": false
+        },
+        {
+          "date": "2024-09-15",
+          "sst_c": 29.475,
+          "reference_c": 28.567,
+          "p90_c": 29.189,
+          "anomaly_c": 0.908,
+          "duration_days": 5,
+          "mhw": true
+        },
+        {
+          "date": "2024-09-16",
+          "sst_c": 28.96,
+          "reference_c": 28.506,
+          "p90_c": 29.141,
+          "anomaly_c": 0.454,
+          "duration_days": 0,
+          "mhw": false
+        },
+        {
+          "date": "2024-09-17",
+          "sst_c": 28.493,
+          "reference_c": 28.443,
+          "p90_c": 29.092,
+          "anomaly_c": 0.05,
+          "duration_days": 0,
+          "mhw": false
+        },
+        {
+          "date": "2024-09-18",
+          "sst_c": 28.579,
+          "reference_c": 28.376,
+          "p90_c": 29.043,
+          "anomaly_c": 0.203,
+          "duration_days": 0,
+          "mhw": false
+        },
+        {
+          "date": "2024-09-19",
+          "sst_c": 28.452,
+          "reference_c": 28.306,
+          "p90_c": 28.989,
+          "anomaly_c": 0.145,
+          "duration_days": 0,
+          "mhw": false
+        },
+        {
+          "date": "2024-09-20",
+          "sst_c": 27.646,
+          "reference_c": 28.234,
+          "p90_c": 28.933,
+          "anomaly_c": -0.588,
+          "duration_days": 0,
+          "mhw": false
+        },
+        {
+          "date": "2024-09-21",
+          "sst_c": 27.911,
+          "reference_c": 28.16,
+          "p90_c": 28.872,
+          "anomaly_c": -0.248,
+          "duration_days": 0,
+          "mhw": false
+        },
+        {
+          "date": "2024-09-22",
+          "sst_c": 28.191,
+          "reference_c": 28.082,
+          "p90_c": 28.812,
+          "anomaly_c": 0.109,
+          "duration_days": 0,
+          "mhw": false
+        },
+        {
+          "date": "2024-09-23",
+          "sst_c": 28.387,
+          "reference_c": 28.002,
+          "p90_c": 28.748,
+          "anomaly_c": 0.386,
+          "duration_days": 0,
+          "mhw": false
+        },
+        {
+          "date": "2024-09-24",
+          "sst_c": 28.366,
+          "reference_c": 27.92,
+          "p90_c": 28.68,
+          "anomaly_c": 0.447,
+          "duration_days": 0,
+          "mhw": false
+        },
+        {
+          "date": "2024-09-25",
+          "sst_c": 28.282,
+          "reference_c": 27.835,
+          "p90_c": 28.611,
+          "anomaly_c": 0.447,
+          "duration_days": 0,
+          "mhw": false
+        },
+        {
+          "date": "2024-09-26",
+          "sst_c": 28.308,
+          "reference_c": 27.749,
+          "p90_c": 28.535,
+          "anomaly_c": 0.559,
+          "duration_days": 0,
+          "mhw": false
+        },
+        {
+          "date": "2024-09-27",
+          "sst_c": 28.675,
+          "reference_c": 27.662,
+          "p90_c": 28.461,
+          "anomaly_c": 1.013,
+          "duration_days": 1,
+          "mhw": false
+        },
+        {
+          "date": "2024-09-28",
+          "sst_c": 28.274,
+          "reference_c": 27.574,
+          "p90_c": 28.384,
+          "anomaly_c": 0.7,
+          "duration_days": 0,
+          "mhw": false
+        },
+        {
+          "date": "2024-09-29",
+          "sst_c": 28.519,
+          "reference_c": 27.485,
+          "p90_c": 28.307,
+          "anomaly_c": 1.034,
+          "duration_days": 1,
+          "mhw": false
+        },
+        {
+          "date": "2024-09-30",
+          "sst_c": 28.43,
+          "reference_c": 27.395,
+          "p90_c": 28.23,
+          "anomaly_c": 1.035,
+          "duration_days": 2,
+          "mhw": false
+        },
+        {
+          "date": "2024-10-01",
+          "sst_c": 27.944,
+          "reference_c": 27.306,
+          "p90_c": 28.154,
+          "anomaly_c": 0.638,
+          "duration_days": 0,
+          "mhw": false
+        },
+        {
+          "date": "2024-10-02",
+          "sst_c": 28.145,
+          "reference_c": 27.216,
+          "p90_c": 28.078,
+          "anomaly_c": 0.929,
+          "duration_days": 1,
+          "mhw": false
+        },
+        {
+          "date": "2024-10-03",
+          "sst_c": 27.74,
+          "reference_c": 27.127,
+          "p90_c": 28.003,
+          "anomaly_c": 0.613,
+          "duration_days": 0,
+          "mhw": false
+        },
+        {
+          "date": "2024-10-04",
+          "sst_c": 27.499,
+          "reference_c": 27.038,
+          "p90_c": 27.928,
+          "anomaly_c": 0.461,
+          "duration_days": 0,
+          "mhw": false
+        },
+        {
+          "date": "2024-10-05",
+          "sst_c": 27.523,
+          "reference_c": 26.95,
+          "p90_c": 27.853,
+          "anomaly_c": 0.573,
+          "duration_days": 0,
+          "mhw": false
+        },
+        {
+          "date": "2024-10-06",
+          "sst_c": 27.164,
+          "reference_c": 26.862,
+          "p90_c": 27.778,
+          "anomaly_c": 0.302,
+          "duration_days": 0,
+          "mhw": false
+        },
+        {
+          "date": "2024-10-07",
+          "sst_c": 27.822,
+          "reference_c": 26.774,
+          "p90_c": 27.698,
+          "anomaly_c": 1.048,
+          "duration_days": 1,
+          "mhw": false
+        },
+        {
+          "date": "2024-10-08",
+          "sst_c": 27.674,
+          "reference_c": 26.685,
+          "p90_c": 27.617,
+          "anomaly_c": 0.989,
+          "duration_days": 2,
+          "mhw": false
+        },
+        {
+          "date": "2024-10-09",
+          "sst_c": 27.384,
+          "reference_c": 26.594,
+          "p90_c": 27.534,
+          "anomaly_c": 0.79,
+          "duration_days": 0,
+          "mhw": false
+        },
+        {
+          "date": "2024-10-10",
+          "sst_c": 27.442,
+          "reference_c": 26.503,
+          "p90_c": 27.451,
+          "anomaly_c": 0.939,
+          "duration_days": 0,
+          "mhw": false
+        },
+        {
+          "date": "2024-10-11",
+          "sst_c": 27.732,
+          "reference_c": 26.411,
+          "p90_c": 27.363,
+          "anomaly_c": 1.321,
+          "duration_days": 1,
+          "mhw": false
+        },
+        {
+          "date": "2024-10-12",
+          "sst_c": 27.595,
+          "reference_c": 26.316,
+          "p90_c": 27.277,
+          "anomaly_c": 1.279,
+          "duration_days": 2,
+          "mhw": false
+        },
+        {
+          "date": "2024-10-13",
+          "sst_c": 27.045,
+          "reference_c": 26.221,
+          "p90_c": 27.189,
+          "anomaly_c": 0.825,
+          "duration_days": 0,
+          "mhw": false
+        },
+        {
+          "date": "2024-10-14",
+          "sst_c": 26.633,
+          "reference_c": 26.124,
+          "p90_c": 27.099,
+          "anomaly_c": 0.509,
+          "duration_days": 0,
+          "mhw": false
+        },
+        {
+          "date": "2024-10-15",
+          "sst_c": 27.426,
+          "reference_c": 26.024,
+          "p90_c": 27.0,
+          "anomaly_c": 1.401,
+          "duration_days": 1,
+          "mhw": false
+        },
+        {
+          "date": "2024-10-16",
+          "sst_c": 27.424,
+          "reference_c": 25.923,
+          "p90_c": 26.9,
+          "anomaly_c": 1.501,
+          "duration_days": 2,
+          "mhw": false
+        },
+        {
+          "date": "2024-10-17",
+          "sst_c": 27.575,
+          "reference_c": 25.82,
+          "p90_c": 26.799,
+          "anomaly_c": 1.754,
+          "duration_days": 3,
+          "mhw": false
+        },
+        {
+          "date": "2024-10-18",
+          "sst_c": 27.255,
+          "reference_c": 25.717,
+          "p90_c": 26.698,
+          "anomaly_c": 1.537,
+          "duration_days": 4,
+          "mhw": false
+        },
+        {
+          "date": "2024-10-19",
+          "sst_c": 26.471,
+          "reference_c": 25.614,
+          "p90_c": 26.595,
+          "anomaly_c": 0.857,
+          "duration_days": 0,
+          "mhw": false
+        },
+        {
+          "date": "2024-10-20",
+          "sst_c": 26.374,
+          "reference_c": 25.51,
+          "p90_c": 26.497,
+          "anomaly_c": 0.863,
+          "duration_days": 0,
+          "mhw": false
+        },
+        {
+          "date": "2024-10-21",
+          "sst_c": 26.414,
+          "reference_c": 25.407,
+          "p90_c": 26.392,
+          "anomaly_c": 1.007,
+          "duration_days": 1,
+          "mhw": false
+        },
+        {
+          "date": "2024-10-22",
+          "sst_c": 26.179,
+          "reference_c": 25.304,
+          "p90_c": 26.289,
+          "anomaly_c": 0.875,
+          "duration_days": 0,
+          "mhw": false
+        },
+        {
+          "date": "2024-10-23",
+          "sst_c": 25.461,
+          "reference_c": 25.202,
+          "p90_c": 26.187,
+          "anomaly_c": 0.26,
+          "duration_days": 0,
+          "mhw": false
+        },
+        {
+          "date": "2024-10-24",
+          "sst_c": 25.456,
+          "reference_c": 25.099,
+          "p90_c": 26.084,
+          "anomaly_c": 0.357,
+          "duration_days": 0,
+          "mhw": false
+        },
+        {
+          "date": "2024-10-25",
+          "sst_c": 25.563,
+          "reference_c": 24.997,
+          "p90_c": 25.982,
+          "anomaly_c": 0.566,
+          "duration_days": 0,
+          "mhw": false
+        },
+        {
+          "date": "2024-10-26",
+          "sst_c": 25.143,
+          "reference_c": 24.896,
+          "p90_c": 25.88,
+          "anomaly_c": 0.248,
+          "duration_days": 0,
+          "mhw": false
+        },
+        {
+          "date": "2024-10-27",
+          "sst_c": 24.825,
+          "reference_c": 24.795,
+          "p90_c": 25.782,
+          "anomaly_c": 0.03,
+          "duration_days": 0,
+          "mhw": false
+        },
+        {
+          "date": "2024-10-28",
+          "sst_c": 24.475,
+          "reference_c": 24.693,
+          "p90_c": 25.683,
+          "anomaly_c": -0.218,
+          "duration_days": 0,
+          "mhw": false
+        },
+        {
+          "date": "2024-10-29",
+          "sst_c": 24.629,
+          "reference_c": 24.591,
+          "p90_c": 25.584,
+          "anomaly_c": 0.038,
+          "duration_days": 0,
+          "mhw": false
+        },
+        {
+          "date": "2024-10-30",
+          "sst_c": 24.637,
+          "reference_c": 24.489,
+          "p90_c": 25.481,
+          "anomaly_c": 0.148,
+          "duration_days": 0,
+          "mhw": false
+        },
+        {
+          "date": "2024-10-31",
+          "sst_c": 24.408,
+          "reference_c": 24.387,
+          "p90_c": 25.376,
+          "anomaly_c": 0.021,
+          "duration_days": 0,
+          "mhw": false
+        },
+        {
+          "date": "2024-11-01",
+          "sst_c": 24.246,
+          "reference_c": 24.283,
+          "p90_c": 25.27,
+          "anomaly_c": -0.037,
+          "duration_days": 0,
+          "mhw": false
+        },
+        {
+          "date": "2024-11-02",
+          "sst_c": 24.271,
+          "reference_c": 24.179,
+          "p90_c": 25.161,
+          "anomaly_c": 0.093,
+          "duration_days": 0,
+          "mhw": false
+        },
+        {
+          "date": "2024-11-03",
+          "sst_c": 23.753,
+          "reference_c": 24.073,
+          "p90_c": 25.05,
+          "anomaly_c": -0.319,
+          "duration_days": 0,
+          "mhw": false
+        },
+        {
+          "date": "2024-11-04",
+          "sst_c": 24.036,
+          "reference_c": 23.966,
+          "p90_c": 24.939,
+          "anomaly_c": 0.07,
+          "duration_days": 0,
+          "mhw": false
+        },
+        {
+          "date": "2024-11-05",
+          "sst_c": 23.679,
+          "reference_c": 23.858,
+          "p90_c": 24.825,
+          "anomaly_c": -0.179,
+          "duration_days": 0,
+          "mhw": false
+        },
+        {
+          "date": "2024-11-06",
+          "sst_c": 23.93,
+          "reference_c": 23.75,
+          "p90_c": 24.71,
+          "anomaly_c": 0.179,
+          "duration_days": 0,
+          "mhw": false
+        },
+        {
+          "date": "2024-11-07",
+          "sst_c": 23.599,
+          "reference_c": 23.643,
+          "p90_c": 24.598,
+          "anomaly_c": -0.043,
+          "duration_days": 0,
+          "mhw": false
+        },
+        {
+          "date": "2024-11-08",
+          "sst_c": 23.447,
+          "reference_c": 23.535,
+          "p90_c": 24.482,
+          "anomaly_c": -0.089,
+          "duration_days": 0,
+          "mhw": false
+        },
+        {
+          "date": "2024-11-09",
+          "sst_c": 23.415,
+          "reference_c": 23.429,
+          "p90_c": 24.367,
+          "anomaly_c": -0.014,
+          "duration_days": 0,
+          "mhw": false
+        },
+        {
+          "date": "2024-11-10",
+          "sst_c": 23.414,
+          "reference_c": 23.323,
+          "p90_c": 24.252,
+          "anomaly_c": 0.091,
+          "duration_days": 0,
+          "mhw": false
+        },
+        {
+          "date": "2024-11-11",
+          "sst_c": 23.199,
+          "reference_c": 23.218,
+          "p90_c": 24.14,
+          "anomaly_c": -0.018,
+          "duration_days": 0,
+          "mhw": false
+        },
+        {
+          "date": "2024-11-12",
+          "sst_c": 22.922,
+          "reference_c": 23.114,
+          "p90_c": 24.031,
+          "anomaly_c": -0.192,
+          "duration_days": 0,
+          "mhw": false
+        },
+        {
+          "date": "2024-11-13",
+          "sst_c": 22.894,
+          "reference_c": 23.011,
+          "p90_c": 23.924,
+          "anomaly_c": -0.117,
+          "duration_days": 0,
+          "mhw": false
+        },
+        {
+          "date": "2024-11-14",
+          "sst_c": 23.222,
+          "reference_c": 22.91,
+          "p90_c": 23.821,
+          "anomaly_c": 0.312,
+          "duration_days": 0,
+          "mhw": false
+        },
+        {
+          "date": "2024-11-15",
+          "sst_c": 23.119,
+          "reference_c": 22.809,
+          "p90_c": 23.72,
+          "anomaly_c": 0.309,
+          "duration_days": 0,
+          "mhw": false
+        },
+        {
+          "date": "2024-11-16",
+          "sst_c": 22.854,
+          "reference_c": 22.711,
+          "p90_c": 23.623,
+          "anomaly_c": 0.143,
+          "duration_days": 0,
+          "mhw": false
+        },
+        {
+          "date": "2024-11-17",
+          "sst_c": 22.791,
+          "reference_c": 22.614,
+          "p90_c": 23.527,
+          "anomaly_c": 0.178,
+          "duration_days": 0,
+          "mhw": false
+        },
+        {
+          "date": "2024-11-18",
+          "sst_c": 22.586,
+          "reference_c": 22.517,
+          "p90_c": 23.426,
+          "anomaly_c": 0.069,
+          "duration_days": 0,
+          "mhw": false
+        },
+        {
+          "date": "2024-11-19",
+          "sst_c": 22.519,
+          "reference_c": 22.421,
+          "p90_c": 23.326,
+          "anomaly_c": 0.098,
+          "duration_days": 0,
+          "mhw": false
+        },
+        {
+          "date": "2024-11-20",
+          "sst_c": 22.65,
+          "reference_c": 22.325,
+          "p90_c": 23.224,
+          "anomaly_c": 0.324,
+          "duration_days": 0,
+          "mhw": false
+        },
+        {
+          "date": "2024-11-21",
+          "sst_c": 22.975,
+          "reference_c": 22.229,
+          "p90_c": 23.131,
+          "anomaly_c": 0.746,
+          "duration_days": 0,
+          "mhw": false
+        },
+        {
+          "date": "2024-11-22",
+          "sst_c": 22.559,
+          "reference_c": 22.134,
+          "p90_c": 23.036,
+          "anomaly_c": 0.425,
+          "duration_days": 0,
+          "mhw": false
+        },
+        {
+          "date": "2024-11-23",
+          "sst_c": 22.44,
+          "reference_c": 22.038,
+          "p90_c": 22.939,
+          "anomaly_c": 0.402,
+          "duration_days": 0,
+          "mhw": false
+        },
+        {
+          "date": "2024-11-24",
+          "sst_c": 22.226,
+          "reference_c": 21.942,
+          "p90_c": 22.846,
+          "anomaly_c": 0.284,
+          "duration_days": 0,
+          "mhw": false
+        },
+        {
+          "date": "2024-11-25",
+          "sst_c": 21.848,
+          "reference_c": 21.847,
+          "p90_c": 22.753,
+          "anomaly_c": 0.001,
+          "duration_days": 0,
+          "mhw": false
+        },
+        {
+          "date": "2024-11-26",
+          "sst_c": 21.318,
+          "reference_c": 21.751,
+          "p90_c": 22.657,
+          "anomaly_c": -0.433,
+          "duration_days": 0,
+          "mhw": false
+        },
+        {
+          "date": "2024-11-27",
+          "sst_c": 21.06,
+          "reference_c": 21.655,
+          "p90_c": 22.559,
+          "anomaly_c": -0.595,
+          "duration_days": 0,
+          "mhw": false
+        },
+        {
+          "date": "2024-11-28",
+          "sst_c": 21.398,
+          "reference_c": 21.56,
+          "p90_c": 22.457,
+          "anomaly_c": -0.161,
+          "duration_days": 0,
+          "mhw": false
+        },
+        {
+          "date": "2024-11-29",
+          "sst_c": 21.483,
+          "reference_c": 21.464,
+          "p90_c": 22.354,
+          "anomaly_c": 0.019,
+          "duration_days": 0,
+          "mhw": false
+        },
+        {
+          "date": "2024-11-30",
+          "sst_c": 21.652,
+          "reference_c": 21.369,
+          "p90_c": 22.256,
+          "anomaly_c": 0.284,
+          "duration_days": 0,
+          "mhw": false
+        },
+        {
+          "date": "2024-12-01",
+          "sst_c": 20.931,
+          "reference_c": 21.274,
+          "p90_c": 22.159,
+          "anomaly_c": -0.342,
+          "duration_days": 0,
+          "mhw": false
+        },
+        {
+          "date": "2024-12-02",
+          "sst_c": 20.981,
+          "reference_c": 21.18,
+          "p90_c": 22.063,
+          "anomaly_c": -0.199,
+          "duration_days": 0,
+          "mhw": false
+        },
+        {
+          "date": "2024-12-03",
+          "sst_c": 21.086,
+          "reference_c": 21.087,
+          "p90_c": 21.971,
+          "anomaly_c": -0.001,
+          "duration_days": 0,
+          "mhw": false
+        },
+        {
+          "date": "2024-12-04",
+          "sst_c": 21.003,
+          "reference_c": 20.997,
+          "p90_c": 21.881,
+          "anomaly_c": 0.006,
+          "duration_days": 0,
+          "mhw": false
+        },
+        {
+          "date": "2024-12-05",
+          "sst_c": 20.704,
+          "reference_c": 20.908,
+          "p90_c": 21.793,
+          "anomaly_c": -0.204,
+          "duration_days": 0,
+          "mhw": false
+        },
+        {
+          "date": "2024-12-06",
+          "sst_c": 20.725,
+          "reference_c": 20.822,
+          "p90_c": 21.708,
+          "anomaly_c": -0.097,
+          "duration_days": 0,
+          "mhw": false
+        },
+        {
+          "date": "2024-12-07",
+          "sst_c": 20.614,
+          "reference_c": 20.737,
+          "p90_c": 21.622,
+          "anomaly_c": -0.123,
+          "duration_days": 0,
+          "mhw": false
+        },
+        {
+          "date": "2024-12-08",
+          "sst_c": 20.622,
+          "reference_c": 20.654,
+          "p90_c": 21.54,
+          "anomaly_c": -0.032,
+          "duration_days": 0,
+          "mhw": false
+        },
+        {
+          "date": "2024-12-09",
+          "sst_c": 20.524,
+          "reference_c": 20.572,
+          "p90_c": 21.464,
+          "anomaly_c": -0.048,
+          "duration_days": 0,
+          "mhw": false
+        },
+        {
+          "date": "2024-12-10",
+          "sst_c": 20.177,
+          "reference_c": 20.492,
+          "p90_c": 21.39,
+          "anomaly_c": -0.315,
+          "duration_days": 0,
+          "mhw": false
+        },
+        {
+          "date": "2024-12-11",
+          "sst_c": 20.376,
+          "reference_c": 20.415,
+          "p90_c": 21.32,
+          "anomaly_c": -0.039,
+          "duration_days": 0,
+          "mhw": false
+        },
+        {
+          "date": "2024-12-12",
+          "sst_c": 20.372,
+          "reference_c": 20.338,
+          "p90_c": 21.251,
+          "anomaly_c": 0.034,
+          "duration_days": 0,
+          "mhw": false
+        },
+        {
+          "date": "2024-12-13",
+          "sst_c": 20.333,
+          "reference_c": 20.264,
+          "p90_c": 21.184,
+          "anomaly_c": 0.07,
+          "duration_days": 0,
+          "mhw": false
+        },
+        {
+          "date": "2024-12-14",
+          "sst_c": 20.268,
+          "reference_c": 20.19,
+          "p90_c": 21.118,
+          "anomaly_c": 0.077,
+          "duration_days": 0,
+          "mhw": false
+        },
+        {
+          "date": "2024-12-15",
+          "sst_c": 19.782,
+          "reference_c": 20.118,
+          "p90_c": 21.053,
+          "anomaly_c": -0.337,
+          "duration_days": 0,
+          "mhw": false
+        },
+        {
+          "date": "2024-12-16",
+          "sst_c": 19.984,
+          "reference_c": 20.047,
+          "p90_c": 20.99,
+          "anomaly_c": -0.063,
+          "duration_days": 0,
+          "mhw": false
+        },
+        {
+          "date": "2024-12-17",
+          "sst_c": 20.548,
+          "reference_c": 19.978,
+          "p90_c": 20.925,
+          "anomaly_c": 0.57,
+          "duration_days": 0,
+          "mhw": false
+        },
+        {
+          "date": "2024-12-18",
+          "sst_c": 19.983,
+          "reference_c": 19.909,
+          "p90_c": 20.857,
+          "anomaly_c": 0.074,
+          "duration_days": 0,
+          "mhw": false
+        },
+        {
+          "date": "2024-12-19",
+          "sst_c": 19.978,
+          "reference_c": 19.843,
+          "p90_c": 20.793,
+          "anomaly_c": 0.135,
+          "duration_days": 0,
+          "mhw": false
+        },
+        {
+          "date": "2024-12-20",
+          "sst_c": 19.852,
+          "reference_c": 19.779,
+          "p90_c": 20.73,
+          "anomaly_c": 0.074,
+          "duration_days": 0,
+          "mhw": false
+        },
+        {
+          "date": "2024-12-21",
+          "sst_c": 19.773,
+          "reference_c": 19.716,
+          "p90_c": 20.669,
+          "anomaly_c": 0.056,
+          "duration_days": 0,
+          "mhw": false
+        },
+        {
+          "date": "2024-12-22",
+          "sst_c": 19.712,
+          "reference_c": 19.656,
+          "p90_c": 20.609,
+          "anomaly_c": 0.055,
+          "duration_days": 0,
+          "mhw": false
+        },
+        {
+          "date": "2024-12-23",
+          "sst_c": 19.728,
+          "reference_c": 19.598,
+          "p90_c": 20.549,
+          "anomaly_c": 0.13,
+          "duration_days": 0,
+          "mhw": false
+        },
+        {
+          "date": "2024-12-24",
+          "sst_c": 19.917,
+          "reference_c": 19.541,
+          "p90_c": 20.49,
+          "anomaly_c": 0.375,
+          "duration_days": 0,
+          "mhw": false
+        },
+        {
+          "date": "2024-12-25",
+          "sst_c": 19.672,
+          "reference_c": 19.487,
+          "p90_c": 20.431,
+          "anomaly_c": 0.185,
+          "duration_days": 0,
+          "mhw": false
+        },
+        {
+          "date": "2024-12-26",
+          "sst_c": 18.935,
+          "reference_c": 19.434,
+          "p90_c": 20.375,
+          "anomaly_c": -0.5,
+          "duration_days": 0,
+          "mhw": false
+        },
+        {
+          "date": "2024-12-27",
+          "sst_c": 19.557,
+          "reference_c": 19.383,
+          "p90_c": 20.323,
+          "anomaly_c": 0.174,
+          "duration_days": 0,
+          "mhw": false
+        },
+        {
+          "date": "2024-12-28",
+          "sst_c": 19.714,
+          "reference_c": 19.334,
+          "p90_c": 20.274,
+          "anomaly_c": 0.38,
+          "duration_days": 0,
+          "mhw": false
+        },
+        {
+          "date": "2024-12-29",
+          "sst_c": 19.86,
+          "reference_c": 19.286,
+          "p90_c": 20.229,
+          "anomaly_c": 0.574,
+          "duration_days": 0,
+          "mhw": false
+        },
+        {
+          "date": "2024-12-30",
+          "sst_c": 19.579,
+          "reference_c": 19.239,
+          "p90_c": 20.185,
+          "anomaly_c": 0.34,
+          "duration_days": 0,
+          "mhw": false
+        },
+        {
+          "date": "2024-12-31",
+          "sst_c": 19.601,
+          "reference_c": 19.193,
+          "p90_c": 20.141,
+          "anomaly_c": 0.409,
+          "duration_days": 0,
+          "mhw": false
+        },
+        {
+          "date": "2025-01-01",
+          "sst_c": 19.684,
+          "reference_c": 19.147,
+          "p90_c": 20.097,
+          "anomaly_c": 0.536,
+          "duration_days": 0,
+          "mhw": false
+        },
+        {
+          "date": "2025-01-02",
+          "sst_c": 19.45,
+          "reference_c": 19.103,
+          "p90_c": 20.051,
+          "anomaly_c": 0.348,
+          "duration_days": 0,
+          "mhw": false
+        },
+        {
+          "date": "2025-01-03",
+          "sst_c": 19.486,
+          "reference_c": 19.058,
+          "p90_c": 20.001,
+          "anomaly_c": 0.428,
+          "duration_days": 0,
+          "mhw": false
+        },
+        {
+          "date": "2025-01-04",
+          "sst_c": 19.469,
+          "reference_c": 19.014,
+          "p90_c": 19.95,
+          "anomaly_c": 0.455,
+          "duration_days": 0,
+          "mhw": false
+        },
+        {
+          "date": "2025-01-05",
+          "sst_c": 19.591,
+          "reference_c": 18.97,
+          "p90_c": 19.898,
+          "anomaly_c": 0.621,
+          "duration_days": 0,
+          "mhw": false
+        },
+        {
+          "date": "2025-01-06",
+          "sst_c": 19.653,
+          "reference_c": 18.925,
+          "p90_c": 19.845,
+          "anomaly_c": 0.728,
+          "duration_days": 0,
+          "mhw": false
+        },
+        {
+          "date": "2025-01-07",
+          "sst_c": 19.432,
+          "reference_c": 18.88,
+          "p90_c": 19.791,
+          "anomaly_c": 0.552,
+          "duration_days": 0,
+          "mhw": false
+        },
+        {
+          "date": "2025-01-08",
+          "sst_c": 19.585,
+          "reference_c": 18.835,
+          "p90_c": 19.737,
+          "anomaly_c": 0.749,
+          "duration_days": 0,
+          "mhw": false
+        },
+        {
+          "date": "2025-01-09",
+          "sst_c": 19.33,
+          "reference_c": 18.791,
+          "p90_c": 19.682,
+          "anomaly_c": 0.539,
+          "duration_days": 0,
+          "mhw": false
+        },
+        {
+          "date": "2025-01-10",
+          "sst_c": 19.41,
+          "reference_c": 18.746,
+          "p90_c": 19.625,
+          "anomaly_c": 0.665,
+          "duration_days": 0,
+          "mhw": false
+        },
+        {
+          "date": "2025-01-11",
+          "sst_c": 19.128,
+          "reference_c": 18.7,
+          "p90_c": 19.568,
+          "anomaly_c": 0.429,
+          "duration_days": 0,
+          "mhw": false
+        },
+        {
+          "date": "2025-01-12",
+          "sst_c": 19.531,
+          "reference_c": 18.655,
+          "p90_c": 19.511,
+          "anomaly_c": 0.876,
+          "duration_days": 1,
+          "mhw": false
+        },
+        {
+          "date": "2025-01-13",
+          "sst_c": 19.608,
+          "reference_c": 18.61,
+          "p90_c": 19.453,
+          "anomaly_c": 0.999,
+          "duration_days": 2,
+          "mhw": false
+        },
+        {
+          "date": "2025-01-14",
+          "sst_c": 19.596,
+          "reference_c": 18.565,
+          "p90_c": 19.396,
+          "anomaly_c": 1.031,
+          "duration_days": 3,
+          "mhw": false
+        },
+        {
+          "date": "2025-01-15",
+          "sst_c": 19.8,
+          "reference_c": 18.521,
+          "p90_c": 19.338,
+          "anomaly_c": 1.279,
+          "duration_days": 4,
+          "mhw": false
+        },
+        {
+          "date": "2025-01-16",
+          "sst_c": 19.633,
+          "reference_c": 18.478,
+          "p90_c": 19.282,
+          "anomaly_c": 1.155,
+          "duration_days": 5,
+          "mhw": true
+        },
+        {
+          "date": "2025-01-17",
+          "sst_c": 19.373,
+          "reference_c": 18.435,
+          "p90_c": 19.228,
+          "anomaly_c": 0.938,
+          "duration_days": 6,
+          "mhw": true
+        },
+        {
+          "date": "2025-01-18",
+          "sst_c": 19.19,
+          "reference_c": 18.394,
+          "p90_c": 19.179,
+          "anomaly_c": 0.797,
+          "duration_days": 7,
+          "mhw": true
+        },
+        {
+          "date": "2025-01-19",
+          "sst_c": 18.82,
+          "reference_c": 18.352,
+          "p90_c": 19.131,
+          "anomaly_c": 0.468,
+          "duration_days": 0,
+          "mhw": false
+        },
+        {
+          "date": "2025-01-20",
+          "sst_c": 19.165,
+          "reference_c": 18.311,
+          "p90_c": 19.083,
+          "anomaly_c": 0.854,
+          "duration_days": 1,
+          "mhw": false
+        },
+        {
+          "date": "2025-01-21",
+          "sst_c": 18.852,
+          "reference_c": 18.269,
+          "p90_c": 19.035,
+          "anomaly_c": 0.583,
+          "duration_days": 0,
+          "mhw": false
+        },
+        {
+          "date": "2025-01-22",
+          "sst_c": 18.864,
+          "reference_c": 18.228,
+          "p90_c": 18.987,
+          "anomaly_c": 0.636,
+          "duration_days": 0,
+          "mhw": false
+        },
+        {
+          "date": "2025-01-23",
+          "sst_c": 18.893,
+          "reference_c": 18.187,
+          "p90_c": 18.939,
+          "anomaly_c": 0.705,
+          "duration_days": 0,
+          "mhw": false
+        },
+        {
+          "date": "2025-01-24",
+          "sst_c": 18.86,
+          "reference_c": 18.146,
+          "p90_c": 18.89,
+          "anomaly_c": 0.714,
+          "duration_days": 0,
+          "mhw": false
+        },
+        {
+          "date": "2025-01-25",
+          "sst_c": 18.573,
+          "reference_c": 18.105,
+          "p90_c": 18.841,
+          "anomaly_c": 0.468,
+          "duration_days": 0,
+          "mhw": false
+        },
+        {
+          "date": "2025-01-26",
+          "sst_c": 18.501,
+          "reference_c": 18.064,
+          "p90_c": 18.792,
+          "anomaly_c": 0.437,
+          "duration_days": 0,
+          "mhw": false
+        },
+        {
+          "date": "2025-01-27",
+          "sst_c": 18.656,
+          "reference_c": 18.024,
+          "p90_c": 18.744,
+          "anomaly_c": 0.632,
+          "duration_days": 0,
+          "mhw": false
+        }
+      ],
+      "evaluation": {
+        "source": {
+          "provider": "Copernicus Marine",
+          "dataset_id": "SST_MED_SST_L4_NRT_OBSERVATIONS_010_004_c_V2",
+          "dataset_version": "202311",
+          "variable": "analysed_sst",
+          "resolution": "~1 km (catalogue 0.01°)",
+          "access": "public catalogue ARCO Zarr",
+          "aggregation": "cos(latitude)-weighted open-sea ROI mean",
+          "region_id": "akkuyu",
+          "bounds": [
+            35.95,
+            33.4,
+            36.15,
+            33.7
+          ],
+          "url": "https://s3.waw3-1.cloudferro.com/mdl-arco-geo-046/arco/SST_MED_SST_L4_NRT_OBSERVATIONS_010_004/SST_MED_SST_L4_NRT_OBSERVATIONS_010_004_c_V2_202311/geoChunked.zarr",
+          "retrieved_at": "2026-10-16T12:57:56.544286+00:00",
+          "sha256": "d3b2453cd22ad08090e8a17254f634c7d452030eac0a57ef49968ca3bb54e7e9",
+          "catalogue_last_observation": "2026-10-16",
+          "catalog_url": "https://data.marine.copernicus.eu/product/SST_MED_SST_L4_NRT_OBSERVATIONS_010_004/services",
+          "first_observation": "2008-01-01",
+          "last_observation": "2026-10-16",
+          "valid_days": 6864,
+          "missing_days": 0
+        },
+        "created_at": "2026-10-16T12:58:09.940839+00:00",
+        "split": {
+          "train_end": "2020-03-19",
+          "tuning_end": "2022-02-04",
+          "calibration_end": "2023-12-22",
+          "test_start": "2023-12-23",
+          "test_end": "2026-10-16"
+        },
+        "horizons": {
+          "1": {
+            "xgboost_weight": 0.75,
+            "selected_method": "XGBoost delta + persistence",
+            "model": {
+              "mae_c": 0.2648662922475172,
+              "rmse_c": 0.354717576352358,
+              "bias_c": -0.020389943425821653
+            },
+            "persistence": {
+              "mae_c": 0.280680087268183,
+              "rmse_c": 0.37579712462628917,
+              "bias_c": -0.004718317792936421
+            },
+            "interval_radius_c": 0.42580306260433076,
+            "coverage_80": 0.8025291828793775,
+            "warm_day_f1": 0.8416075650118203,
+            "warm_test_days": 429,
+            "train_n": 4447,
+            "tuning_n": 686,
+            "calibration_n": 685,
+            "test_n": 1028,
+            "warm_days_mae_c": 0.2561741250430661
+          },
+          "2": {
+            "xgboost_weight": 0.75,
+            "selected_method": "XGBoost delta + persistence",
+            "model": {
+              "mae_c": 0.352034605207896,
+              "rmse_c": 0.4667410473934316,
+              "bias_c": -0.03674581762588212
+            },
+            "persistence": {
+              "mae_c": 0.39102478641396093,
+              "rmse_c": 0.5132301134082666,
+              "bias_c": -0.009801648921809472
+            },
+            "interval_radius_c": 0.5405766464236592,
+            "coverage_80": 0.7818889970788705,
+            "warm_day_f1": 0.7611044417767107,
+            "warm_test_days": 428,
+            "train_n": 4446,
+            "tuning_n": 685,
+            "calibration_n": 684,
+            "test_n": 1027,
+            "warm_days_mae_c": 0.3396595253669311
+          },
+          "3": {
+            "xgboost_weight": 0.75,
+            "selected_method": "XGBoost delta + persistence",
+            "model": {
+              "mae_c": 0.3798509696036781,
+              "rmse_c": 0.512721577347692,
+              "bias_c": -0.045063989319555
+            },
+            "persistence": {
+              "mae_c": 0.4358112139014473,
+              "rmse_c": 0.5830902760703002,
+              "bias_c": -0.014088126343339865
+            },
+            "interval_radius_c": 0.5661638365196886,
+            "coverage_80": 0.7777777777777778,
+            "warm_day_f1": 0.755771567436209,
+            "warm_test_days": 427,
+            "train_n": 4445,
+            "tuning_n": 684,
+            "calibration_n": 683,
+            "test_n": 1026,
+            "warm_days_mae_c": 0.36164221760233195
+          }
+        },
+        "reference": "2008-01-01..2020-03-19; ±5 gün, 31 gün dairesel yumuşatma; kısa MVP referansı, standart 30 yıl değil",
+        "limitations": [
+          "Günlük bölgesel SST; gerçek zamanlı sensör veya tesis etkisi değildir.",
+          "Ampirik %80 tahmin aralığı; mevsimsel dağılım kaymasında kapsama garantisi yok.",
+          "Eşik sınıflaması klimatolojiye göre sıcak gün taramasıdır; biyolojik zarar etiketi değildir."
+        ]
+      },
+      "reports": [
+        {
+          "text": "GEÇMİŞ OLAY TEKRARI — güncel uyarı değildir.\nAkkuyu açıkları, Mersin | 2025-01-30\nTahmin edilen SST: 18.58 °C. Mevsimsel referans: 17.91 °C. Anomali: +0.67 °C. 90. yüzdelik: 18.60 °C. İnceleme önceliği: Normal.\nKaynak: Copernicus Marine. Tahmin başlangıcı/son gözlem: 2025-01-27.\nBu sonuç santral kaynaklı ısınmayı veya biyolojik zararı kanıtlamaz.\nBir sonraki günlük uydu analizinde süreklilik ve veri kalitesi yeniden kontrol edilmelidir. Uydu analizi yüzeyi temsil eder; kıyı çözünürlüğü ve tahmin hatası yorumu sınırlar. Bağımsız saha ölçümleri ve komşu açık-deniz hücreleriyle karşılaştırma önerilir.\nAmpirik %80 tahmin aralığı: 18.01–19.14 °C.\nUyarı nedeni: +72 saat için son gözlemin devamı 18.66 °C; validation ile seçilen P95 ve -0.20 °C marjlı 18.52 °C tetik eşiğini aşıyor. Bu sinyal bir olayın gerçekleşme olasılığı değildir.\nTahmin ufku: 72 saat. Veri tarihi: 2025-01-27.",
+          "method": "template",
+          "facts": {
+            "region_id": "akkuyu",
+            "region_name": "Akkuyu açıkları, Mersin",
+            "mode": "replay",
+            "provider": "Copernicus Marine",
+            "dataset_id": "SST_MED_SST_L4_NRT_OBSERVATIONS_010_004_c_V2",
+            "origin_date": "2025-01-27",
+            "data_date": "2025-01-27",
+            "horizon_days": 3,
+            "target_date": "2025-01-30",
+            "sst_c": 18.576,
+            "lower_c": 18.014,
+            "upper_c": 19.138,
+            "reference_c": 17.9064515344773,
+            "p90_c": 18.602709820251203,
+            "method": "XGBoost + persistence",
+            "interval": {
+              "nominal_coverage": 0.8,
+              "method": "validation residual seasonal envelope",
+              "calibration_end": "2023-12-22",
+              "test_coverage": 0.8109161793372319
+            },
+            "risk": "normal",
+            "warning": {
+              "triggered": true,
+              "signal_c": 18.65586767855815,
+              "threshold_c": 18.523477367641455,
+              "percentile": 95,
+              "source": "persistence_c",
+              "margin_c": -0.2,
+              "reason": "+72 saat için son gözlemin devamı 18.66 °C; validation ile seçilen P95 ve -0.20 °C marjlı 18.52 °C tetik eşiğini aşıyor. Bu sinyal bir olayın gerçekleşme olasılığı değildir."
+            },
+            "kind": "predicted",
+            "event_date": "2025-01-30",
+            "horizon_hours": 72,
+            "reason": "+72 saat için son gözlemin devamı 18.66 °C; validation ile seçilen P95 ve -0.20 °C marjlı 18.52 °C tetik eşiğini aşıyor. Bu sinyal bir olayın gerçekleşme olasılığı değildir.",
+            "uncertainty": {
+              "lower_c": 18.014,
+              "upper_c": 19.138,
+              "nominal_coverage": 0.8
+            }
+          }
+        }
+      ],
+      "early_warning": {
+        "state": "forecast_risk",
+        "reason": "+72 saat için son gözlemin devamı 18.66 °C; validation ile seçilen P95 ve -0.20 °C marjlı 18.52 °C tetik eşiğini aşıyor. Bu sinyal bir olayın gerçekleşme olasılığı değildir.",
+        "origin_date": "2025-01-27",
+        "horizon_hours": 72,
+        "uncertainty": {
+          "lower_c": 18.014,
+          "upper_c": 19.138,
+          "nominal_coverage": 0.8,
+          "guaranteed": false
+        },
+        "notify": true,
+        "episode_start": "2025-01-27",
+        "alert_id": "b999ecd0a8274be30bc5",
+        "suppression_reason": null,
+        "active": true,
+        "clear_days": 0,
+        "peak_level": 1,
+        "last_date": "2025-01-27",
+        "policy_version": "reliability-v1",
+        "data_date": "2025-01-27",
+        "model_sha256": "ac761b85e51221ed7a5dbd2f6b6edbf728eca29a234306be46c176b5d8090a7a",
+        "rule": "Olay başlangıcı ve gözlenmiş anomaliye geçişte bir bildirim; iki normal günle yeniden kurulur."
+      },
+      "comparison": {
+        "date": "2009-01-22",
+        "sst_c": 18.22398266249312,
+        "reference_c": 18.228301013894058,
+        "anomaly_c": -0.004318351400936393,
+        "note": "Aynı aydan önceki normal gözlem; nedensel kontrol değildir."
+      },
+      "replay_label": "Olaydan önce sinyal",
+      "replay_assessment": "Sonradan gözlenen sonuç: beş günlük P90 olayı 2025-01-30 tarihinde başladı. Bu gelecek bilgisi uyarı hesabına girmedi."
+    }
+  ]
+}

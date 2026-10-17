@@ -1,0 +1,49 @@
+name: Daily SST monitoring
+on:
+  schedule:
+    - cron: '17 5,11,17 * * *'
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: thermatwin-monitor
+  cancel-in-progress: false
+jobs:
+  monitor:
+    if: github.event_name == 'workflow_dispatch' || vars.MONITORING_ENABLED == 'true'
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    env:
+      PYTHONUTF8: '1'
+      COPERNICUS_ACCESS: auto
+      COPERNICUSMARINE_SERVICE_USERNAME: ${{ secrets.COPERNICUSMARINE_SERVICE_USERNAME }}
+      COPERNICUSMARINE_SERVICE_PASSWORD: ${{ secrets.COPERNICUSMARINE_SERVICE_PASSWORD }}
+      SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
+      SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
+      NOTIFICATION_MODE: shadow
+      AUTOMATIC_EMAILS_APPROVED: 'false'
+      ENABLE_FORECAST_EMAILS: 'false'
+      TEST_EMAIL_ENABLED: 'false'
+      MODEL_BUNDLE_URL: ${{ vars.MODEL_BUNDLE_URL }}
+      GITHUB_TOKEN: ${{ github.token }}
+      APP_URL: ${{ vars.APP_URL }}
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          persist-credentials: false
+      - uses: astral-sh/setup-uv@1c37ad07a6a961277cf70c0d37d6f313000f5884 # v10.3.0
+        with:
+          python-version: '3.12'
+          enable-cache: true
+      - run: uv sync --frozen
+      - run: uv run python scripts/run_monitor.py
+      - uses: actions/upload-artifact@v7
+        if: always()
+        with:
+          name: scientific-run-${{ github.run_id }}
+          path: |
+            artifacts/*/evaluation.json
+            artifacts/*/hindcast_*.csv
+            artifacts/*/hindcast_*.png
+            artifacts/live.json
+          retention-days: 5

@@ -1,0 +1,106 @@
+{
+  "source": {
+    "provider": "NOAA OISST v2.1 · karşılaştırma verisi",
+    "dataset_id": "ncdcOisst21Agg_LonPM180",
+    "variable": "sst",
+    "resolution": "0.25° (~28 km)",
+    "aggregation": "single offshore grid cell",
+    "latitude": 35.875,
+    "longitude": 33.625,
+    "region_id": "akkuyu",
+    "retrieved_at": "2026-10-16T12:42:37.590492+00:00",
+    "url": "https://coastwatch.pfeg.noaa.gov/erddap/griddap/ncdcOisst21Agg_LonPM180.csv?sst[(2008-01-01T12:00:00Z):1:(2025-12-31T12:00:00Z)][(0.0)][(35.875)][(33.625)]",
+    "sha256": "d530f55560265957729833a7a84e0a129e2e2e545bce39a8f712156eafd7a46a",
+    "catalog_url": "https://coastwatch.pfeg.noaa.gov/erddap/info/ncdcOisst21Agg_LonPM180/index.html",
+    "limitation": "Copernicus değildir. Kaba açık-deniz hücresi; kıyı veya deşarj etkisini çözemez.",
+    "first_observation": "2008-01-01",
+    "last_observation": "2025-12-31",
+    "valid_days": 6558,
+    "missing_days": 17
+  },
+  "created_at": "2026-10-16T12:43:50.226499+00:00",
+  "split": {
+    "train_end": "2019-09-13",
+    "tuning_end": "2021-07-02",
+    "calibration_end": "2023-04-20",
+    "test_start": "2023-04-21",
+    "test_end": "2025-12-31"
+  },
+  "horizons": {
+    "1": {
+      "xgboost_weight": 0.5,
+      "selected_method": "XGBoost delta + persistence",
+      "model": {
+        "mae_c": 0.12597869130114048,
+        "rmse_c": 0.17092882855945238,
+        "bias_c": -0.015946907418366445
+      },
+      "persistence": {
+        "mae_c": 0.13784864864864874,
+        "rmse_c": 0.1861301491764095,
+        "bias_c": -0.0009837837837837879
+      },
+      "interval_radius_c": 0.1801205082237729,
+      "coverage_80": 0.7589189189189189,
+      "warm_day_f1": 0.9417142857142857,
+      "warm_test_days": 442,
+      "train_n": 4259,
+      "tuning_n": 641,
+      "calibration_n": 608,
+      "test_n": 925,
+      "warm_days_mae_c": 0.11487068338802947
+    },
+    "2": {
+      "xgboost_weight": 0.75,
+      "selected_method": "XGBoost delta + persistence",
+      "model": {
+        "mae_c": 0.22156029202889418,
+        "rmse_c": 0.29629856039177954,
+        "bias_c": -0.04375641883460773
+      },
+      "persistence": {
+        "mae_c": 0.2491774891774893,
+        "rmse_c": 0.3320055807177128,
+        "bias_c": -0.0020346320346320374
+      },
+      "interval_radius_c": 0.30178429841995325,
+      "coverage_80": 0.7413419913419913,
+      "warm_day_f1": 0.897196261682243,
+      "warm_test_days": 443,
+      "train_n": 4258,
+      "tuning_n": 640,
+      "calibration_n": 607,
+      "test_n": 924,
+      "warm_days_mae_c": 0.2151282962651911
+    },
+    "3": {
+      "xgboost_weight": 0.75,
+      "selected_method": "XGBoost delta + persistence",
+      "model": {
+        "mae_c": 0.28582413726212025,
+        "rmse_c": 0.3839212503550186,
+        "bias_c": -0.06102204049998539
+      },
+      "persistence": {
+        "mae_c": 0.3388937093275489,
+        "rmse_c": 0.4490863223766341,
+        "bias_c": -0.003232104121475055
+      },
+      "interval_radius_c": 0.3856976521015163,
+      "coverage_80": 0.7331887201735358,
+      "warm_day_f1": 0.8716136631330977,
+      "warm_test_days": 442,
+      "train_n": 4257,
+      "tuning_n": 639,
+      "calibration_n": 606,
+      "test_n": 922,
+      "warm_days_mae_c": 0.28339823181731455
+    }
+  },
+  "reference": "2008-01-01..2019-09-13; ±5 gün, 31 gün dairesel yumuşatma; kısa MVP referansı, standart 30 yıl değil",
+  "limitations": [
+    "Günlük bölgesel SST; gerçek zamanlı sensör veya tesis etkisi değildir.",
+    "Ampirik %80 tahmin aralığı; mevsimsel dağılım kaymasında kapsama garantisi yok.",
+    "Eşik sınıflaması klimatolojiye göre sıcak gün taramasıdır; biyolojik zarar etiketi değildir."
+  ]
+}

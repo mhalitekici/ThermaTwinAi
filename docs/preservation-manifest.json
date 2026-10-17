@@ -1,0 +1,9 @@
+{
+  "Rapor.pdf": "5904e3a7041ca3e6aa9a8ac40a08182d80784b852c6477d2612b96f5ec70d41b",
+  "ThermaTwin_AI_PDR_Mehmet_Halit_Ekici.pdf": "e13c355b56869f3770693c03e31697e1c1a28eb2694e26da59dd04ec561c541b",
+  "artifacts/ncdcOisst21Agg_LonPM180/model.joblib": "2a4066c0374dfdbbbdef846893d9864d93fb286520b045a748afe5f3a731d249",
+  "artifacts/SST_MED_SST_L4_NRT_OBSERVATIONS_010_004_c_V2/model.joblib": "ac761b85e51221ed7a5dbd2f6b6edbf728eca29a234306be46c176b5d8090a7a",
+  "data/processed/copernicus.csv": "712b68e4fcd6fc7a0d76218e3aab621f5bae2413c75f8d8c84f880bbb4b6abca",
+  "data/processed/noaa.csv": "25f93aac73aa7198063fa6b21f30301bb4df407041e0dcc859b48bdfeff5a413",
+  "data/raw/copernicus/public_202311_2008-01-01_2026-10-16.nc": "d3b2453cd22ad08090e8a17254f634c7d452030eac0a57ef49968ca3bb54e7e9"
+}

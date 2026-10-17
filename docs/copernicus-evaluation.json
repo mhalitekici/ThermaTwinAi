@@ -1,0 +1,112 @@
+{
+  "source": {
+    "provider": "Copernicus Marine",
+    "dataset_id": "SST_MED_SST_L4_NRT_OBSERVATIONS_010_004_c_V2",
+    "dataset_version": "202311",
+    "variable": "analysed_sst",
+    "resolution": "~1 km (catalogue 0.01°)",
+    "access": "public catalogue ARCO Zarr",
+    "aggregation": "cos(latitude)-weighted open-sea ROI mean",
+    "region_id": "akkuyu",
+    "bounds": [
+      35.95,
+      33.4,
+      36.15,
+      33.7
+    ],
+    "url": "https://s3.waw3-1.cloudferro.com/mdl-arco-geo-046/arco/SST_MED_SST_L4_NRT_OBSERVATIONS_010_004/SST_MED_SST_L4_NRT_OBSERVATIONS_010_004_c_V2_202311/geoChunked.zarr",
+    "retrieved_at": "2026-10-16T12:57:56.544286+00:00",
+    "sha256": "d3b2453cd22ad08090e8a17254f634c7d452030eac0a57ef49968ca3bb54e7e9",
+    "catalogue_last_observation": "2026-10-16",
+    "catalog_url": "https://data.marine.copernicus.eu/product/SST_MED_SST_L4_NRT_OBSERVATIONS_010_004/services",
+    "first_observation": "2008-01-01",
+    "last_observation": "2026-10-16",
+    "valid_days": 6864,
+    "missing_days": 0
+  },
+  "created_at": "2026-10-16T12:58:09.940839+00:00",
+  "split": {
+    "train_end": "2020-03-19",
+    "tuning_end": "2022-02-04",
+    "calibration_end": "2023-12-22",
+    "test_start": "2023-12-23",
+    "test_end": "2026-10-16"
+  },
+  "horizons": {
+    "1": {
+      "xgboost_weight": 0.75,
+      "selected_method": "XGBoost delta + persistence",
+      "model": {
+        "mae_c": 0.2648662922475172,
+        "rmse_c": 0.354717576352358,
+        "bias_c": -0.020389943425821653
+      },
+      "persistence": {
+        "mae_c": 0.280680087268183,
+        "rmse_c": 0.37579712462628917,
+        "bias_c": -0.004718317792936421
+      },
+      "interval_radius_c": 0.42580306260433076,
+      "coverage_80": 0.8025291828793775,
+      "warm_day_f1": 0.8416075650118203,
+      "warm_test_days": 429,
+      "train_n": 4447,
+      "tuning_n": 686,
+      "calibration_n": 685,
+      "test_n": 1028,
+      "warm_days_mae_c": 0.2561741250430661
+    },
+    "2": {
+      "xgboost_weight": 0.75,
+      "selected_method": "XGBoost delta + persistence",
+      "model": {
+        "mae_c": 0.352034605207896,
+        "rmse_c": 0.4667410473934316,
+        "bias_c": -0.03674581762588212
+      },
+      "persistence": {
+        "mae_c": 0.39102478641396093,
+        "rmse_c": 0.5132301134082666,
+        "bias_c": -0.009801648921809472
+      },
+      "interval_radius_c": 0.5405766464236592,
+      "coverage_80": 0.7818889970788705,
+      "warm_day_f1": 0.7611044417767107,
+      "warm_test_days": 428,
+      "train_n": 4446,
+      "tuning_n": 685,
+      "calibration_n": 684,
+      "test_n": 1027,
+      "warm_days_mae_c": 0.3396595253669311
+    },
+    "3": {
+      "xgboost_weight": 0.75,
+      "selected_method": "XGBoost delta + persistence",
+      "model": {
+        "mae_c": 0.3798509696036781,
+        "rmse_c": 0.512721577347692,
+        "bias_c": -0.045063989319555
+      },
+      "persistence": {
+        "mae_c": 0.4358112139014473,
+        "rmse_c": 0.5830902760703002,
+        "bias_c": -0.014088126343339865
+      },
+      "interval_radius_c": 0.5661638365196886,
+      "coverage_80": 0.7777777777777778,
+      "warm_day_f1": 0.755771567436209,
+      "warm_test_days": 427,
+      "train_n": 4445,
+      "tuning_n": 684,
+      "calibration_n": 683,
+      "test_n": 1026,
+      "warm_days_mae_c": 0.36164221760233195
+    }
+  },
+  "reference": "2008-01-01..2020-03-19; ±5 gün, 31 gün dairesel yumuşatma; kısa MVP referansı, standart 30 yıl değil",
+  "limitations": [
+    "Günlük bölgesel SST; gerçek zamanlı sensör veya tesis etkisi değildir.",
+    "Ampirik %80 tahmin aralığı; mevsimsel dağılım kaymasında kapsama garantisi yok.",
+    "Eşik sınıflaması klimatolojiye göre sıcak gün taramasıdır; biyolojik zarar etiketi değildir."
+  ]
+}

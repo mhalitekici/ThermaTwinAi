@@ -1,0 +1,35 @@
+name: Verify MVP
+on:
+  push:
+  pull_request:
+permissions:
+  contents: read
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          persist-credentials: false
+      - uses: astral-sh/setup-uv@1c37ad07a6a961277cf70c0d37d6f313000f5884 # v10.3.0
+        with:
+          python-version: '3.12'
+          enable-cache: true
+      - run: uv sync --frozen --extra dev
+      - run: uv run pytest -q
+      - run: npm ci
+      - run: npm run lint
+      - run: npm run test:config
+      - run: npm run test:unit
+      - run: npm run test:db
+      - run: npx playwright install --with-deps chromium
+      - run: npm run test:e2e
+      - run: npm run test:integration
+      - run: npm run build
+      - uses: actions/upload-artifact@v7
+        if: failure()
+        with:
+          name: browser-failure-traces
+          path: test-results/
+          retention-days: 3

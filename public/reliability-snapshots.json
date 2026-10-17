@@ -1,0 +1,829 @@
+{
+  "model_sha256": "ac761b85e51221ed7a5dbd2f6b6edbf728eca29a234306be46c176b5d8090a7a",
+  "dataset_id": "SST_MED_SST_L4_NRT_OBSERVATIONS_010_004_c_V2",
+  "snapshots": [
+    {
+      "mode": "live",
+      "origin_date": "2026-10-16",
+      "forecasts": [
+        {
+          "horizon_days": 1,
+          "origin_date": "2026-10-16",
+          "target_date": "2026-10-17",
+          "sst_c": 26.379,
+          "lower_c": 25.949,
+          "upper_c": 26.809,
+          "reference_c": 25.82048519803506,
+          "p90_c": 26.799105675722924,
+          "method": "XGBoost + persistence",
+          "interval": {
+            "nominal_coverage": 0.8,
+            "method": "validation residual seasonal envelope",
+            "calibration_end": "2023-12-22",
+            "test_coverage": 0.8171206225680934
+          },
+          "risk": "normal",
+          "warning": {
+            "triggered": false,
+            "signal_c": 26.38641321695916,
+            "threshold_c": 26.799105675722924,
+            "percentile": 90,
+            "source": "seasonal_drift_c",
+            "margin_c": 0.0,
+            "reason": "+24 saat için son gözlem ve mevsimsel değişim 26.39 °C; validation ile seçilen P90 ve +0.00 °C marjlı 26.80 °C tetik eşiğini aşmıyor. Bu sinyal bir olayın gerçekleşme olasılığı değildir."
+          }
+        },
+        {
+          "horizon_days": 2,
+          "origin_date": "2026-10-16",
+          "target_date": "2026-10-18",
+          "sst_c": 26.267,
+          "lower_c": 25.727,
+          "upper_c": 26.807,
+          "reference_c": 25.71723005838109,
+          "p90_c": 26.69806741733271,
+          "method": "XGBoost + persistence",
+          "interval": {
+            "nominal_coverage": 0.8,
+            "method": "validation residual seasonal envelope",
+            "calibration_end": "2023-12-22",
+            "test_coverage": 0.8120740019474196
+          },
+          "risk": "normal",
+          "warning": {
+            "triggered": false,
+            "signal_c": 26.283158077305192,
+            "threshold_c": 26.69806741733271,
+            "percentile": 90,
+            "source": "seasonal_drift_c",
+            "margin_c": 0.0,
+            "reason": "+48 saat için son gözlem ve mevsimsel değişim 26.28 °C; validation ile seçilen P90 ve +0.00 °C marjlı 26.70 °C tetik eşiğini aşmıyor. Bu sinyal bir olayın gerçekleşme olasılığı değildir."
+          }
+        },
+        {
+          "horizon_days": 3,
+          "origin_date": "2026-10-16",
+          "target_date": "2026-10-19",
+          "sst_c": 26.211,
+          "lower_c": 25.649,
+          "upper_c": 26.773,
+          "reference_c": 25.613675196575226,
+          "p90_c": 26.595196712620695,
+          "method": "XGBoost + persistence",
+          "interval": {
+            "nominal_coverage": 0.8,
+            "method": "validation residual seasonal envelope",
+            "calibration_end": "2023-12-22",
+            "test_coverage": 0.8109161793372319
+          },
+          "risk": "normal",
+          "warning": {
+            "triggered": false,
+            "signal_c": 26.48893155473464,
+            "threshold_c": 26.63089028784191,
+            "percentile": 95,
+            "source": "persistence_c",
+            "margin_c": -0.2,
+            "reason": "+72 saat için son gözlemin devamı 26.49 °C; validation ile seçilen P95 ve -0.20 °C marjlı 26.63 °C tetik eşiğini aşmıyor. Bu sinyal bir olayın gerçekleşme olasılığı değildir."
+          }
+        }
+      ],
+      "early_warning": {
+        "state": "normal",
+        "reason": "Gözlenen P90 aşımı veya validation ile seçilmiş ileriye dönük uyarı sinyali yok.",
+        "origin_date": "2026-10-16",
+        "horizon_hours": null,
+        "uncertainty": null,
+        "notify": false,
+        "episode_start": "2026-09-27",
+        "alert_id": null,
+        "suppression_reason": null,
+        "active": false,
+        "clear_days": 18,
+        "peak_level": 0,
+        "last_date": "2026-10-16",
+        "policy_version": "reliability-v1",
+        "data_date": "2026-10-16",
+        "model_sha256": "ac761b85e51221ed7a5dbd2f6b6edbf728eca29a234306be46c176b5d8090a7a",
+        "rule": "Olay başlangıcı ve gözlenmiş anomaliye geçişte bir bildirim; iki normal günle yeniden kurulur."
+      },
+      "reports": []
+    },
+    {
+      "mode": "replay",
+      "origin_date": "2024-06-07",
+      "forecasts": [
+        {
+          "horizon_days": 1,
+          "origin_date": "2024-06-07",
+          "target_date": "2024-06-08",
+          "sst_c": 26.95,
+          "lower_c": 26.463,
+          "upper_c": 27.437,
+          "reference_c": 23.801395467136597,
+          "p90_c": 25.056380886202202,
+          "method": "XGBoost + persistence",
+          "interval": {
+            "nominal_coverage": 0.8,
+            "method": "validation residual seasonal envelope",
+            "calibration_end": "2023-12-22",
+            "test_coverage": 0.8171206225680934
+          },
+          "risk": "high",
+          "warning": {
+            "triggered": true,
+            "signal_c": 27.146968779249843,
+            "threshold_c": 25.056380886202202,
+            "percentile": 90,
+            "source": "seasonal_drift_c",
+            "margin_c": 0.0,
+            "reason": "+24 saat için son gözlem ve mevsimsel değişim 27.15 °C; validation ile seçilen P90 ve +0.00 °C marjlı 25.06 °C tetik eşiğini aşıyor. Bu sinyal bir olayın gerçekleşme olasılığı değildir."
+          }
+        },
+        {
+          "horizon_days": 2,
+          "origin_date": "2024-06-07",
+          "target_date": "2024-06-09",
+          "sst_c": 26.782,
+          "lower_c": 26.147,
+          "upper_c": 27.417,
+          "reference_c": 23.938014314146628,
+          "p90_c": 25.19065522015266,
+          "method": "XGBoost + persistence",
+          "interval": {
+            "nominal_coverage": 0.8,
+            "method": "validation residual seasonal envelope",
+            "calibration_end": "2023-12-22",
+            "test_coverage": 0.8120740019474196
+          },
+          "risk": "high",
+          "warning": {
+            "triggered": true,
+            "signal_c": 27.283587626259877,
+            "threshold_c": 25.19065522015266,
+            "percentile": 90,
+            "source": "seasonal_drift_c",
+            "margin_c": 0.0,
+            "reason": "+48 saat için son gözlem ve mevsimsel değişim 27.28 °C; validation ile seçilen P90 ve +0.00 °C marjlı 25.19 °C tetik eşiğini aşıyor. Bu sinyal bir olayın gerçekleşme olasılığı değildir."
+          }
+        },
+        {
+          "horizon_days": 3,
+          "origin_date": "2024-06-07",
+          "target_date": "2024-06-10",
+          "sst_c": 26.493,
+          "lower_c": 25.839,
+          "upper_c": 27.147,
+          "reference_c": 24.07599565844698,
+          "p90_c": 25.324527026699645,
+          "method": "XGBoost + persistence",
+          "interval": {
+            "nominal_coverage": 0.8,
+            "method": "validation residual seasonal envelope",
+            "calibration_end": "2023-12-22",
+            "test_coverage": 0.8109161793372319
+          },
+          "risk": "watch",
+          "warning": {
+            "triggered": true,
+            "signal_c": 27.01228393752808,
+            "threshold_c": 25.85983491690613,
+            "percentile": 95,
+            "source": "persistence_c",
+            "margin_c": -0.2,
+            "reason": "+72 saat için son gözlemin devamı 27.01 °C; validation ile seçilen P95 ve -0.20 °C marjlı 25.86 °C tetik eşiğini aşıyor. Bu sinyal bir olayın gerçekleşme olasılığı değildir."
+          }
+        }
+      ],
+      "early_warning": {
+        "state": "observed_anomaly",
+        "reason": "Gözlenen sıcaklık, eğitim döneminden hesaplanan mevsimsel P90 eşiğini aşıyor.",
+        "origin_date": "2024-06-07",
+        "horizon_hours": 0,
+        "uncertainty": "Uydu bölgesel ortalaması; gözlem hatası bu aralıkla ölçülmez.",
+        "notify": false,
+        "episode_start": "2024-06-02",
+        "alert_id": "51aa55fead901476db81",
+        "suppression_reason": "Aynı olay sürüyor; tekrar bildirim bastırıldı.",
+        "active": true,
+        "clear_days": 0,
+        "peak_level": 2,
+        "last_date": "2024-06-07",
+        "policy_version": "reliability-v1",
+        "data_date": "2024-06-07",
+        "model_sha256": "ac761b85e51221ed7a5dbd2f6b6edbf728eca29a234306be46c176b5d8090a7a",
+        "rule": "Olay başlangıcı ve gözlenmiş anomaliye geçişte bir bildirim; iki normal günle yeniden kurulur."
+      },
+      "reports": [
+        {
+          "text": "GEÇMİŞ OLAY TEKRARI — güncel uyarı değildir.\nAkkuyu açıkları, Mersin | 2024-06-07\nGözlemlenen SST: 27.01 °C. Mevsimsel referans: 23.67 °C. Anomali: +3.35 °C. 90. yüzdelik: 24.93 °C. İnceleme önceliği: Yüksek; referans üzerindeki fark, P90 ile referans farkının en az iki katı.\nKaynak: Copernicus Marine. Tahmin başlangıcı/son gözlem: 2024-06-07.\nBu sonuç santral kaynaklı ısınmayı veya biyolojik zararı kanıtlamaz.\nBir sonraki günlük uydu analizinde süreklilik ve veri kalitesi yeniden kontrol edilmelidir. Uydu analizi yüzeyi temsil eder; kıyı çözünürlüğü ve tahmin hatası yorumu sınırlar. Bağımsız saha ölçümleri ve komşu açık-deniz hücreleriyle karşılaştırma önerilir.\nUyarı nedeni: Gerçek gözlem mevsimsel P90 eşiğini aşıyor.\nTahmin ufku: 0 saat. Veri tarihi: 2024-06-07.",
+          "method": "template",
+          "facts": {
+            "region_id": "akkuyu",
+            "region_name": "Akkuyu açıkları, Mersin",
+            "mode": "replay",
+            "provider": "Copernicus Marine",
+            "dataset_id": "SST_MED_SST_L4_NRT_OBSERVATIONS_010_004_c_V2",
+            "origin_date": "2024-06-07",
+            "data_date": "2024-06-07",
+            "kind": "observed",
+            "event_date": "2024-06-07",
+            "sst_c": 27.01228393752808,
+            "reference_c": 23.666710625414833,
+            "p90_c": 24.928603383564433,
+            "anomaly_c": 3.3455733121132454,
+            "risk": "high",
+            "duration_days": 6,
+            "mhw": true,
+            "horizon_hours": 0,
+            "reason": "Gerçek gözlem mevsimsel P90 eşiğini aşıyor.",
+            "uncertainty": "Uydu gözlem hatası tahmin aralığıyla ölçülmez."
+          }
+        },
+        {
+          "text": "GEÇMİŞ OLAY TEKRARI — güncel uyarı değildir.\nAkkuyu açıkları, Mersin | 2024-06-08\nTahmin edilen SST: 26.95 °C. Mevsimsel referans: 23.80 °C. Anomali: +3.15 °C. 90. yüzdelik: 25.06 °C. İnceleme önceliği: Yüksek; referans üzerindeki fark, P90 ile referans farkının en az iki katı.\nKaynak: Copernicus Marine. Tahmin başlangıcı/son gözlem: 2024-06-07.\nBu sonuç santral kaynaklı ısınmayı veya biyolojik zararı kanıtlamaz.\nBir sonraki günlük uydu analizinde süreklilik ve veri kalitesi yeniden kontrol edilmelidir. Uydu analizi yüzeyi temsil eder; kıyı çözünürlüğü ve tahmin hatası yorumu sınırlar. Bağımsız saha ölçümleri ve komşu açık-deniz hücreleriyle karşılaştırma önerilir.\nAmpirik %80 tahmin aralığı: 26.46–27.44 °C.\nUyarı nedeni: +24 saat için son gözlem ve mevsimsel değişim 27.15 °C; validation ile seçilen P90 ve +0.00 °C marjlı 25.06 °C tetik eşiğini aşıyor. Bu sinyal bir olayın gerçekleşme olasılığı değildir.\nTahmin ufku: 24 saat. Veri tarihi: 2024-06-07.",
+          "method": "template",
+          "facts": {
+            "region_id": "akkuyu",
+            "region_name": "Akkuyu açıkları, Mersin",
+            "mode": "replay",
+            "provider": "Copernicus Marine",
+            "dataset_id": "SST_MED_SST_L4_NRT_OBSERVATIONS_010_004_c_V2",
+            "origin_date": "2024-06-07",
+            "data_date": "2024-06-07",
+            "horizon_days": 1,
+            "target_date": "2024-06-08",
+            "sst_c": 26.95,
+            "lower_c": 26.463,
+            "upper_c": 27.437,
+            "reference_c": 23.801395467136597,
+            "p90_c": 25.056380886202202,
+            "method": "XGBoost + persistence",
+            "interval": {
+              "nominal_coverage": 0.8,
+              "method": "validation residual seasonal envelope",
+              "calibration_end": "2023-12-22",
+              "test_coverage": 0.8171206225680934
+            },
+            "risk": "high",
+            "warning": {
+              "triggered": true,
+              "signal_c": 27.146968779249843,
+              "threshold_c": 25.056380886202202,
+              "percentile": 90,
+              "source": "seasonal_drift_c",
+              "margin_c": 0.0,
+              "reason": "+24 saat için son gözlem ve mevsimsel değişim 27.15 °C; validation ile seçilen P90 ve +0.00 °C marjlı 25.06 °C tetik eşiğini aşıyor. Bu sinyal bir olayın gerçekleşme olasılığı değildir."
+            },
+            "kind": "predicted",
+            "event_date": "2024-06-08",
+            "horizon_hours": 24,
+            "reason": "+24 saat için son gözlem ve mevsimsel değişim 27.15 °C; validation ile seçilen P90 ve +0.00 °C marjlı 25.06 °C tetik eşiğini aşıyor. Bu sinyal bir olayın gerçekleşme olasılığı değildir.",
+            "uncertainty": {
+              "lower_c": 26.463,
+              "upper_c": 27.437,
+              "nominal_coverage": 0.8
+            }
+          }
+        }
+      ]
+    },
+    {
+      "mode": "replay",
+      "origin_date": "2023-12-25",
+      "forecasts": [
+        {
+          "horizon_days": 1,
+          "origin_date": "2023-12-25",
+          "target_date": "2023-12-26",
+          "sst_c": 21.864,
+          "lower_c": 21.443,
+          "upper_c": 22.285,
+          "reference_c": 19.43431199880431,
+          "p90_c": 20.375207583399703,
+          "method": "XGBoost + persistence",
+          "interval": {
+            "nominal_coverage": 0.8,
+            "method": "validation residual seasonal envelope",
+            "calibration_end": "2023-12-22",
+            "test_coverage": 0.8171206225680934
+          },
+          "risk": "high",
+          "warning": {
+            "triggered": true,
+            "signal_c": 21.892726634841196,
+            "threshold_c": 20.375207583399703,
+            "percentile": 90,
+            "source": "seasonal_drift_c",
+            "margin_c": 0.0,
+            "reason": "+24 saat için son gözlem ve mevsimsel değişim 21.89 °C; validation ile seçilen P90 ve +0.00 °C marjlı 20.38 °C tetik eşiğini aşıyor. Bu sinyal bir olayın gerçekleşme olasılığı değildir."
+          }
+        },
+        {
+          "horizon_days": 2,
+          "origin_date": "2023-12-25",
+          "target_date": "2023-12-27",
+          "sst_c": 21.784,
+          "lower_c": 21.244,
+          "upper_c": 22.324,
+          "reference_c": 19.38319048814606,
+          "p90_c": 20.322611738985543,
+          "method": "XGBoost + persistence",
+          "interval": {
+            "nominal_coverage": 0.8,
+            "method": "validation residual seasonal envelope",
+            "calibration_end": "2023-12-22",
+            "test_coverage": 0.8120740019474196
+          },
+          "risk": "high",
+          "warning": {
+            "triggered": true,
+            "signal_c": 21.841605124182948,
+            "threshold_c": 20.322611738985543,
+            "percentile": 90,
+            "source": "seasonal_drift_c",
+            "margin_c": 0.0,
+            "reason": "+48 saat için son gözlem ve mevsimsel değişim 21.84 °C; validation ile seçilen P90 ve +0.00 °C marjlı 20.32 °C tetik eşiğini aşıyor. Bu sinyal bir olayın gerçekleşme olasılığı değildir."
+          }
+        },
+        {
+          "horizon_days": 3,
+          "origin_date": "2023-12-25",
+          "target_date": "2023-12-28",
+          "sst_c": 21.706,
+          "lower_c": 21.144,
+          "upper_c": 22.268,
+          "reference_c": 19.333830509162702,
+          "p90_c": 20.27388615321425,
+          "method": "XGBoost + persistence",
+          "interval": {
+            "nominal_coverage": 0.8,
+            "method": "validation residual seasonal envelope",
+            "calibration_end": "2023-12-22",
+            "test_coverage": 0.8109161793372319
+          },
+          "risk": "high",
+          "warning": {
+            "triggered": true,
+            "signal_c": 21.945553053720637,
+            "threshold_c": 20.240424356245388,
+            "percentile": 95,
+            "source": "persistence_c",
+            "margin_c": -0.2,
+            "reason": "+72 saat için son gözlemin devamı 21.95 °C; validation ile seçilen P95 ve -0.20 °C marjlı 20.24 °C tetik eşiğini aşıyor. Bu sinyal bir olayın gerçekleşme olasılığı değildir."
+          }
+        }
+      ],
+      "early_warning": {
+        "state": "observed_anomaly",
+        "reason": "Gözlenen sıcaklık, eğitim döneminden hesaplanan mevsimsel P90 eşiğini aşıyor.",
+        "origin_date": "2023-12-25",
+        "horizon_hours": 0,
+        "uncertainty": "Uydu bölgesel ortalaması; gözlem hatası bu aralıkla ölçülmez.",
+        "notify": false,
+        "episode_start": "2023-12-23",
+        "alert_id": "bb196065fce595fbee7c",
+        "suppression_reason": "Aynı olay sürüyor; tekrar bildirim bastırıldı.",
+        "active": true,
+        "clear_days": 0,
+        "peak_level": 2,
+        "last_date": "2023-12-25",
+        "policy_version": "reliability-v1",
+        "data_date": "2023-12-25",
+        "model_sha256": "ac761b85e51221ed7a5dbd2f6b6edbf728eca29a234306be46c176b5d8090a7a",
+        "rule": "Olay başlangıcı ve gözlenmiş anomaliye geçişte bir bildirim; iki normal günle yeniden kurulur."
+      },
+      "reports": [
+        {
+          "text": "GEÇMİŞ OLAY TEKRARI — güncel uyarı değildir.\nAkkuyu açıkları, Mersin | 2023-12-25\nGözlemlenen SST: 21.95 °C. Mevsimsel referans: 19.49 °C. Anomali: +2.46 °C. 90. yüzdelik: 20.43 °C. İnceleme önceliği: Yüksek; referans üzerindeki fark, P90 ile referans farkının en az iki katı.\nKaynak: Copernicus Marine. Tahmin başlangıcı/son gözlem: 2023-12-25.\nBu sonuç santral kaynaklı ısınmayı veya biyolojik zararı kanıtlamaz.\nBir sonraki günlük uydu analizinde süreklilik ve veri kalitesi yeniden kontrol edilmelidir. Uydu analizi yüzeyi temsil eder; kıyı çözünürlüğü ve tahmin hatası yorumu sınırlar. Bağımsız saha ölçümleri ve komşu açık-deniz hücreleriyle karşılaştırma önerilir.\nUyarı nedeni: Gerçek gözlem mevsimsel P90 eşiğini aşıyor.\nTahmin ufku: 0 saat. Veri tarihi: 2023-12-25.",
+          "method": "template",
+          "facts": {
+            "region_id": "akkuyu",
+            "region_name": "Akkuyu açıkları, Mersin",
+            "mode": "replay",
+            "provider": "Copernicus Marine",
+            "dataset_id": "SST_MED_SST_L4_NRT_OBSERVATIONS_010_004_c_V2",
+            "origin_date": "2023-12-25",
+            "data_date": "2023-12-25",
+            "kind": "observed",
+            "event_date": "2023-12-25",
+            "sst_c": 21.945553053720637,
+            "reference_c": 19.487138417683752,
+            "p90_c": 20.43135070802799,
+            "anomaly_c": 2.458414636036885,
+            "risk": "high",
+            "duration_days": 66,
+            "mhw": true,
+            "horizon_hours": 0,
+            "reason": "Gerçek gözlem mevsimsel P90 eşiğini aşıyor.",
+            "uncertainty": "Uydu gözlem hatası tahmin aralığıyla ölçülmez."
+          }
+        },
+        {
+          "text": "GEÇMİŞ OLAY TEKRARI — güncel uyarı değildir.\nAkkuyu açıkları, Mersin | 2023-12-26\nTahmin edilen SST: 21.86 °C. Mevsimsel referans: 19.43 °C. Anomali: +2.43 °C. 90. yüzdelik: 20.38 °C. İnceleme önceliği: Yüksek; referans üzerindeki fark, P90 ile referans farkının en az iki katı.\nKaynak: Copernicus Marine. Tahmin başlangıcı/son gözlem: 2023-12-25.\nBu sonuç santral kaynaklı ısınmayı veya biyolojik zararı kanıtlamaz.\nBir sonraki günlük uydu analizinde süreklilik ve veri kalitesi yeniden kontrol edilmelidir. Uydu analizi yüzeyi temsil eder; kıyı çözünürlüğü ve tahmin hatası yorumu sınırlar. Bağımsız saha ölçümleri ve komşu açık-deniz hücreleriyle karşılaştırma önerilir.\nAmpirik %80 tahmin aralığı: 21.44–22.29 °C.\nUyarı nedeni: +24 saat için son gözlem ve mevsimsel değişim 21.89 °C; validation ile seçilen P90 ve +0.00 °C marjlı 20.38 °C tetik eşiğini aşıyor. Bu sinyal bir olayın gerçekleşme olasılığı değildir.\nTahmin ufku: 24 saat. Veri tarihi: 2023-12-25.",
+          "method": "template",
+          "facts": {
+            "region_id": "akkuyu",
+            "region_name": "Akkuyu açıkları, Mersin",
+            "mode": "replay",
+            "provider": "Copernicus Marine",
+            "dataset_id": "SST_MED_SST_L4_NRT_OBSERVATIONS_010_004_c_V2",
+            "origin_date": "2023-12-25",
+            "data_date": "2023-12-25",
+            "horizon_days": 1,
+            "target_date": "2023-12-26",
+            "sst_c": 21.864,
+            "lower_c": 21.443,
+            "upper_c": 22.285,
+            "reference_c": 19.43431199880431,
+            "p90_c": 20.375207583399703,
+            "method": "XGBoost + persistence",
+            "interval": {
+              "nominal_coverage": 0.8,
+              "method": "validation residual seasonal envelope",
+              "calibration_end": "2023-12-22",
+              "test_coverage": 0.8171206225680934
+            },
+            "risk": "high",
+            "warning": {
+              "triggered": true,
+              "signal_c": 21.892726634841196,
+              "threshold_c": 20.375207583399703,
+              "percentile": 90,
+              "source": "seasonal_drift_c",
+              "margin_c": 0.0,
+              "reason": "+24 saat için son gözlem ve mevsimsel değişim 21.89 °C; validation ile seçilen P90 ve +0.00 °C marjlı 20.38 °C tetik eşiğini aşıyor. Bu sinyal bir olayın gerçekleşme olasılığı değildir."
+            },
+            "kind": "predicted",
+            "event_date": "2023-12-26",
+            "horizon_hours": 24,
+            "reason": "+24 saat için son gözlem ve mevsimsel değişim 21.89 °C; validation ile seçilen P90 ve +0.00 °C marjlı 20.38 °C tetik eşiğini aşıyor. Bu sinyal bir olayın gerçekleşme olasılığı değildir.",
+            "uncertainty": {
+              "lower_c": 21.443,
+              "upper_c": 22.285,
+              "nominal_coverage": 0.8
+            }
+          }
+        }
+      ]
+    },
+    {
+      "mode": "replay",
+      "origin_date": "2024-06-07",
+      "forecasts": [
+        {
+          "horizon_days": 1,
+          "origin_date": "2024-06-07",
+          "target_date": "2024-06-08",
+          "sst_c": 26.95,
+          "lower_c": 26.463,
+          "upper_c": 27.437,
+          "reference_c": 23.801395467136597,
+          "p90_c": 25.056380886202202,
+          "method": "XGBoost + persistence",
+          "interval": {
+            "nominal_coverage": 0.8,
+            "method": "validation residual seasonal envelope",
+            "calibration_end": "2023-12-22",
+            "test_coverage": 0.8171206225680934
+          },
+          "risk": "high",
+          "warning": {
+            "triggered": true,
+            "signal_c": 27.146968779249843,
+            "threshold_c": 25.056380886202202,
+            "percentile": 90,
+            "source": "seasonal_drift_c",
+            "margin_c": 0.0,
+            "reason": "+24 saat için son gözlem ve mevsimsel değişim 27.15 °C; validation ile seçilen P90 ve +0.00 °C marjlı 25.06 °C tetik eşiğini aşıyor. Bu sinyal bir olayın gerçekleşme olasılığı değildir."
+          }
+        },
+        {
+          "horizon_days": 2,
+          "origin_date": "2024-06-07",
+          "target_date": "2024-06-09",
+          "sst_c": 26.782,
+          "lower_c": 26.147,
+          "upper_c": 27.417,
+          "reference_c": 23.938014314146628,
+          "p90_c": 25.19065522015266,
+          "method": "XGBoost + persistence",
+          "interval": {
+            "nominal_coverage": 0.8,
+            "method": "validation residual seasonal envelope",
+            "calibration_end": "2023-12-22",
+            "test_coverage": 0.8120740019474196
+          },
+          "risk": "high",
+          "warning": {
+            "triggered": true,
+            "signal_c": 27.283587626259877,
+            "threshold_c": 25.19065522015266,
+            "percentile": 90,
+            "source": "seasonal_drift_c",
+            "margin_c": 0.0,
+            "reason": "+48 saat için son gözlem ve mevsimsel değişim 27.28 °C; validation ile seçilen P90 ve +0.00 °C marjlı 25.19 °C tetik eşiğini aşıyor. Bu sinyal bir olayın gerçekleşme olasılığı değildir."
+          }
+        },
+        {
+          "horizon_days": 3,
+          "origin_date": "2024-06-07",
+          "target_date": "2024-06-10",
+          "sst_c": 26.493,
+          "lower_c": 25.839,
+          "upper_c": 27.147,
+          "reference_c": 24.07599565844698,
+          "p90_c": 25.324527026699645,
+          "method": "XGBoost + persistence",
+          "interval": {
+            "nominal_coverage": 0.8,
+            "method": "validation residual seasonal envelope",
+            "calibration_end": "2023-12-22",
+            "test_coverage": 0.8109161793372319
+          },
+          "risk": "watch",
+          "warning": {
+            "triggered": true,
+            "signal_c": 27.01228393752808,
+            "threshold_c": 25.85983491690613,
+            "percentile": 95,
+            "source": "persistence_c",
+            "margin_c": -0.2,
+            "reason": "+72 saat için son gözlemin devamı 27.01 °C; validation ile seçilen P95 ve -0.20 °C marjlı 25.86 °C tetik eşiğini aşıyor. Bu sinyal bir olayın gerçekleşme olasılığı değildir."
+          }
+        }
+      ],
+      "early_warning": {
+        "state": "observed_anomaly",
+        "reason": "Gözlenen sıcaklık, eğitim döneminden hesaplanan mevsimsel P90 eşiğini aşıyor.",
+        "origin_date": "2024-06-07",
+        "horizon_hours": 0,
+        "uncertainty": "Uydu bölgesel ortalaması; gözlem hatası bu aralıkla ölçülmez.",
+        "notify": false,
+        "episode_start": "2024-06-02",
+        "alert_id": "51aa55fead901476db81",
+        "suppression_reason": "Aynı olay sürüyor; tekrar bildirim bastırıldı.",
+        "active": true,
+        "clear_days": 0,
+        "peak_level": 2,
+        "last_date": "2024-06-07",
+        "policy_version": "reliability-v1",
+        "data_date": "2024-06-07",
+        "model_sha256": "ac761b85e51221ed7a5dbd2f6b6edbf728eca29a234306be46c176b5d8090a7a",
+        "rule": "Olay başlangıcı ve gözlenmiş anomaliye geçişte bir bildirim; iki normal günle yeniden kurulur."
+      },
+      "reports": [
+        {
+          "text": "GEÇMİŞ OLAY TEKRARI — güncel uyarı değildir.\nAkkuyu açıkları, Mersin | 2024-06-07\nGözlemlenen SST: 27.01 °C. Mevsimsel referans: 23.67 °C. Anomali: +3.35 °C. 90. yüzdelik: 24.93 °C. İnceleme önceliği: Yüksek; referans üzerindeki fark, P90 ile referans farkının en az iki katı.\nKaynak: Copernicus Marine. Tahmin başlangıcı/son gözlem: 2024-06-07.\nBu sonuç santral kaynaklı ısınmayı veya biyolojik zararı kanıtlamaz.\nBir sonraki günlük uydu analizinde süreklilik ve veri kalitesi yeniden kontrol edilmelidir. Uydu analizi yüzeyi temsil eder; kıyı çözünürlüğü ve tahmin hatası yorumu sınırlar. Bağımsız saha ölçümleri ve komşu açık-deniz hücreleriyle karşılaştırma önerilir.\nUyarı nedeni: Gerçek gözlem mevsimsel P90 eşiğini aşıyor.\nTahmin ufku: 0 saat. Veri tarihi: 2024-06-07.",
+          "method": "template",
+          "facts": {
+            "region_id": "akkuyu",
+            "region_name": "Akkuyu açıkları, Mersin",
+            "mode": "replay",
+            "provider": "Copernicus Marine",
+            "dataset_id": "SST_MED_SST_L4_NRT_OBSERVATIONS_010_004_c_V2",
+            "origin_date": "2024-06-07",
+            "data_date": "2024-06-07",
+            "kind": "observed",
+            "event_date": "2024-06-07",
+            "sst_c": 27.01228393752808,
+            "reference_c": 23.666710625414833,
+            "p90_c": 24.928603383564433,
+            "anomaly_c": 3.3455733121132454,
+            "risk": "high",
+            "duration_days": 6,
+            "mhw": true,
+            "horizon_hours": 0,
+            "reason": "Gerçek gözlem mevsimsel P90 eşiğini aşıyor.",
+            "uncertainty": "Uydu gözlem hatası tahmin aralığıyla ölçülmez."
+          }
+        },
+        {
+          "text": "GEÇMİŞ OLAY TEKRARI — güncel uyarı değildir.\nAkkuyu açıkları, Mersin | 2024-06-08\nTahmin edilen SST: 26.95 °C. Mevsimsel referans: 23.80 °C. Anomali: +3.15 °C. 90. yüzdelik: 25.06 °C. İnceleme önceliği: Yüksek; referans üzerindeki fark, P90 ile referans farkının en az iki katı.\nKaynak: Copernicus Marine. Tahmin başlangıcı/son gözlem: 2024-06-07.\nBu sonuç santral kaynaklı ısınmayı veya biyolojik zararı kanıtlamaz.\nBir sonraki günlük uydu analizinde süreklilik ve veri kalitesi yeniden kontrol edilmelidir. Uydu analizi yüzeyi temsil eder; kıyı çözünürlüğü ve tahmin hatası yorumu sınırlar. Bağımsız saha ölçümleri ve komşu açık-deniz hücreleriyle karşılaştırma önerilir.\nAmpirik %80 tahmin aralığı: 26.46–27.44 °C.\nUyarı nedeni: +24 saat için son gözlem ve mevsimsel değişim 27.15 °C; validation ile seçilen P90 ve +0.00 °C marjlı 25.06 °C tetik eşiğini aşıyor. Bu sinyal bir olayın gerçekleşme olasılığı değildir.\nTahmin ufku: 24 saat. Veri tarihi: 2024-06-07.",
+          "method": "template",
+          "facts": {
+            "region_id": "akkuyu",
+            "region_name": "Akkuyu açıkları, Mersin",
+            "mode": "replay",
+            "provider": "Copernicus Marine",
+            "dataset_id": "SST_MED_SST_L4_NRT_OBSERVATIONS_010_004_c_V2",
+            "origin_date": "2024-06-07",
+            "data_date": "2024-06-07",
+            "horizon_days": 1,
+            "target_date": "2024-06-08",
+            "sst_c": 26.95,
+            "lower_c": 26.463,
+            "upper_c": 27.437,
+            "reference_c": 23.801395467136597,
+            "p90_c": 25.056380886202202,
+            "method": "XGBoost + persistence",
+            "interval": {
+              "nominal_coverage": 0.8,
+              "method": "validation residual seasonal envelope",
+              "calibration_end": "2023-12-22",
+              "test_coverage": 0.8171206225680934
+            },
+            "risk": "high",
+            "warning": {
+              "triggered": true,
+              "signal_c": 27.146968779249843,
+              "threshold_c": 25.056380886202202,
+              "percentile": 90,
+              "source": "seasonal_drift_c",
+              "margin_c": 0.0,
+              "reason": "+24 saat için son gözlem ve mevsimsel değişim 27.15 °C; validation ile seçilen P90 ve +0.00 °C marjlı 25.06 °C tetik eşiğini aşıyor. Bu sinyal bir olayın gerçekleşme olasılığı değildir."
+            },
+            "kind": "predicted",
+            "event_date": "2024-06-08",
+            "horizon_hours": 24,
+            "reason": "+24 saat için son gözlem ve mevsimsel değişim 27.15 °C; validation ile seçilen P90 ve +0.00 °C marjlı 25.06 °C tetik eşiğini aşıyor. Bu sinyal bir olayın gerçekleşme olasılığı değildir.",
+            "uncertainty": {
+              "lower_c": 26.463,
+              "upper_c": 27.437,
+              "nominal_coverage": 0.8
+            }
+          }
+        }
+      ]
+    },
+    {
+      "mode": "replay",
+      "origin_date": "2025-12-05",
+      "forecasts": [
+        {
+          "horizon_days": 1,
+          "origin_date": "2025-12-05",
+          "target_date": "2025-12-06",
+          "sst_c": 22.994,
+          "lower_c": 22.573,
+          "upper_c": 23.415,
+          "reference_c": 20.821821433870916,
+          "p90_c": 21.707724819891528,
+          "method": "XGBoost + persistence",
+          "interval": {
+            "nominal_coverage": 0.8,
+            "method": "validation residual seasonal envelope",
+            "calibration_end": "2023-12-22",
+            "test_coverage": 0.8171206225680934
+          },
+          "risk": "high",
+          "warning": {
+            "triggered": true,
+            "signal_c": 23.118939104227483,
+            "threshold_c": 21.707724819891528,
+            "percentile": 90,
+            "source": "seasonal_drift_c",
+            "margin_c": 0.0,
+            "reason": "+24 saat için son gözlem ve mevsimsel değişim 23.12 °C; validation ile seçilen P90 ve +0.00 °C marjlı 21.71 °C tetik eşiğini aşıyor. Bu sinyal bir olayın gerçekleşme olasılığı değildir."
+          }
+        },
+        {
+          "horizon_days": 2,
+          "origin_date": "2025-12-05",
+          "target_date": "2025-12-07",
+          "sst_c": 22.933,
+          "lower_c": 22.393,
+          "upper_c": 23.473,
+          "reference_c": 20.73704997267384,
+          "p90_c": 21.621987129302227,
+          "method": "XGBoost + persistence",
+          "interval": {
+            "nominal_coverage": 0.8,
+            "method": "validation residual seasonal envelope",
+            "calibration_end": "2023-12-22",
+            "test_coverage": 0.8120740019474196
+          },
+          "risk": "high",
+          "warning": {
+            "triggered": true,
+            "signal_c": 23.03416764303041,
+            "threshold_c": 21.621987129302227,
+            "percentile": 90,
+            "source": "seasonal_drift_c",
+            "margin_c": 0.0,
+            "reason": "+48 saat için son gözlem ve mevsimsel değişim 23.03 °C; validation ile seçilen P90 ve +0.00 °C marjlı 21.62 °C tetik eşiğini aşıyor. Bu sinyal bir olayın gerçekleşme olasılığı değildir."
+          }
+        },
+        {
+          "horizon_days": 3,
+          "origin_date": "2025-12-05",
+          "target_date": "2025-12-08",
+          "sst_c": 22.838,
+          "lower_c": 22.276,
+          "upper_c": 23.4,
+          "reference_c": 20.653847845784714,
+          "p90_c": 21.539787839124816,
+          "method": "XGBoost + persistence",
+          "interval": {
+            "nominal_coverage": 0.8,
+            "method": "validation residual seasonal envelope",
+            "calibration_end": "2023-12-22",
+            "test_coverage": 0.8109161793372319
+          },
+          "risk": "high",
+          "warning": {
+            "triggered": true,
+            "signal_c": 23.20542214312236,
+            "threshold_c": 21.618423660893992,
+            "percentile": 95,
+            "source": "persistence_c",
+            "margin_c": -0.2,
+            "reason": "+72 saat için son gözlemin devamı 23.21 °C; validation ile seçilen P95 ve -0.20 °C marjlı 21.62 °C tetik eşiğini aşıyor. Bu sinyal bir olayın gerçekleşme olasılığı değildir."
+          }
+        }
+      ],
+      "early_warning": {
+        "state": "observed_anomaly",
+        "reason": "Gözlenen sıcaklık, eğitim döneminden hesaplanan mevsimsel P90 eşiğini aşıyor.",
+        "origin_date": "2025-12-05",
+        "horizon_hours": 0,
+        "uncertainty": "Uydu bölgesel ortalaması; gözlem hatası bu aralıkla ölçülmez.",
+        "notify": false,
+        "episode_start": "2025-11-02",
+        "alert_id": "157d02e6552029648332",
+        "suppression_reason": "Aynı olay sürüyor; tekrar bildirim bastırıldı.",
+        "active": true,
+        "clear_days": 0,
+        "peak_level": 2,
+        "last_date": "2025-12-05",
+        "policy_version": "reliability-v1",
+        "data_date": "2025-12-05",
+        "model_sha256": "ac761b85e51221ed7a5dbd2f6b6edbf728eca29a234306be46c176b5d8090a7a",
+        "rule": "Olay başlangıcı ve gözlenmiş anomaliye geçişte bir bildirim; iki normal günle yeniden kurulur."
+      },
+      "reports": [
+        {
+          "text": "GEÇMİŞ OLAY TEKRARI — güncel uyarı değildir.\nAkkuyu açıkları, Mersin | 2025-12-05\nGözlemlenen SST: 23.21 °C. Mevsimsel referans: 20.91 °C. Anomali: +2.30 °C. 90. yüzdelik: 21.79 °C. İnceleme önceliği: Yüksek; referans üzerindeki fark, P90 ile referans farkının en az iki katı.\nKaynak: Copernicus Marine. Tahmin başlangıcı/son gözlem: 2025-12-05.\nBu sonuç santral kaynaklı ısınmayı veya biyolojik zararı kanıtlamaz.\nBir sonraki günlük uydu analizinde süreklilik ve veri kalitesi yeniden kontrol edilmelidir. Uydu analizi yüzeyi temsil eder; kıyı çözünürlüğü ve tahmin hatası yorumu sınırlar. Bağımsız saha ölçümleri ve komşu açık-deniz hücreleriyle karşılaştırma önerilir.\nUyarı nedeni: Gerçek gözlem mevsimsel P90 eşiğini aşıyor.\nTahmin ufku: 0 saat. Veri tarihi: 2025-12-05.",
+          "method": "template",
+          "facts": {
+            "region_id": "akkuyu",
+            "region_name": "Akkuyu açıkları, Mersin",
+            "mode": "replay",
+            "provider": "Copernicus Marine",
+            "dataset_id": "SST_MED_SST_L4_NRT_OBSERVATIONS_010_004_c_V2",
+            "origin_date": "2025-12-05",
+            "data_date": "2025-12-05",
+            "kind": "observed",
+            "event_date": "2025-12-05",
+            "sst_c": 23.20542214312236,
+            "reference_c": 20.90830447276579,
+            "p90_c": 21.793241980833916,
+            "anomaly_c": 2.2971176703565703,
+            "risk": "high",
+            "duration_days": 9,
+            "mhw": true,
+            "horizon_hours": 0,
+            "reason": "Gerçek gözlem mevsimsel P90 eşiğini aşıyor.",
+            "uncertainty": "Uydu gözlem hatası tahmin aralığıyla ölçülmez."
+          }
+        },
+        {
+          "text": "GEÇMİŞ OLAY TEKRARI — güncel uyarı değildir.\nAkkuyu açıkları, Mersin | 2025-12-06\nTahmin edilen SST: 22.99 °C. Mevsimsel referans: 20.82 °C. Anomali: +2.17 °C. 90. yüzdelik: 21.71 °C. İnceleme önceliği: Yüksek; referans üzerindeki fark, P90 ile referans farkının en az iki katı.\nKaynak: Copernicus Marine. Tahmin başlangıcı/son gözlem: 2025-12-05.\nBu sonuç santral kaynaklı ısınmayı veya biyolojik zararı kanıtlamaz.\nBir sonraki günlük uydu analizinde süreklilik ve veri kalitesi yeniden kontrol edilmelidir. Uydu analizi yüzeyi temsil eder; kıyı çözünürlüğü ve tahmin hatası yorumu sınırlar. Bağımsız saha ölçümleri ve komşu açık-deniz hücreleriyle karşılaştırma önerilir.\nAmpirik %80 tahmin aralığı: 22.57–23.41 °C.\nUyarı nedeni: +24 saat için son gözlem ve mevsimsel değişim 23.12 °C; validation ile seçilen P90 ve +0.00 °C marjlı 21.71 °C tetik eşiğini aşıyor. Bu sinyal bir olayın gerçekleşme olasılığı değildir.\nTahmin ufku: 24 saat. Veri tarihi: 2025-12-05.",
+          "method": "template",
+          "facts": {
+            "region_id": "akkuyu",
+            "region_name": "Akkuyu açıkları, Mersin",
+            "mode": "replay",
+            "provider": "Copernicus Marine",
+            "dataset_id": "SST_MED_SST_L4_NRT_OBSERVATIONS_010_004_c_V2",
+            "origin_date": "2025-12-05",
+            "data_date": "2025-12-05",
+            "horizon_days": 1,
+            "target_date": "2025-12-06",
+            "sst_c": 22.994,
+            "lower_c": 22.573,
+            "upper_c": 23.415,
+            "reference_c": 20.821821433870916,
+            "p90_c": 21.707724819891528,
+            "method": "XGBoost + persistence",
+            "interval": {
+              "nominal_coverage": 0.8,
+              "method": "validation residual seasonal envelope",
+              "calibration_end": "2023-12-22",
+              "test_coverage": 0.8171206225680934
+            },
+            "risk": "high",
+            "warning": {
+              "triggered": true,
+              "signal_c": 23.118939104227483,
+              "threshold_c": 21.707724819891528,
+              "percentile": 90,
+              "source": "seasonal_drift_c",
+              "margin_c": 0.0,
+              "reason": "+24 saat için son gözlem ve mevsimsel değişim 23.12 °C; validation ile seçilen P90 ve +0.00 °C marjlı 21.71 °C tetik eşiğini aşıyor. Bu sinyal bir olayın gerçekleşme olasılığı değildir."
+            },
+            "kind": "predicted",
+            "event_date": "2025-12-06",
+            "horizon_hours": 24,
+            "reason": "+24 saat için son gözlem ve mevsimsel değişim 23.12 °C; validation ile seçilen P90 ve +0.00 °C marjlı 21.71 °C tetik eşiğini aşıyor. Bu sinyal bir olayın gerçekleşme olasılığı değildir.",
+            "uncertainty": {
+              "lower_c": 22.573,
+              "upper_c": 23.415,
+              "nominal_coverage": 0.8
+            }
+          }
+        }
+      ]
+    }
+  ]
+}
