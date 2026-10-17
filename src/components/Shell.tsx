@@ -59,7 +59,8 @@ export default function Shell() {
   }, [current]);
   useEffect(() => {
     if (!open) return;
-    body.current?.setAttribute("inert", "");
+    const bodyElement = body.current;
+    bodyElement?.setAttribute("inert", "");
     const previousOverflow = document.body.style.overflow;
     document.body.style.overflow = "hidden";
     const first = sidebar.current?.querySelector<HTMLElement>("a,button");
@@ -87,7 +88,7 @@ export default function Shell() {
     document.addEventListener("keydown", handle);
     return () => {
       document.removeEventListener("keydown", handle);
-      body.current?.removeAttribute("inert");
+      bodyElement?.removeAttribute("inert");
       document.body.style.overflow = previousOverflow;
     };
   }, [open]);
